@@ -1,0 +1,4 @@
+{
+	"MONGODB_URI": "mongodb+srv://joonassuo:453MANkoulu@cluster0-qdtq7.gcp.mongodb.net/test?retryWrites=true&w=majority",
+	"JWT_SECRET": "lol"
+}
