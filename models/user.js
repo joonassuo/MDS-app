@@ -15,6 +15,10 @@ const UserSchema = new Schema({
 		unique: true,
 		required: true
 	},
+	profilePic: {
+		type: Image,
+		required: false
+	},
 	karma: {
 		type: Number,
 		default: 100
