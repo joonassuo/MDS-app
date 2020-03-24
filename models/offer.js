@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 
 const offerSchema = new Schema({
 	creator: {
-		type: String,
+		type: Object,
 		required: true
 	},
 	buyer: {
-		type: String,
+		type: Object,
 		required: false
 	},
 	cost: {
