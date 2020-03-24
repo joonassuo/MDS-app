@@ -1,6 +1,7 @@
 import React, { useEffect, Component } from "react";
 import "./App.css";
 import Login from "./components/Login";
+import Homepage from "./components/Homepage";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -16,7 +17,7 @@ class App extends Component {
 		return (
 			<Provider store={store}>
 				<Router>
-					<Route path="/" exact component={Login} />
+					<Route path="/" exact component={Homepage} />
 				</Router>
 			</Provider>
 		);
