@@ -15,6 +15,10 @@ const UserSchema = new Schema({
 		unique: true,
 		required: true
 	},
+	karma: {
+		type: Number,
+		default: 100
+	},
 	password: {
 		type: String,
 		required: true

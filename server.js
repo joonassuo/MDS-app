@@ -24,6 +24,7 @@ connection.once("open", () => {
 // ROUTES
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/auth", require("./routes/api/auth"));
+app.use("/api/offers", require("./routes/api/offers"));
 
 app.get("*", (req, res) => {
 	res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
