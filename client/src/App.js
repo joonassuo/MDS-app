@@ -11,7 +11,7 @@ import { getOffers } from "./actions/offerActions";
 
 class App extends Component {
 	componentDidMount() {
-		/* store.dispatch(loadUser()); */
+		store.dispatch(loadUser());
 		store.dispatch(getOffers());
 	}
 
@@ -20,6 +20,7 @@ class App extends Component {
 			<Provider store={store}>
 				<Router>
 					<Route path="/" exact component={Homepage} />
+					<Route path="/login" exact component={Login} />
 				</Router>
 			</Provider>
 		);
