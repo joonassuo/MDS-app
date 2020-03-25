@@ -1,23 +1,7 @@
 import { GET_USERS } from "../actions/types";
 
 const initialState = {
-	users: [
-		{
-			firstname: "Joonas",
-			lastname: "Suonpera",
-			username: "joonassuo"
-		},
-		{
-			firstname: "Sanna",
-			lastname: "Silander",
-			username: "Sannis"
-		},
-		{
-			firstname: "Teemu",
-			lastname: "Halme",
-			username: "thalme"
-		}
-	]
+	users: []
 };
 
 export default function(state = initialState, action) {
