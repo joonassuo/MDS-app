@@ -6,13 +6,7 @@ import { useEffect } from "react";
 const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const [errorMsg, setErrorMsg] = useState("");
 	const dispatch = useDispatch();
-	const err = useSelector(state => state.error.msg[0]);
-
-	useEffect(() => {
-		setErrorMsg(err);
-	});
 
 	const onChangeEmail = e => {
 		e.preventDefault();
@@ -38,15 +32,14 @@ const Login = () => {
 	return (
 		<div>
 			<div className="login-container">
-				<h2 className="error-msg">{errorMsg}</h2>
 				<input
 					className="email-field"
-					type="text"
+					type="email"
 					placeholder="email"
 					onChange={onChangeEmail}
 				/>
 				<input
-					type="text"
+					type="password"
 					placeholder="password"
 					className="pasword-field"
 					onChange={onChangePassword}
