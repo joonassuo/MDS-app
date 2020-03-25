@@ -11,10 +11,52 @@ import {
 	REGISTER_FAIL
 } from "./types";
 
+// Register user
+export const registerUser = ({
+	firstname,
+	lastname,
+	username,
+	email,
+	password
+}) => dispatch => {
+	// Headers
+	const config = {
+		headers: {
+			"Content-type": "application/json"
+		}
+	};
+
+	// Request body
+	const body = JSON.stringify({
+		firstname,
+		lastname,
+		username,
+		email,
+		password
+	});
+
+	axios
+		.post("/api/users", body, config)
+		.then(res => {
+			dispatch({
+				type: REGISTER_SUCCESS,
+				payload: res.data
+			});
+		})
+		.catch(err => {
+			returnErrors(
+				err.response.data,
+				err.response.status,
+				"REGISTER_FAIL"
+			);
+			dispatch({
+				type: REGISTER_FAIL
+			});
+		});
+};
+
 // Login user
 export const loginUser = ({ email, password }) => dispatch => {
-	console.log("loginUser");
-
 	// Headers
 	const config = {
 		headers: {

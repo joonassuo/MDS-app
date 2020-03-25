@@ -15,6 +15,8 @@ router.get("/", (req, res) => {
 	});
 });
 
+// @route	POST api/users
+// @desc	Register new user
 router.post("/", (req, res) => {
 	const { firstname, lastname, username, password, email } = req.body;
 
