@@ -1,7 +1,12 @@
 import axios from "axios";
 import { returnErrors } from "./errorActions";
 
-import { GET_OFFERS, OFFERS_LOADING, GET_OFFERS_ERROR } from "./types";
+import {
+	GET_OFFERS,
+	OFFERS_LOADING,
+	GET_OFFERS_ERROR,
+	ADD_OFFER_SUCCESS
+} from "./types";
 
 // Get all offers and dispatch to state
 export const getOffers = () => dispatch => {
@@ -23,4 +28,21 @@ export const getOffers = () => dispatch => {
 				type: GET_OFFERS_ERROR
 			});
 		});
+};
+
+// Add new offer
+export const addOffer = offer => dispatch => {
+	// Header
+	const config = {
+		headers: {
+			"Content-type": "application/json"
+		}
+	};
+
+	axios.post("/api/offers", offer, config).then(res => {
+		dispatch({
+			type: ADD_OFFER_SUCCESS,
+			payload: res.data
+		});
+	});
 };

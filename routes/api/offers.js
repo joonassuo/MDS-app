@@ -21,6 +21,7 @@ router.post("/", (req, res) => {
 		type,
 		expiresDate,
 		description,
+		duration,
 		title,
 		isTradeable
 	} = req.body;
@@ -35,6 +36,7 @@ router.post("/", (req, res) => {
 		type,
 		expiresDate,
 		description,
+		duration,
 		title,
 		isTradeable
 	});

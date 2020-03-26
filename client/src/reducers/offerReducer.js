@@ -1,4 +1,9 @@
-import { GET_OFFERS, OFFERS_LOADING, GET_OFFERS_ERROR } from "../actions/types";
+import {
+	GET_OFFERS,
+	OFFERS_LOADING,
+	GET_OFFERS_ERROR,
+	ADD_OFFER_SUCCESS
+} from "../actions/types";
 
 const initialState = {
 	offers: [],
@@ -23,6 +28,11 @@ export default function(state = initialState, action) {
 				...state,
 				offers: [],
 				isLoading: false
+			};
+		case ADD_OFFER_SUCCESS:
+			return {
+				...state,
+				offers: [...state.offers, action.payload]
 			};
 		default:
 			return state;

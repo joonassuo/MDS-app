@@ -18,16 +18,22 @@ const Login = () => {
 		switch (type) {
 			case "firstname":
 				setFirstname(e.target.value);
+				break;
 			case "lastname":
 				setLastname(e.target.value);
+				break;
 			case "username":
 				setUsername(e.target.value);
+				break;
 			case "email":
 				setEmail(e.target.value);
+				break;
 			case "password":
 				setPassword(e.target.value);
+				break;
 			case "confirm-password":
 				setConfirm(e.target.value);
+				break;
 			default:
 				return;
 		}
@@ -43,7 +49,7 @@ const Login = () => {
 			loginUser(user)(dispatch);
 		} else {
 			// Check if password confirmation matches
-			if (password != confirm) {
+			if (password !== confirm) {
 				alert("passwords don't match");
 			} else {
 				const user = {

@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 import { loadUser } from "./actions/authActions";
 import { getOffers } from "./actions/offerActions";
+import AddOffer from "./components/AddOffer";
 
 class App extends Component {
 	componentDidMount() {
@@ -21,6 +22,7 @@ class App extends Component {
 				<Router>
 					<Route path="/" exact component={Homepage} />
 					<Route path="/login" exact component={Login} />
+					<Route path="/addoffer" exact component={AddOffer} />
 				</Router>
 			</Provider>
 		);

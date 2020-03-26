@@ -17,3 +17,4 @@ export const GET_USERS = "GET_USERS";
 export const GET_OFFERS = "GET_OFFERS";
 export const OFFERS_LOADING = "OFFERS_LOADING";
 export const GET_OFFERS_ERROR = "GET_OFFERS_ERROR";
+export const ADD_OFFER_SUCCESS = "ADD_OFFER_SUCCESS";
