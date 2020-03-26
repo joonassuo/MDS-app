@@ -1,0 +1,153 @@
+/* GENERAL */
+.grid {
+	display: grid;
+	grid-template-columns: repeat(10, 1fr);
+	grid-template-rows: repeat(10, 1fr);
+	height: 80vh;
+	width: 100vw;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.center {
+	justify-self: center;
+	align-self: center;
+}
+
+.header {
+	grid-row: 2;
+	grid-column: 1/11;
+}
+
+.carousel-indicators > li {
+	background-color: aqua !important;
+}
+
+/*DESCRIPTION ITEM*/
+#title-field,
+#description-field {
+	grid-column: 3/9;
+	width: 100%;
+	margin-top: 2em;
+}
+
+#title-field {
+	text-align: center;
+	border: none;
+	border-bottom: 1px solid black;
+	grid-row: 3;
+}
+
+#description-field {
+	grid-row: 4/8;
+	padding: 1em;
+}
+
+/* DETAILS ITEM*/
+#type-dropdown,
+#cost-field,
+#tradeable-field,
+#input-duration {
+	grid-column: 4/8;
+	width: 100%;
+	margin-top: 2em;
+}
+
+#type-dropdown {
+	grid-row: 4;
+	height: 50%;
+}
+
+#cost-field {
+	text-align: center;
+	border: none;
+	border-bottom: 1px solid black;
+	grid-row: 5;
+	height: 50%;
+}
+
+#tradeable-field {
+	grid-row: 6;
+}
+
+#is-tradeable-box {
+	margin-left: 1em;
+}
+
+#input-duration {
+	grid-row: 7/9;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+}
+
+#label-duration {
+	grid-row: 1;
+	grid-column: 1/5;
+}
+
+#duration-plus,
+#duration-minus {
+	grid-row: 2;
+	height: 2em;
+	width: 2em;
+	border-radius: 50%;
+	background-color: white;
+}
+
+#duration-minus {
+	grid-column: 1;
+}
+
+#duration-plus {
+	grid-column: 4;
+}
+
+#duration-value {
+	grid-row: 2;
+	grid-column: 2/4;
+}
+
+/*REVIEW ITEM*/
+#summary-title,
+#summary-type,
+#summary-duration,
+#summary-cost,
+#summary-tradeable,
+#summary-description {
+	justify-content: left;
+	grid-column: 3/9;
+	width: 100%;
+}
+
+#summary-title {
+	grid-row: 3;
+}
+
+#summary-description {
+	grid-row: 4/5;
+}
+
+#summary-type {
+	grid-row: 5;
+}
+
+#summary-cost {
+	grid-row: 6;
+}
+
+#summary-tradeable {
+	grid-row: 7;
+}
+
+#summary-duration {
+	grid-row: 8;
+}
+
+#submit-button {
+	grid-row: 9;
+	grid-column: 5/7;
+	justify-self: center;
+	border-radius: 50%;
+}

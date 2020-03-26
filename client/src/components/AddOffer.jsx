@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { addOffer } from "../actions/offerActions";
 import { useDispatch, useSelector } from "react-redux";
+import Carousel from "react-bootstrap/Carousel";
+import "./css/addOffer.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const AddOffer = () => {
 	const [title, setTitle] = useState("");
 	const [cost, setCost] = useState(0);
 	const [duration, setDuration] = useState(30);
 	const [description, setDescription] = useState("");
-	const [type, setType] = useState("lesson");
+	const [type, setType] = useState("");
 	const [isTradeable, setIsTradeable] = useState(false);
-	const [isDetails, setIsDetails] = useState(true);
-	const [isDesc, setIsDesc] = useState(false);
-	const [isSummary, setIsSummary] = useState(false);
 	const user = useSelector(state => state.auth.user);
 	const dispatch = useDispatch();
 
@@ -27,7 +27,7 @@ const AddOffer = () => {
 	const durationValue = duration => {
 		const hours = Math.floor(duration / 60);
 		const minutes = duration % 60;
-		return hours + " : " + minutes + (minutes < 10 ? "0" : "");
+		return hours + ":" + minutes + (minutes < 10 ? "0" : "") + " h";
 	};
 
 	const onChange = (e, type) => {
@@ -39,7 +39,7 @@ const AddOffer = () => {
 				setCost(e.target.value);
 				break;
 			case "isTradeable":
-				setIsTradeable(e.target.value === "on" ? true : false);
+				setIsTradeable(e.target.checked);
 				break;
 			case "title":
 				setTitle(e.target.value);
@@ -85,99 +85,107 @@ const AddOffer = () => {
 	};
 
 	return (
-		<div>
-			{isDetails ? (
-				<div>
-					<h1 className="header">DETAILS</h1>
-					<select
-						name="type"
-						id="type-dropdown"
-						defaultValue="lesson"
-						onChange={e => onChange(e, "type")}
-					>
-						<option value="lesson">Lesson</option>
-						<option value="rent">Rent</option>
-						<option value="sell">Sell</option>
-					</select>
-					<div className="input-duration">
-						<button
-							id="duration-minus"
-							onClick={() => dur("decrease")}
-						>
-							-
-						</button>
-						<h3>{durationValue(duration)}</h3>
-						<button
-							id="duration-plus"
-							onClick={() => dur("increase")}
-						>
-							+
-						</button>
-					</div>
-					<input
-						type="number"
-						name="cost"
-						id="cost-field"
-						placeholder="price"
-						onChange={e => onChange(e, "cost")}
-					/>
-					<label htmlFor="isTradeable">Allow Trade Offers?</label>
-					<input
-						type="checkbox"
-						name="isTradeable"
-						id="is-tradeable-box"
-						onChange={e => onChange(e, "isTradeable")}
-					/>
-					<button
-						className="next-button"
-						onClick={() => {
-							setIsDetails(false);
-							setIsDesc(true);
-						}}
-					>
-						->
-					</button>
-				</div>
-			) : isDesc ? (
-				<div>
-					<h1 className="header">DESCRIPTION</h1>
+		<Carousel classname="carousel" interval={null} wrap={false}>
+			<Carousel.Item className="carousel-item">
+				<div className="grid">
+					<h1 className="header center">DESCRIPTION</h1>
 					<input
 						type="text"
 						placeholder="TITLE"
 						id="title-field"
 						onChange={e => onChange(e, "title")}
 					/>
-					<input
-						type="text"
-						placeholder="Give a brief but exhaustive description about your offering"
+					<textarea
+						rows="10"
+						cols="30"
+						placeholder="Give a brief description about your offering"
 						id="description-field"
 						onChange={e => onChange(e, "description")}
 					/>
-					<button
-						className="next-button"
-						onClick={() => {
-							setIsSummary(true);
-							setIsDesc(false);
-						}}
-					>
-						->
-					</button>
 				</div>
-			) : isSummary ? (
-				<div>
-					<h1 className="header">Review Offer</h1>
+			</Carousel.Item>
+			<Carousel.Item>
+				<div className="grid">
+					<h1 className="header center">DETAILS</h1>
+					<select
+						name="type"
+						className="center"
+						id="type-dropdown"
+						defaultValue=""
+						onChange={e => onChange(e, "type")}
+					>
+						<option value="" disabled>
+							Choose Category..
+						</option>
+						<option value="lesson">Lesson</option>
+						<option value="rent">Rent</option>
+						<option value="sell">Sell</option>
+					</select>
+					<input
+						type="number"
+						name="cost"
+						id="cost-field"
+						className="center"
+						placeholder="price"
+						onChange={e => onChange(e, "cost")}
+					/>
+					<div className="center" id="tradeable-field">
+						<input
+							type="checkbox"
+							name="isTradeable"
+							id="is-tradeable-box"
+							className="center"
+							onClick={e => onChange(e, "isTradeable")}
+						/>
+						<label htmlFor="isTradeable">Allow Trade Offers?</label>
+					</div>
+					{type === "lesson" ? (
+						<div id="input-duration">
+							<div className="center" id="label-duration">
+								Lesson Duration:
+							</div>
+							<button
+								className="center"
+								id="duration-minus"
+								onClick={() => dur("decrease")}
+							>
+								-
+							</button>
+							<div id="duration-value" className="center">
+								{durationValue(duration)}
+							</div>
+							<button
+								className="center"
+								id="duration-plus"
+								onClick={() => dur("increase")}
+							>
+								+
+							</button>
+						</div>
+					) : null}
+				</div>
+			</Carousel.Item>
+			<Carousel.Item className="carousel-item">
+				<div className="grid">
+					<h1 className="header center">REVIEW</h1>
 					<h2 id="summary-title">{title}</h2>
-					<h3 id="summary-type">{type}</h3>
-					<h4 id="summary-duration">{duration}</h4>
-					<h4 id="summary-cost">{cost}</h4>
-					<h4 id="summary-tradeable">{isTradeable}</h4>
-					<h4 id="summary-description">{description}</h4>
+					<div id="summary-description">{description}</div>
+					<div id="summary-type">Type: {type.toUpperCase()}</div>
+					<div id="summary-cost">Price: {cost}</div>
+					<div id="summary-tradeable">
+						Allow Trade: {isTradeable.toString().toUpperCase()}
+					</div>
+					{type === "lesson" ? (
+						<div id="summary-duration">
+							<div>Duration: {durationValue(duration)}</div>
+						</div>
+					) : null}
 					<button id="submit-button" onClick={() => submitOffer()}>
 						SUBMIT
 					</button>
 				</div>
-			) : null}
-		</div>
+			</Carousel.Item>
+		</Carousel>
 	);
 };
 
