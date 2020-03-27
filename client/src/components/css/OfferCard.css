@@ -1,0 +1,30 @@
+
+.accordion_section{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.accordion {
+    grid-row: 1/2;
+    grid-column: 1/7;
+    transition: backgroung-color 0.6s ease
+}
+
+/* .accordion:hover,
+.active {
+    background-color:whitesmoke;
+} */
+
+.accordion_content {
+    grid-row: 2/3;
+    grid-column: 1/7;
+    overflow: hidden;
+    transition: max-height 0.6s ease;
+    max-height: 0px;
+}
+
+button {
+    background-color: rgb(117, 218, 117);
+    color:whitesmoke;
+}
