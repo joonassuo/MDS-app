@@ -22,8 +22,7 @@ const UserCard = ({creator}) => {
 const Upper = ({offer}) => {
 	return (
 		<div>
-			<UserCard creator={offer.creator} />
-			{offer.title}
+			<div class="title">{offer.title}</div>
 		</div>
 	)
 }
@@ -39,10 +38,11 @@ const OfferCard = ({offer}) => {
 
 	return(
 		<div class="accordion_section">
-			<div class={`accordion ${isActive}`} onClick = {toggleActive}  >
+			<div class={`accordion ${isActive}`} onClick = {toggleActive}>
+				<UserCard class="userCard" creator={offer.creator} />
 				<Upper class="top" offer= {offer} />
 			</div>
-			<div ref={content} style={{maxHeight: `${height}`}} class="accordion_content">
+			<div ref={content} style={{maxHeight: `${height}`}} onClick = {toggleActive} class="accordion_content">
 			{/* <div class="accordion_text"
 			dangerouslySetInnerHTML={{ __html: offer.description }} /> */}
 			<div class="accordion_text">

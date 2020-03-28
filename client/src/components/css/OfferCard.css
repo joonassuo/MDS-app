@@ -1,8 +1,21 @@
 
 .accordion_section{
+    padding: 5px;
+    margin: 5px;
+    border: 1px;
+    border-style: solid;
+    box-shadow: 4px 4px 2px #888888;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 50);
+}
+
+.userCard {
+    grid-column: 1/3;
+}
+
+.title {
+    grid-column: 3/7;
 }
 
 .accordion {
@@ -16,10 +29,15 @@
     background-color:whitesmoke;
 } */
 
+.accordion_text{
+
+}
+
 .accordion_content {
-    grid-row: 2/3;
-    grid-column: 1/7;
+    grid-column: 1/5;
+    grid-row: 2/4;
     overflow: hidden;
+    padding: 5px;
     transition: max-height 0.6s ease;
     max-height: 0px;
 }
