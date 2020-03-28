@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { loginUser, registerUser } from "../actions/authActions";
 import { useDispatch, useSelector } from "react-redux";
+import "./css/login.css";
 
 const Login = () => {
 	const [firstname, setFirstname] = useState("");
@@ -71,26 +72,26 @@ const Login = () => {
 					<div>
 						<input
 							type="text"
-							className="firstname-field"
+							className="firstname-field h-align"
 							placeholder="First Name"
 							onChange={e => onChange(e, "firstname")}
 						/>
 						<input
 							type="text"
-							className="lastname-field"
+							className="lastname-field h-align"
 							placeholder="Last Name"
 							onChange={e => onChange(e, "lastname")}
 						/>
 						<input
 							type="text"
-							className="username-field"
+							className="username-field h-align"
 							placeholder="Username"
 							onChange={e => onChange(e, "username")}
 						/>
 					</div>
 				) : null}
 				<input
-					className="email-field"
+					className="email-field h-align"
 					type="email"
 					placeholder="Email"
 					onChange={e => onChange(e, "email")}
@@ -98,7 +99,7 @@ const Login = () => {
 				<input
 					type="password"
 					placeholder="Password"
-					className="pasword-field"
+					className="pasword-field h-align"
 					onChange={e => onChange(e, "password")}
 				/>
 				{isRegister ? (
@@ -106,23 +107,23 @@ const Login = () => {
 						<input
 							type="password"
 							placeholder="Confirm Password"
-							className="ocnfirm-pasword-field"
+							className="confirm-pasword-field h-align"
 							onChange={e => onChange(e, "confirm-password")}
 						/>
 					</div>
 				) : null}
-				<button className="submit-button" onClick={onSubmit}>
-					{isRegister ? <h3>REGISTER</h3> : <h3>LOGIN</h3>}
+				<button className="submit-button h-align" onClick={onSubmit}>
+					{isRegister ? <div>REGISTER</div> : <div>LOGIN</div>}
 				</button>
 				{!isRegister ? (
-					<div>
-						<h2
+					<div className="register-link">
+						<div
 							onClick={() => {
 								setIsRegister(true);
 							}}
 						>
 							Don't have an account yet?
-						</h2>
+						</div>
 					</div>
 				) : null}
 			</div>
