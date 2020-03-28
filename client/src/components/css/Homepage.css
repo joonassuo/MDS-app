@@ -1,0 +1,17 @@
+.cards-container {
+	position: relative;
+	top: 10vh;
+	height: 90vh;
+	width: 100vw;
+}
+
+#add-button {
+	position: fixed;
+	bottom: 3em;
+	right: 3em;
+	width: 2em;
+	height: 2em;
+	border-radius: 50%;
+	z-index: 15;
+	background-color: white;
+}
