@@ -1,0 +1,56 @@
+/*NAVBAR*/
+.navbar-container {
+	width: 100vw;
+	height: 10vh;
+	background-color: floralwhite;
+	position: fixed;
+	top: 0;
+}
+
+#hamburger,
+#logo {
+	height: 100%;
+	width: auto;
+	padding: 1em;
+}
+
+#hamburger {
+	position: absolute;
+}
+
+#logo {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+/*HAMBURGER MENU*/
+.hamburger-menu {
+	background-color: gold;
+	height: 90vh;
+	width: 50vw;
+	position: fixed;
+	left: 0;
+	top: 10vh;
+	z-index: 15;
+}
+
+.menu-item {
+	margin: 1em 0 1em 1em;
+}
+
+#logout,
+#settings {
+	position: fixed;
+	bottom: 1em;
+	width: 2em;
+	height: 2em;
+}
+
+#logout {
+	left: 1em;
+}
+
+#settings {
+	left: 4em;
+}
