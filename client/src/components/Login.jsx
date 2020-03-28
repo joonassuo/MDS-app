@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { loginUser, registerUser } from "../actions/authActions";
 import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
 import "./css/login.css";
 
 const Login = () => {
@@ -11,6 +12,7 @@ const Login = () => {
 	const [password, setPassword] = useState("");
 	const [confirm, setConfirm] = useState("");
 	const [isRegister, setIsRegister] = useState(false);
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const dispatch = useDispatch();
 
 	const onChange = (e, type) => {
@@ -48,6 +50,7 @@ const Login = () => {
 				password
 			};
 			loginUser(user)(dispatch);
+			setIsLoggedIn(true);
 		} else {
 			// Check if password confirmation matches
 			if (password !== confirm) {
@@ -61,11 +64,14 @@ const Login = () => {
 					password
 				};
 				registerUser(user)(dispatch);
+				setIsLoggedIn(true);
 			}
 		}
 	};
 
-	return (
+	return isLoggedIn ? (
+		<Redirect to="/" />
+	) : (
 		<div>
 			<div className="login-container">
 				{isRegister ? (

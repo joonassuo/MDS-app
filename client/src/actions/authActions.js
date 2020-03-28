@@ -83,6 +83,11 @@ export const loginUser = ({ email, password }) => dispatch => {
 		});
 };
 
+// Logout user
+export const logoutUser = () => dispatch => {
+	dispatch({ type: LOGOUT_SUCCESS });
+};
+
 // Check token & load user
 export const loadUser = () => (dispatch, getState) => {
 	// User loading

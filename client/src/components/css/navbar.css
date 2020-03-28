@@ -54,3 +54,11 @@
 #settings {
 	left: 4em;
 }
+
+#login-button {
+	background-color: transparent;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}

@@ -1,16 +1,30 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import "./css/navbar.css";
+import { logoutUser, loginUser } from "../actions/authActions";
+import { Redirect } from "react-router-dom";
 
 const Navbar = () => {
 	const [showMenu, setShowMenu] = useState(false);
+	const [login, setLogin] = useState(false);
 	const isAuth = useSelector(state => state.auth.isAuthenticated);
+	const dispatch = useDispatch();
 
 	const toggleMenu = () => {
 		setShowMenu(!showMenu);
 	};
 
-	return (
+	const onLogout = () => {
+		logoutUser()(dispatch);
+	};
+
+	const onLogin = () => {
+		setLogin(true);
+	};
+
+	return login ? (
+		<Redirect to="/login" />
+	) : (
 		<div>
 			<div className="navbar-container">
 				<img
@@ -28,7 +42,12 @@ const Navbar = () => {
 							<div className="menu-item">Menu item 1</div>
 							<div className="menu-item">Menu item 2</div>
 							<div className="menu-item">Menu item 3</div>
-							<img src="/logout.png" alt="logout" id="logout" />
+							<img
+								src="/logout.png"
+								alt="logout"
+								id="logout"
+								onClick={() => onLogout()}
+							/>
 							<img
 								src="/settings.png"
 								alt="settings"
@@ -36,7 +55,9 @@ const Navbar = () => {
 							/>
 						</div>
 					) : (
-						<div>LOGIN BITCH</div>
+						<button id="login-button" onClick={() => onLogin()}>
+							LOGIN
+						</button>
 					)}
 				</div>
 			) : null}
