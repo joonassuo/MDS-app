@@ -1,29 +1,22 @@
 import React, {useState, useRef} from "react";
 import './css/OfferCard.css'
 
-const Bottom = ({offer}) => {
-	return(
-		<div>
-			<div>{offer.description}
-			<button>BUY</button>
-			</div>
-		</div>
-	)
-}
 const UserCard = ({creator}) => {
+	const avatarUri = creator.username === "Joonas"
+	? "https://cdn.intra.42.fr/users/medium_jsuonper.jpg"
+	: "https://cdn.intra.42.fr/users/medium_thalme.jpg"
 	return (
-		<div>
+		<div className="userCard">
+			<img className="avatar" src={avatarUri} />
 			<div>{creator.username}</div>
 			<div>{creator.karma}</div>
 		</div>
 	)
 }
 
-const Upper = ({offer}) => {
+const Title = ({offer}) => {
 	return (
-		<div>
-			<div class="title">{offer.title}</div>
-		</div>
+			<div className="title">{offer.title}</div>
 	)
 }
 
@@ -33,22 +26,24 @@ const OfferCard = ({offer}) => {
 	const content = useRef(null)
 	const toggleActive = () => {
 		setActive(isActive === "" ? "active" : "")
-		setHeight(isActive === "active" ? "0px" : "100px")
+		setHeight(isActive === "active" ? "0px" : "150px")
 	}
 
+
+
 	return(
-		<div class="accordion_section">
-			<div class={`accordion ${isActive}`} onClick = {toggleActive}>
-				<UserCard class="userCard" creator={offer.creator} />
-				<Upper class="top" offer= {offer} />
+		<div className="accordion_section">
+			<div className={`accordion ${isActive}`} onClick = {toggleActive}>
+				<UserCard className="userCard" creator={offer.creator} />
+				<Title className="title" offer= {offer} />
 			</div>
-			<div ref={content} style={{maxHeight: `${height}`}} onClick = {toggleActive} class="accordion_content">
-			{/* <div class="accordion_text"
-			dangerouslySetInnerHTML={{ __html: offer.description }} /> */}
-			<div class="accordion_text">
-				<Bottom class="bottom" offer={offer}/>
-			</div>
-			</div>
+			<div ref={content} style={{height: `${height}`}} className="accordion_content">
+{/* 			<div className="accordion_text">
+ */}			<div className="description" onClick = {toggleActive}>{offer.description} </div>
+				<button className="buy">Buy</button>
+				<button className="trade">Trade</button>
+{/* 			</div>
+ */}			</div>
 		</div>
 	)
 } 
