@@ -18,6 +18,10 @@ const offerSchema = new Schema({
 		type: String,
 		required: true
 	},
+	duration: {
+		type: Number,
+		required: false
+	},
 	createdDate: {
 		type: Date,
 		default: Date.now

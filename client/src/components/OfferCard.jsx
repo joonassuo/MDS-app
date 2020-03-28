@@ -1,51 +1,41 @@
-import React, {useState, useRef} from "react";
-import './css/OfferCard.css'
+import React, { useState, useRef } from "react";
+import "./css/offerCard.css";
 
-const UserCard = ({creator}) => {
-	const avatarUri = creator.username === "Joonas"
-	? "https://cdn.intra.42.fr/users/medium_jsuonper.jpg"
-	: "https://cdn.intra.42.fr/users/medium_thalme.jpg"
+const OfferCard = props => {
+	const [isActive, setActive] = useState("");
+	const offer = props.offer;
+
+	const profilePic = offer.creator.profilePic
+		? offer.creator.profilePic
+		: "/default.png";
+
 	return (
-		<div className="userCard">
-			<img className="avatar" src={avatarUri} />
-			<div>{creator.username}</div>
-			<div>{creator.karma}</div>
-		</div>
-	)
-}
-
-const Title = ({offer}) => {
-	return (
-			<div className="title">{offer.title}</div>
-	)
-}
-
-const OfferCard = ({offer}) => {
-	const [isActive, setActive] = useState("")
-	const [height, setHeight] = useState("0px")
-	const content = useRef(null)
-	const toggleActive = () => {
-		setActive(isActive === "" ? "active" : "")
-		setHeight(isActive === "active" ? "0px" : "150px")
-	}
-
-
-
-	return(
-		<div className="accordion_section">
-			<div className={`accordion ${isActive}`} onClick = {toggleActive}>
-				<UserCard className="userCard" creator={offer.creator} />
-				<Title className="title" offer= {offer} />
+		<div>
+			<div className="offer-card">
+				<div className="user-info">
+					<img src={profilePic} alt="profilePic" id="profile-pic" />
+					<div id="username">{offer.creator.username}</div>
+					<img src="/karma.png" alt="karma" id="karma-icon" />
+					<div id="karma">{offer.creator.karma}</div>
+				</div>
+				<div className="offer-info">
+					<h4>{offer.title}</h4>
+					<div>Type: {offer.type.toUpperCase()}</div>
+					<div>Cost: {offer.cost}</div>
+					{offer.type === "lesson" ? (
+						<div>Duration: {offer.duration}</div>
+					) : null}
+				</div>
+				<div className="details-button">
+					<img
+						src="/down-arrow.png"
+						alt="arrow down"
+						id="down-arrow"
+					/>
+				</div>
 			</div>
-			<div ref={content} style={{height: `${height}`}} className="accordion_content">
-{/* 			<div className="accordion_text">
- */}			<div className="description" onClick = {toggleActive}>{offer.description} </div>
-				<button className="buy">Buy</button>
-				<button className="trade">Trade</button>
-{/* 			</div>
- */}			</div>
 		</div>
-	)
-} 
+	);
+};
 
-export default OfferCard; 
+export default OfferCard;

@@ -14,7 +14,7 @@ const Homepage = () => {
 				<Navbar />
 				<div className="cards-container">
 					{offerList.map(offer => (
-						<OfferCard key={offer.id} offer={offer} />
+						<OfferCard offer={offer} />
 					))}
 				</div>
 				<img src="/add.png" alt="plus" id="add=button" />

@@ -1,64 +1,65 @@
-
-.accordion_section{
-    padding: 5px;
-    margin: 15px;
-    border: 1px;
-    border-style: solid;
-    box-shadow: 4px 4px 2px #888888;
-    display: grid;
-    grid-template-rows: 160px;
+.offer-card {
+	display: relative;
+	border: 1px solid black;
+	padding: 1em;
+	margin-top: 2em;
 }
 
-.avatar {
-    width: 100%;
+.user-info {
+	width: 100%;
+	height: auto;
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	margin-bottom: 2em;
 }
 
-.accordion {
-    grid-column: 1/7;
-    grid-row: 1/2;
-    transition: 0.6s ease;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
+#profile-pic {
+	height: 4em;
+	width: auto;
+	border: 1px solid black;
+	border-radius: 50%;
+	grid-row: 1/3;
+	grid-column: 1;
+	justify-self: center;
+	align-self: center;
 }
 
-.userCard {
-    grid-column: 1/3;
-    text-align: center;
+#username,
+#karma-icon,
+#karma {
+	font-size: 1.2em;
+	align-self: center;
+	justify-self: left;
 }
 
-.title {
-    grid-column: 3/7;
-    position: relative;
-    top: 40%;
-    text-align: center;
-    font-size: 25px;
+#username {
+	grid-row: 1;
+	grid-column: 3/6;
 }
 
-.accordion_content {
-    grid-column: 1/7;
-    overflow: hidden;
-    padding: 5px;
-    transition: height 0.6s ease;
-    height: 0px;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(4, 25%)
-
+#karma-icon {
+	grid-row: 2;
+	grid-column: 3;
+	height: 1.2em;
+	align-self: center;
 }
 
-.buy {
-    background-color: lightgreen;
-    grid-column: 6/7;
-    grid-row: 3/4;
+#karma {
+	grid-row: 2;
+	grid-column: 4/5;
 }
 
-.trade {
-    background-color: lightgreen;
-    grid-column: 6/7;
-    grid-row: 4/5;
-
+.details-button {
+	width: 100%;
+	height: 2em;
+	text-align: right;
 }
 
-.description {
-    grid-column: 1/6;
+#down-arrow {
+	height: 2em;
+	width: 2em;
+	border: 1px solid grey;
+	border-radius: 50%;
+	padding: 3px;
 }
