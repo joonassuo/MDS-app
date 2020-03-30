@@ -1,25 +1,10 @@
-@font-face {
-	font-family: "Microsoft Yi Baiti";
-	src: url("//db.onlinewebfonts.com/t/5d22bd0816f911a4c90e5d8661157ef9.eot");
-	src: url("//db.onlinewebfonts.com/t/5d22bd0816f911a4c90e5d8661157ef9.eot?#iefix")
-			format("embedded-opentype"),
-		url("//db.onlinewebfonts.com/t/5d22bd0816f911a4c90e5d8661157ef9.woff2")
-			format("woff2"),
-		url("//db.onlinewebfonts.com/t/5d22bd0816f911a4c90e5d8661157ef9.woff")
-			format("woff"),
-		url("//db.onlinewebfonts.com/t/5d22bd0816f911a4c90e5d8661157ef9.ttf")
-			format("truetype"),
-		url("//db.onlinewebfonts.com/t/5d22bd0816f911a4c90e5d8661157ef9.svg#Microsoft Yi Baiti")
-			format("svg");
-}
-
 .offer-card {
 	display: grid;
 	grid-template-columns: repeat(20, 1fr);
 	width: 100%;
 	height: auto;
 	margin: 0;
-	margin-top: 2em;
+	margin-top: 1.5em;
 }
 
 /* USER INFO */
@@ -68,7 +53,7 @@
 .offer-info {
 	grid-column: 8/21;
 	margin: 0;
-	background-color: rgb(202, 219, 254);
+	background-color: rgba(202, 219, 255, 0.3);
 	display: inline-block;
 	padding: 1em 1em 1em 1.5em;
 	position: relative;
@@ -105,4 +90,34 @@
 	position: absolute;
 	bottom: 1em;
 	color: rgb(146, 146, 146);
+}
+
+/* DETAILS */
+.details-container {
+	grid-column: 1/21;
+	background-color: rgb(255, 248, 240);
+	width: 95%;
+	justify-self: center;
+}
+
+#description {
+	padding: 1em;
+	width: 90%;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	color: rgb(94, 94, 94);
+	font-family: "Calibri Light";
+}
+
+#buy-button {
+	border-radius: 15px;
+	border: none;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	font-family: "Calibri Light";
+	margin-bottom: 1em;
+	width: 6em;
+	height: 2.5em;
 }

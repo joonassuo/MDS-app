@@ -11,7 +11,7 @@ const OfferCard = props => {
 
 	return (
 		<div>
-			<div className="offer-card">
+			<div className="offer-card" onClick={() => setActive(!isActive)}>
 				<div className="user-info">
 					<div id="username">{offer.creator.username}</div>
 					<img src={profilePic} alt="profilePic" id="profile-pic" />
@@ -29,6 +29,12 @@ const OfferCard = props => {
 					</div>
 					<div id="tags">sports | tennis | skillshare</div>
 				</div>
+				{isActive ? (
+					<div className="details-container">
+						<div id="description">"{offer.description}"</div>
+						<button id="buy-button">BUY</button>
+					</div>
+				) : null}
 			</div>
 		</div>
 	);
