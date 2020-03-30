@@ -29,13 +29,13 @@ const OfferCard = props => {
 					</div>
 					<div id="tags">sports | tennis | skillshare</div>
 				</div>
-				{isActive ? (
-					<div className="details-container">
-						<div id="description">"{offer.description}"</div>
-						<button id="buy-button">BUY</button>
-					</div>
-				) : null}
 			</div>
+			{isActive ? (
+				<div className="details-container">
+					<div id="description">"{offer.description}"</div>
+					<button id="buy-button">BUY</button>
+				</div>
+			) : null}
 		</div>
 	);
 };

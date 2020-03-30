@@ -17,7 +17,7 @@ const Homepage = () => {
 						<OfferCard offer={offer} />
 					))}
 				</div>
-				<img src="/add.png" alt="plus" id="add=button" />
+				<img src="/add.png" alt="plus" id="add-button" />
 			</div>
 		);
 	}

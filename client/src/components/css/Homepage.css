@@ -2,7 +2,7 @@
 	position: relative;
 	top: 10vh;
 	height: 90vh;
-	width: 95vw;
+	width: 90vw;
 	left: 50%;
 	transform: translateX(-50%);
 }
@@ -10,9 +10,9 @@
 #add-button {
 	position: fixed;
 	bottom: 3em;
-	right: 3em;
-	width: 2em;
-	height: 2em;
+	right: 2em;
+	width: auto;
+	height: 4em;
 	border-radius: 50%;
 	z-index: 15;
 	background-color: white;
