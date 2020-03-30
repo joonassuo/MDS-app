@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { addOffer } from "../actions/offerActions";
 import { useDispatch, useSelector } from "react-redux";
 import Carousel from "react-bootstrap/Carousel";
+import OfferCard from "./OfferCard";
 import "./css/addOffer.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -52,7 +53,7 @@ const AddOffer = () => {
 		}
 	};
 
-	const submitOffer = () => {
+	const handleSubmit = () => {
 		// Get current user from state
 		const creator = {
 			id: user._id,
@@ -79,7 +80,6 @@ const AddOffer = () => {
 			title,
 			isTradeable
 		};
-		console.log(offer);
 
 		addOffer(offer)(dispatch);
 	};
@@ -96,7 +96,7 @@ const AddOffer = () => {
 						onChange={e => onChange(e, "title")}
 					/>
 					<textarea
-						rows="10"
+						rows="6"
 						cols="30"
 						placeholder="Give a brief description about your offering"
 						id="description-field"
@@ -166,24 +166,24 @@ const AddOffer = () => {
 				</div>
 			</Carousel.Item>
 			<Carousel.Item className="carousel-item">
-				<div className="grid">
-					<h1 className="header center">REVIEW</h1>
-					<h2 id="summary-title">{title}</h2>
-					<div id="summary-description">{description}</div>
-					<div id="summary-type">Type: {type.toUpperCase()}</div>
-					<div id="summary-cost">Price: {cost}</div>
-					<div id="summary-tradeable">
-						Allow Trade: {isTradeable.toString().toUpperCase()}
-					</div>
-					{type === "lesson" ? (
-						<div id="summary-duration">
-							<div>Duration: {durationValue(duration)}</div>
-						</div>
-					) : null}
-					<button id="submit-button" onClick={() => submitOffer()}>
-						SUBMIT
-					</button>
-				</div>
+				<OfferCard
+					offer={{
+						creator: {
+							id: user._id,
+							username: user.username,
+							karma: user.karma
+						},
+						cost,
+						type,
+						description,
+						duration,
+						title,
+						isTradeable
+					}}
+				/>
+				<button id="submit-button" onClick={() => handleSubmit()}>
+					SUBMIT
+				</button>
 			</Carousel.Item>
 		</Carousel>
 	);

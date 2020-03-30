@@ -3,8 +3,8 @@
 	display: grid;
 	grid-template-columns: repeat(10, 1fr);
 	grid-template-rows: repeat(10, 1fr);
-	height: 80vh;
-	width: 100vw;
+	height: 100%;
+	width: 100%;
 	position: relative;
 	left: 50%;
 	transform: translateX(-50%);
@@ -27,7 +27,7 @@
 /*DESCRIPTION ITEM*/
 #title-field,
 #description-field {
-	grid-column: 3/9;
+	grid-column: 2/10;
 	width: 100%;
 	margin-top: 2em;
 }
@@ -110,44 +110,9 @@
 }
 
 /*REVIEW ITEM*/
-#summary-title,
-#summary-type,
-#summary-duration,
-#summary-cost,
-#summary-tradeable,
-#summary-description {
-	justify-content: left;
-	grid-column: 3/9;
-	width: 100%;
-}
-
-#summary-title {
-	grid-row: 3;
-}
-
-#summary-description {
-	grid-row: 4/5;
-}
-
-#summary-type {
-	grid-row: 5;
-}
-
-#summary-cost {
-	grid-row: 6;
-}
-
-#summary-tradeable {
-	grid-row: 7;
-}
-
-#summary-duration {
-	grid-row: 8;
-}
-
 #submit-button {
-	grid-row: 9;
-	grid-column: 5/7;
-	justify-self: center;
-	border-radius: 50%;
+	position: fixed;
+	bottom: 5em;
+	left: 50%;
+	transform: translateX(-50%);
 }
