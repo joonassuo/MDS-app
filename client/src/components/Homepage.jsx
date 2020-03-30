@@ -4,10 +4,20 @@ import { useSelector } from "react-redux";
 import Navbar from "./Navbar";
 import AddOffer from "./AddOffer";
 import "./css/Homepage.css";
+import { useLocation } from "react-router-dom";
+const axios = require("axios");
+const queryString = require("query-string");
 
 const Homepage = () => {
 	const offerList = useSelector(state => state.offer.offers);
 	const [isAdd, setIsAdd] = useState(false);
+	const location = useLocation();
+
+	useEffect(() => {
+		const params = queryString.parse(location.search);
+		const { code } = params;
+		console.log(code);
+	});
 
 	if (!offerList[0]) return <div>wait</div>;
 	else {
@@ -33,6 +43,9 @@ const Homepage = () => {
 						/>
 					</div>
 				)}
+				<a href="https://api.intra.42.fr/oauth/authorize?client_id=8f7dbe7ac964071bad261bdc3197b8c40b26a2bc5105046c3245ab2635a28ecb&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2F&response_type=code">
+					asdasdasdasd
+				</a>
 			</div>
 		);
 	}
