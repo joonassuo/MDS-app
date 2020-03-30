@@ -13,25 +13,21 @@ const OfferCard = props => {
 		<div>
 			<div className="offer-card">
 				<div className="user-info">
-					<img src={profilePic} alt="profilePic" id="profile-pic" />
 					<div id="username">{offer.creator.username}</div>
-					<img src="/karma.png" alt="karma" id="karma-icon" />
-					<div id="karma">{offer.creator.karma}</div>
+					<img src={profilePic} alt="profilePic" id="profile-pic" />
+					<div className="karma-container">
+						<img src="/karma.png" alt="karma" id="karma-icon" />
+						<div id="karma">{offer.creator.karma}</div>
+					</div>
 				</div>
 				<div className="offer-info">
-					<h4>{offer.title}</h4>
-					<div>Type: {offer.type.toUpperCase()}</div>
-					<div>Cost: {offer.cost}</div>
-					{offer.type === "lesson" ? (
-						<div>Duration: {offer.duration}</div>
-					) : null}
-				</div>
-				<div className="details-button">
-					<img
-						src="/down-arrow.png"
-						alt="arrow down"
-						id="down-arrow"
-					/>
+					<div id="type">{offer.type.toUpperCase()}</div>
+					<div id="title">{offer.title.toUpperCase()}</div>
+					<div className="const-container">
+						<img src="/money-bag.png" alt="money" id="cost-icon" />
+						<div id="cost">{offer.cost}</div>
+					</div>
+					<div id="tags">sports | tennis | skillshare</div>
 				</div>
 			</div>
 		</div>
