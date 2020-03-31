@@ -4,6 +4,7 @@
     margin: 15px;
     border: 1px;
     border-style: solid;
+    border-radius: 10px;
     box-shadow: 4px 4px 2px #888888;
     display: grid;
     grid-template-rows: 160px;
@@ -11,6 +12,7 @@
 
 .avatar {
     width: 100%;
+    border-radius: 7px;
 }
 
 .accordion {
@@ -47,16 +49,51 @@
 }
 
 .buy {
-    background-color: lightgreen;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 0.3s, opacity 0.3s linear;
+    background-color : lightgreen;
+	color: white;
+	border-radius: 15%;
+	border-color: rgb(135, 233, 135);
+    grid-column: 6/7;
+    grid-row: 3/4;
+}
+
+.buyactive{
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.4s linear;
+    background-color : lightgreen;
+	color: white;
+	border-radius: 15%;
+	border-color: rgb(135, 233, 135);
     grid-column: 6/7;
     grid-row: 3/4;
 }
 
 .trade {
-    background-color: lightgreen;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 0.3s, opacity 0.3s linear;
+    background-color : lightgreen;
+	color: white;
+	border-radius: 15%;
+	border-color: rgb(135, 233, 135);
     grid-column: 6/7;
     grid-row: 4/5;
+}
 
+.tradeactive {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.4s linear;
+    background-color : lightgreen;
+	color: white;
+	border-radius: 15%;
+	border-color: rgb(135, 233, 135);
+    grid-column: 6/7;
+    grid-row: 4/5;
 }
 
 .description {

@@ -7,7 +7,14 @@ import "./css/Homepage.css";
 const Homepage = () => {
 	const offerList = useSelector(state => state.offer.offers);
 
-	if (!offerList[0]) return <div>wait</div>;
+	if (!offerList[0]) return (
+	<div>
+		<Navbar />
+		<div id = "addButton">
+			<button className="add">+</button>
+		</div>
+	</div>
+	)
 	else {
 		return (
 			<div>
@@ -17,7 +24,9 @@ const Homepage = () => {
 						<OfferCard key={offer.id} offer={offer} />
 					))}
 				</div>
-				<img src="/add.png" alt="plus" id="add=button" />
+				<div id = "addButton">
+					<button className="add">+</button>
+				</div>
 			</div>
 		);
 	}

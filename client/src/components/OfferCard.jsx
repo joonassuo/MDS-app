@@ -29,8 +29,6 @@ const OfferCard = ({offer}) => {
 		setHeight(isActive === "active" ? "0px" : "150px")
 	}
 
-
-
 	return(
 		<div className="accordion_section">
 			<div className={`accordion ${isActive}`} onClick = {toggleActive}>
@@ -38,12 +36,10 @@ const OfferCard = ({offer}) => {
 				<Title className="title" offer= {offer} />
 			</div>
 			<div ref={content} style={{height: `${height}`}} className="accordion_content">
-{/* 			<div className="accordion_text">
- */}			<div className="description" onClick = {toggleActive}>{offer.description} </div>
-				<button className="buy">Buy</button>
-				<button className="trade">Trade</button>
-{/* 			</div>
- */}			</div>
+			<div className="description" onClick = {toggleActive}>{offer.description} </div>
+				<button className={`buy${isActive}`}>Buy</button>
+				<button className={`trade${isActive}`}>Trade</button>
+			</div>
 		</div>
 	)
 } 

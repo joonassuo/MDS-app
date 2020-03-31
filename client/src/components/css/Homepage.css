@@ -5,13 +5,17 @@
 	width: 100vw;
 }
 
-#add-button {
+.add {
+	background-color : lightgreen;
+	color: white;
+	padding: 2px 20px;
+	border-radius: 30%;
+	font-size: 40px;
+	border-color: rgb(135, 233, 135);
+  }
+  
+  #addButton {
 	position: fixed;
-	bottom: 3em;
-	right: 3em;
-	width: 2em;
-	height: 2em;
-	border-radius: 50%;
-	z-index: 15;
-	background-color: white;
-}
+	bottom: 10px;
+	right: 10px;
+  }
