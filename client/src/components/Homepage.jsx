@@ -43,7 +43,7 @@ const Homepage = () => {
 						/>
 					</div>
 				)}
-				<a href="https://api.intra.42.fr/oauth/authorize?client_id=8f7dbe7ac964071bad261bdc3197b8c40b26a2bc5105046c3245ab2635a28ecb&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2F&response_type=code">
+				<a href="https://api.intra.42.fr/oauth/authorize?client_id=8f7dbe7ac964071bad261bdc3197b8c40b26a2bc5105046c3245ab2635a28ecb&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2F&response_type=code&scope=profile%20public&state=123456789">
 					asdasdasdasd
 				</a>
 			</div>
