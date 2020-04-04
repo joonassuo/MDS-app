@@ -16,7 +16,18 @@ const Oauth = () => {
 					code
 				}
 			})
-			.then(res => console.log(res.data));
+			.then(res => {
+				return res.data.access_token;
+			})
+			.then(res => {
+				return axios.get("https://api.intra.42.fr/v2/me", {
+					headers: {
+						Authorization: "BEARER " + res
+					}
+				});
+			})
+			.then(res => console.log(res.data))
+			.catch(err => console.log(err));
 	});
 
 	return (

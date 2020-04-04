@@ -4,20 +4,10 @@ import { useSelector } from "react-redux";
 import Navbar from "./Navbar";
 import AddOffer from "./AddOffer";
 import "./css/Homepage.css";
-import { useLocation } from "react-router-dom";
-const axios = require("axios");
-const queryString = require("query-string");
 
 const Homepage = () => {
 	const offerList = useSelector(state => state.offer.offers);
 	const [isAdd, setIsAdd] = useState(false);
-	const location = useLocation();
-
-	useEffect(() => {
-		const params = queryString.parse(location.search);
-		const { code } = params;
-		console.log(code);
-	});
 
 	if (!offerList[0]) return <div>wait</div>;
 	else {
