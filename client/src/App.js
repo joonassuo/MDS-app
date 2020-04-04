@@ -2,6 +2,7 @@ import React, { useEffect, Component } from "react";
 import "./App.css";
 import Login from "./components/Login";
 import Homepage from "./components/Homepage";
+import Oauth from "./components/Oauth";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -23,6 +24,7 @@ class App extends Component {
 					<Route path="/" exact component={Homepage} />
 					<Route path="/login" exact component={Login} />
 					<Route path="/addoffer" exact component={AddOffer} />
+					<Route path="/oauth/42/redirect" exact component={Oauth} />
 				</Router>
 			</Provider>
 		);
