@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { addOffer } from "../actions/offerActions";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
 import OfferCard from "./OfferCard";
 import "./css/addOffer.css";

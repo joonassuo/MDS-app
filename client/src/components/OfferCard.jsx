@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import "./css/offerCard.css";
 
 const OfferCard = (props) => {

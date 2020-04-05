@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./css/navbar.css";
-import { logoutUser, loginUser } from "../actions/authActions";
+import { logoutUser } from "../actions/authActions";
 import { Redirect } from "react-router-dom";
 
 const Navbar = () => {
 	const [showMenu, setShowMenu] = useState(false);
 	const [login, setLogin] = useState(false);
-	const isAuth = useSelector(state => state.auth.isAuthenticated);
+	const isAuth = useSelector((state) => state.auth.isAuthenticated);
 	const dispatch = useDispatch();
 
 	const toggleMenu = () => {

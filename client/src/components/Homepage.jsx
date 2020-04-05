@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import OfferCard from "./OfferCard";
 import { useSelector } from "react-redux";
 import Navbar from "./Navbar";
@@ -22,7 +22,7 @@ const Homepage = () => {
 					<div>
 						<div className="cards-container">
 							{offerList.reverse().map((offer) => (
-								<OfferCard offer={offer} />
+								<OfferCard offer={offer} key={offer._id} />
 							))}
 						</div>
 						<img

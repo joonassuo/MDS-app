@@ -29,12 +29,6 @@ const Oauth = () => {
 			.then((res) => {
 				// Check if user with hiveID already exists in DB
 				axios.get("/api/users").then((result) => {
-					const config = {
-						headers: {
-							"Content-type": "application/json",
-						},
-					};
-
 					for (let i = 0; i < result.data.length; i++) {
 						if (result.data[i].hive_id === res.data.id) {
 							// If exists, login user
