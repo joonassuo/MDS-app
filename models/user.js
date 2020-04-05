@@ -27,6 +27,10 @@ const UserSchema = new Schema({
 		type: Number,
 		default: 100,
 	},
+	money: {
+		type: Number,
+		default: 50,
+	},
 	password: {
 		type: String,
 		required: false,

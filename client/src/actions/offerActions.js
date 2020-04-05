@@ -46,3 +46,17 @@ export const addOffer = (offer) => (dispatch) => {
 		});
 	});
 };
+
+// Modify offer
+export const modifyOffer = (id, user) => {
+	const config = {
+		headers: {
+			id,
+		},
+	};
+
+	axios
+		.put("/api/offers", user, config)
+		.then((res) => console.log(res.data))
+		.catch((err) => console.log(err));
+};

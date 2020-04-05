@@ -7,7 +7,7 @@ const Offer = require("../../models/offer");
 // @route   GET api/offers
 // @desc    Get all offers
 router.get("/", (req, res) => {
-	Offer.find().then(offers => {
+	Offer.find().then((offers) => {
 		res.json(offers);
 	});
 });
@@ -23,7 +23,7 @@ router.post("/", (req, res) => {
 		description,
 		duration,
 		title,
-		isTradeable
+		isTradeable,
 	} = req.body;
 
 	if (!creator || !cost || !type || !expiresDate || !description || !title) {
@@ -38,12 +38,24 @@ router.post("/", (req, res) => {
 		description,
 		duration,
 		title,
-		isTradeable
+		isTradeable,
 	});
 
-	newOffer.save().then(offer => {
+	newOffer.save().then((offer) => {
 		res.json(offer);
 	});
+});
+
+// @route	PUT api/offers
+// @desc	Modify an offer
+router.put("/", (req, res) => {
+	const buyer = req.body;
+	Offer.updateOne(
+		{ _id: req.headers.id },
+		{ $set: { buyer, isActive: true } }
+	)
+		.then((response) => res.send(response))
+		.catch((err) => res.send(err));
 });
 
 module.exports = router;

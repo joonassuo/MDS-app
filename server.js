@@ -11,10 +11,11 @@ app.use(express.static(path.join(__dirname, "client", "build")));
 
 // connect to mongodb
 const uri = config.get("MONGODB_URI");
+mongoose.set("useFindAndModify", false);
 mongoose.connect(uri, {
 	useNewUrlParser: true,
 	useCreateIndex: true,
-	useUnifiedTopology: true
+	useUnifiedTopology: true,
 });
 const connection = mongoose.connection;
 connection.once("open", () => {
