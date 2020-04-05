@@ -5,44 +5,44 @@ import {
 	GET_OFFERS,
 	OFFERS_LOADING,
 	GET_OFFERS_ERROR,
-	ADD_OFFER_SUCCESS
+	ADD_OFFER_SUCCESS,
 } from "./types";
 
 // Get all offers and dispatch to state
-export const getOffers = () => dispatch => {
+export const getOffers = () => (dispatch) => {
 	// offers loading
 	dispatch({ type: OFFERS_LOADING });
 
 	// get all offers from DB
 	axios
 		.get("/api/offers")
-		.then(res => {
+		.then((res) => {
 			dispatch({
 				type: GET_OFFERS,
-				payload: res.data
+				payload: res.data,
 			});
 		})
-		.catch(err => {
+		.catch((err) => {
 			dispatch(returnErrors(err.response.data, err.response.status));
 			dispatch({
-				type: GET_OFFERS_ERROR
+				type: GET_OFFERS_ERROR,
 			});
 		});
 };
 
 // Add new offer
-export const addOffer = offer => dispatch => {
+export const addOffer = (offer) => (dispatch) => {
 	// Header
 	const config = {
 		headers: {
-			"Content-type": "application/json"
-		}
+			"Content-type": "application/json",
+		},
 	};
 
-	axios.post("/api/offers", offer, config).then(res => {
+	axios.post("/api/offers", offer, config).then((res) => {
 		dispatch({
 			type: ADD_OFFER_SUCCESS,
-			payload: res.data
+			payload: res.data,
 		});
 	});
 };

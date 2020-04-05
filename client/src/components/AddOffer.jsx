@@ -1,22 +1,23 @@
 import React, { useState } from "react";
 import { addOffer } from "../actions/offerActions";
 import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
 import OfferCard from "./OfferCard";
 import "./css/addOffer.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const AddOffer = () => {
+const AddOffer = (props) => {
 	const [title, setTitle] = useState("");
 	const [cost, setCost] = useState(0);
 	const [duration, setDuration] = useState(30);
 	const [description, setDescription] = useState("");
 	const [type, setType] = useState("");
 	const [isTradeable, setIsTradeable] = useState(false);
-	const user = useSelector(state => state.auth.user);
+	const user = useSelector((state) => state.auth.user);
 	const dispatch = useDispatch();
 
-	const dur = type => {
+	const dur = (type) => {
 		const sign = type === "increase" ? 1 : -1;
 		if (sign < 0 && duration > 15) {
 			setDuration(duration - 15);
@@ -25,7 +26,7 @@ const AddOffer = () => {
 		}
 	};
 
-	const durationValue = duration => {
+	const durationValue = (duration) => {
 		const hours = Math.floor(duration / 60);
 		const minutes = duration % 60;
 		return hours + ":" + minutes + (minutes < 10 ? "0" : "") + " h";
@@ -58,11 +59,12 @@ const AddOffer = () => {
 		const creator = {
 			id: user._id,
 			username: user.username,
-			karma: user.karma
+			karma: user.karma,
+			profile_picture: user.profile_picture,
 		};
 
 		// Create expires date a week from now
-		Date.prototype.addDays = function(days) {
+		Date.prototype.addDays = function (days) {
 			var date = new Date(this.valueOf());
 			date.setDate(date.getDate() + days);
 			return date;
@@ -78,10 +80,11 @@ const AddOffer = () => {
 			description,
 			duration,
 			title,
-			isTradeable
+			isTradeable,
 		};
 
 		addOffer(offer)(dispatch);
+		props.setIsAdd(false);
 	};
 
 	return (
@@ -93,14 +96,14 @@ const AddOffer = () => {
 						type="text"
 						placeholder="TITLE"
 						id="title-field"
-						onChange={e => onChange(e, "title")}
+						onChange={(e) => onChange(e, "title")}
 					/>
 					<textarea
 						rows="6"
 						cols="30"
 						placeholder="Give a brief description about your offering"
 						id="description-field"
-						onChange={e => onChange(e, "description")}
+						onChange={(e) => onChange(e, "description")}
 					/>
 				</div>
 			</Carousel.Item>
@@ -112,7 +115,7 @@ const AddOffer = () => {
 						className="center"
 						id="type-dropdown"
 						defaultValue=""
-						onChange={e => onChange(e, "type")}
+						onChange={(e) => onChange(e, "type")}
 					>
 						<option value="" disabled>
 							Choose Category..
@@ -127,7 +130,7 @@ const AddOffer = () => {
 						id="cost-field"
 						className="center"
 						placeholder="price"
-						onChange={e => onChange(e, "cost")}
+						onChange={(e) => onChange(e, "cost")}
 					/>
 					<div className="center" id="tradeable-field">
 						<input
@@ -135,7 +138,7 @@ const AddOffer = () => {
 							name="isTradeable"
 							id="is-tradeable-box"
 							className="center"
-							onClick={e => onChange(e, "isTradeable")}
+							onClick={(e) => onChange(e, "isTradeable")}
 						/>
 						<label htmlFor="isTradeable">Allow Trade Offers?</label>
 					</div>
@@ -171,14 +174,15 @@ const AddOffer = () => {
 						creator: {
 							id: user._id,
 							username: user.username,
-							karma: user.karma
+							karma: user.karma,
+							profile_picture: user.profile_picture,
 						},
 						cost,
 						type,
 						description,
 						duration,
 						title,
-						isTradeable
+						isTradeable,
 					}}
 				/>
 				<button id="submit-button" onClick={() => handleSubmit()}>

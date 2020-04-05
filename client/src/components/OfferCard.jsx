@@ -1,12 +1,12 @@
 import React, { useState, useRef } from "react";
 import "./css/offerCard.css";
 
-const OfferCard = props => {
+const OfferCard = (props) => {
 	const [isActive, setActive] = useState("");
 	const offer = props.offer;
 
-	const profilePic = offer.creator.profilePic
-		? offer.creator.profilePic
+	const profilePic = offer.creator.profile_picture
+		? offer.creator.profile_picture
 		: "/default.png";
 
 	return (
