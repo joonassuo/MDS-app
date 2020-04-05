@@ -1,10 +1,15 @@
-import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLocation, Redirect } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
 import axios from "axios";
 import queryString from "query-string";
+import { loginHive, registerHive } from "../actions/hiveAuthActions";
 
 const Oauth = () => {
 	const location = useLocation();
+	const dispatch = useDispatch();
+	const [isReady, setIsready] = useState(false);
 
 	useEffect(() => {
 		const queryValues = location.search;
@@ -32,42 +37,33 @@ const Oauth = () => {
 
 					for (let i = 0; i < result.data.length; i++) {
 						if (result.data[i].hive_id === res.data.id) {
-							const body = JSON.stringify({
-								hive_id: res.data.id,
-							});
-							axios
-								.post("/api/auth/hive", body, config)
-								.then((res) => console.log(res.data))
-								.catch((err) => console.log(err));
-							console.log("user exists");
+							// If exists, login user
+							loginHive(res.data.id)(dispatch);
+							setIsready(true);
 							return;
 						}
 					}
 
-					// register user
+					// Else, register new user
 					const d = res.data;
-					console.log(d);
-					const body = JSON.stringify({
+					const body = {
 						firstname: d.first_name,
 						lastname: d.last_name,
 						username: d.login,
 						email: d.email,
 						hive_id: d.id,
 						profile_picture: d.image_url,
-					});
-
-					axios
-						.post("/api/users/hive", body, config)
-						.then((res) => {
-							console.log(res.data);
-						})
-						.catch((err) => console.log(err));
+					};
+					registerHive(body)(dispatch);
+					setIsready(true);
 				});
 			})
 			.catch((err) => console.log(err));
 	});
 
-	return (
+	return isReady ? (
+		<Redirect to="/" />
+	) : (
 		<div>
 			<h1>this is redirect component</h1>
 		</div>
