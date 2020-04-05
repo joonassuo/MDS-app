@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { loginUser, registerUser } from "../actions/authActions";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import "./css/login.css";
 
@@ -47,7 +47,7 @@ const Login = () => {
 		if (!isRegister) {
 			const user = {
 				email,
-				password
+				password,
 			};
 			loginUser(user)(dispatch);
 			setIsLoggedIn(true);
@@ -61,7 +61,7 @@ const Login = () => {
 					lastname,
 					username,
 					email,
-					password
+					password,
 				};
 				registerUser(user)(dispatch);
 				setIsLoggedIn(true);
@@ -80,19 +80,19 @@ const Login = () => {
 							type="text"
 							className="firstname-field h-align"
 							placeholder="First Name"
-							onChange={e => onChange(e, "firstname")}
+							onChange={(e) => onChange(e, "firstname")}
 						/>
 						<input
 							type="text"
 							className="lastname-field h-align"
 							placeholder="Last Name"
-							onChange={e => onChange(e, "lastname")}
+							onChange={(e) => onChange(e, "lastname")}
 						/>
 						<input
 							type="text"
 							className="username-field h-align"
 							placeholder="Username"
-							onChange={e => onChange(e, "username")}
+							onChange={(e) => onChange(e, "username")}
 						/>
 					</div>
 				) : null}
@@ -100,13 +100,13 @@ const Login = () => {
 					className="email-field h-align"
 					type="email"
 					placeholder="Email"
-					onChange={e => onChange(e, "email")}
+					onChange={(e) => onChange(e, "email")}
 				/>
 				<input
 					type="password"
 					placeholder="Password"
 					className="pasword-field h-align"
-					onChange={e => onChange(e, "password")}
+					onChange={(e) => onChange(e, "password")}
 				/>
 				{isRegister ? (
 					<div>
@@ -114,7 +114,7 @@ const Login = () => {
 							type="password"
 							placeholder="Confirm Password"
 							className="confirm-pasword-field h-align"
-							onChange={e => onChange(e, "confirm-password")}
+							onChange={(e) => onChange(e, "confirm-password")}
 						/>
 					</div>
 				) : null}

@@ -10,8 +10,47 @@ const User = require("../../models/user");
 // @route   GET api/users
 // @desc    Get all users
 router.get("/", (req, res) => {
-	User.find().then(users => {
+	User.find().then((users) => {
 		res.json(users);
+	});
+});
+
+// @route	POST api/users/hive
+// @desc	Register Hive user
+router.post("/hive", (req, res) => {
+	const {
+		firstname,
+		lastname,
+		username,
+		email,
+		profile_picture,
+		hive_id,
+	} = req.body;
+
+	if (!firstname || !lastname || !username || !email) {
+		return res.status(400).json({ msg: "Please enter all fields" });
+	}
+
+	User.findOne({ email }).then((user) => {
+		if (user)
+			return res
+				.status(400)
+				.json({ msg: "User with given email already exists" });
+
+		const newUser = new User({
+			firstname,
+			lastname,
+			username,
+			email,
+			profile_picture,
+			hive_id,
+		});
+
+		newUser.save().then(
+			res.json({
+				newUser,
+			})
+		);
 	});
 });
 
@@ -24,7 +63,7 @@ router.post("/", (req, res) => {
 		return res.status(400).json({ msg: "Please enter all fields" });
 	}
 
-	User.findOne({ email }).then(user => {
+	User.findOne({ email }).then((user) => {
 		if (user)
 			return res
 				.status(400)
@@ -35,7 +74,7 @@ router.post("/", (req, res) => {
 			lastname,
 			username,
 			password,
-			email
+			email,
 		});
 
 		// Create salt & hash
@@ -43,7 +82,7 @@ router.post("/", (req, res) => {
 			bcrypt.hash(newUser.password, salt, (err, hash) => {
 				if (err) throw err;
 				newUser.password = hash;
-				newUser.save().then(user => {
+				newUser.save().then((user) => {
 					jwt.sign(
 						{ id: user.id },
 						config.get("JWT_SECRET"),
@@ -57,8 +96,8 @@ router.post("/", (req, res) => {
 									firstname: user.firstname,
 									lastname: user.lastname,
 									username: user.username,
-									email: user.email
-								}
+									email: user.email,
+								},
 							});
 						}
 					);
