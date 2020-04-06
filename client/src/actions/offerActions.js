@@ -51,6 +51,7 @@ export const addOffer = (offer) => (dispatch) => {
 export const modifyOffer = (id, user) => {
 	const config = {
 		headers: {
+			"Content-type": "application/json",
 			id,
 		},
 	};

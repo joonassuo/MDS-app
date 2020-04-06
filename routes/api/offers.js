@@ -5,11 +5,20 @@ const router = express.Router();
 const Offer = require("../../models/offer");
 
 // @route   GET api/offers
-// @desc    Get all offers
+// @desc    Get all offers / one offer
 router.get("/", (req, res) => {
-	Offer.find().then((offers) => {
-		res.json(offers);
-	});
+	// Check whether theres id
+	if (req.headers.id) {
+		Offer.findOne({ _id: req.headers.id })
+			.then((offer) => {
+				res.json(offer);
+			})
+			.catch((err) => res.send(err));
+	} else {
+		Offer.find().then((offers) => {
+			res.json(offers);
+		});
+	}
 });
 
 // @route   POST api/offers

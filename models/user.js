@@ -23,6 +23,10 @@ const UserSchema = new Schema({
 		type: Number,
 		required: false,
 	},
+	notifications: {
+		type: Array,
+		default: [],
+	},
 	karma: {
 		type: Number,
 		default: 100,

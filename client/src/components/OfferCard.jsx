@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./css/offerCard.css";
 import { useDispatch, useSelector } from "react-redux";
 import { modifyOffer } from "../actions/offerActions";
+import { modifyUser } from "../actions/userActions";
 
 const OfferCard = (props) => {
 	const [isActive, setActive] = useState(false);
@@ -16,10 +17,30 @@ const OfferCard = (props) => {
 
 	// Handle buy of offer
 	const handleBuy = () => {
-		console.log(offer._id);
-		console.log(user);
+		const userData = JSON.stringify({
+			_id: user._id,
+			firstname: user.firstname,
+			lastname: user.lastname,
+			username: user.username,
+		});
 
-		modifyOffer(offer._id, user);
+		const body = JSON.stringify({
+			notification: {
+				type: "sale",
+				title: "Your Offer Was Bought",
+				text:
+					user.username +
+					" bought your offer " +
+					offer.title +
+					" for " +
+					offer.cost +
+					" schmeckels!",
+				isRead: false,
+				date: Date.now(),
+			},
+		});
+		modifyOffer(offer._id, userData);
+		modifyUser(offer.creator.id, body);
 	};
 
 	return (
