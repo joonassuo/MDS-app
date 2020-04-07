@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
 			.catch((err) => res.send(err));
 	} else {
 		Offer.find().then((offers) => {
-			res.json(offers);
+			res.json(offers.reverse());
 		});
 	}
 });

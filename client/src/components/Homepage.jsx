@@ -4,10 +4,16 @@ import { useSelector } from "react-redux";
 import Navbar from "./Navbar";
 import AddOffer from "./AddOffer";
 import "./css/Homepage.css";
+import { useEffect } from "react";
 
 const Homepage = () => {
-	const offerList = useSelector((state) => state.offer.offers);
+	const [offerList, setOfferList] = useState([]);
 	const [isAdd, setIsAdd] = useState(false);
+	let getOffers = useSelector((state) => state.offer.offers);
+
+	useEffect(() => {
+		setOfferList(getOffers);
+	});
 
 	if (!offerList[0]) return <div>wait</div>;
 	else {
@@ -21,9 +27,11 @@ const Homepage = () => {
 				) : (
 					<div>
 						<div className="cards-container">
-							{offerList.reverse().map((offer) => (
-								<OfferCard offer={offer} key={offer._id} />
-							))}
+							{offerList
+								.filter((offer) => !offer.isActive)
+								.map((offer) => (
+									<OfferCard offer={offer} key={offer._id} />
+								))}
 						</div>
 						<img
 							src="/add.png"

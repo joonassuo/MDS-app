@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { addOffer } from "../actions/offerActions";
+import { addOffer, getOffers } from "../actions/offerActions";
 import { useDispatch, useSelector } from "react-redux";
 import Carousel from "react-bootstrap/Carousel";
 import OfferCard from "./OfferCard";
@@ -83,6 +83,7 @@ const AddOffer = (props) => {
 		};
 
 		addOffer(offer)(dispatch);
+		getOffers()(dispatch);
 		props.setIsAdd(false);
 	};
 

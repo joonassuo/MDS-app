@@ -39,12 +39,10 @@ export const addOffer = (offer) => (dispatch) => {
 		},
 	};
 
-	axios.post("/api/offers", offer, config).then((res) => {
-		dispatch({
-			type: ADD_OFFER_SUCCESS,
-			payload: res.data,
-		});
-	});
+	axios
+		.post("/api/offers", offer, config)
+		.then((res) => console.log(res.data))
+		.catch((err) => console.log(err));
 };
 
 // Modify offer
@@ -58,6 +56,6 @@ export const modifyOffer = (id, user) => {
 
 	axios
 		.put("/api/offers", user, config)
-		.then((res) => console.log(res.data))
+		.then((res) => console.log(res))
 		.catch((err) => console.log(err));
 };

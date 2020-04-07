@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import "./css/offerCard.css";
-import { useDispatch, useSelector } from "react-redux";
-import { modifyOffer } from "../actions/offerActions";
+import { useSelector, useDispatch } from "react-redux";
+import { modifyOffer, getOffers } from "../actions/offerActions";
 import { modifyUser } from "../actions/userActions";
 
 const OfferCard = (props) => {
 	const [isActive, setActive] = useState(false);
 	const user = useSelector((state) => state.auth.user);
 	const offer = props.offer;
-	// const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
 	// Set profile pic, or default if none
 	const profilePic = offer.creator.profile_picture
@@ -41,6 +41,7 @@ const OfferCard = (props) => {
 		});
 		modifyOffer(offer._id, userData);
 		modifyUser(offer.creator.id, body);
+		getOffers()(dispatch);
 	};
 
 	return (
