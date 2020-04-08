@@ -5,6 +5,7 @@ import Carousel from "react-bootstrap/Carousel";
 import OfferCard from "./OfferCard";
 import "./css/addOffer.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Redirect } from "react-router-dom";
 
 const AddOffer = (props) => {
 	const [title, setTitle] = useState("");
@@ -13,6 +14,7 @@ const AddOffer = (props) => {
 	const [description, setDescription] = useState("");
 	const [type, setType] = useState("");
 	const [isTradeable, setIsTradeable] = useState(false);
+	const [ready, setReady] = useState(false);
 	const user = useSelector((state) => state.auth.user);
 	const dispatch = useDispatch();
 
@@ -84,10 +86,12 @@ const AddOffer = (props) => {
 
 		addOffer(offer)(dispatch);
 		getOffers()(dispatch);
-		props.setIsAdd(false);
+		setReady(true);
 	};
 
-	return (
+	return ready ? (
+		<Redirect to="/" />
+	) : (
 		<Carousel classname="carousel" interval={null} wrap={false}>
 			<Carousel.Item className="carousel-item">
 				<div className="grid">

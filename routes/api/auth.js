@@ -21,13 +21,7 @@ router.post("/hive", (req, res) => {
 				if (err) throw err;
 				res.json({
 					token,
-					user: {
-						id: user.id,
-						firstname: user.firstname,
-						lastname: user.lastname,
-						username: user.username,
-						email: user.email,
-					},
+					user,
 				});
 			}
 		);
@@ -65,13 +59,7 @@ router.post("/", (req, res) => {
 					if (err) throw err;
 					res.json({
 						token,
-						user: {
-							id: user.id,
-							firstname: user.firstname,
-							lastname: user.lastname,
-							username: user.username,
-							email: user.email,
-						},
+						user,
 					});
 				}
 			);

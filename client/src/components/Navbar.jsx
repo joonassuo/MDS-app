@@ -3,11 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import "./css/navbar.css";
 import { logoutUser } from "../actions/authActions";
 import { Redirect } from "react-router-dom";
+import { useEffect } from "react";
 
-const Navbar = () => {
+const Navbar = (props) => {
 	const [showMenu, setShowMenu] = useState(false);
 	const [login, setLogin] = useState(false);
-	const isAuth = useSelector((state) => state.auth.isAuthenticated);
+	const notifications = props.user ? props.user.notifications : null;
 	const dispatch = useDispatch();
 
 	const toggleMenu = () => {
@@ -20,6 +21,17 @@ const Navbar = () => {
 
 	const onLogin = () => {
 		setLogin(true);
+	};
+
+	const Notification = (props) => {
+		return (
+			<div>
+				<div className="notification">
+					<div className="n-title">{props.object.title}</div>
+					<div className="n-text">{props.object.text}</div>
+				</div>
+			</div>
+		);
 	};
 
 	return login ? (
@@ -37,11 +49,15 @@ const Navbar = () => {
 			</div>
 			{showMenu ? (
 				<div className="hamburger-menu">
-					{isAuth ? (
+					{props.auth ? (
 						<div>
-							<div className="menu-item">Menu item 1</div>
-							<div className="menu-item">Menu item 2</div>
-							<div className="menu-item">Menu item 3</div>
+							<div className="notifications-container">
+								{notifications
+									? notifications.map((n) => (
+											<Notification object={n} />
+									  ))
+									: null}
+							</div>
 							<img
 								src="/logout.png"
 								alt="logout"

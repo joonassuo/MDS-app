@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./css/offerCard.css";
+import uuid from "react-uuid";
 import { useSelector, useDispatch } from "react-redux";
 import { modifyOffer, getOffers } from "../actions/offerActions";
 import { modifyUser } from "../actions/userActions";
@@ -26,6 +27,7 @@ const OfferCard = (props) => {
 
 		const body = JSON.stringify({
 			notification: {
+				_id: uuid(),
 				type: "sale",
 				title: "Your Offer Was Bought",
 				text:
