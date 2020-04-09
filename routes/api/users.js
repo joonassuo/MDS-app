@@ -121,7 +121,15 @@ router.put("/", (req, res) => {
 
 	User.updateOne(
 		{ _id: id },
-		{ $set: body, $push: { notifications: r.notification } }
+		{
+			$set: body,
+			$push: {
+				notifications: {
+					$each: [r.notification],
+					$position: 0,
+				},
+			},
+		}
 	)
 		.then((response) => res.send(response))
 		.catch((err) => res.send(err));
