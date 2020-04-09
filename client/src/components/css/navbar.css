@@ -25,6 +25,25 @@
 	transform: translateX(-50%);
 }
 
+.wallet-container {
+	position: absolute;
+	right: 0;
+	padding: 1em;
+	height: 100%;
+}
+
+#wallet-icon {
+	display: inline-block;
+	height: 1.4em;
+}
+
+#wallet-amount {
+	display: inline;
+	font-size: 1.4em;
+	vertical-align: middle;
+	margin-left: 4px;
+}
+
 /*HAMBURGER MENU*/
 .hamburger-menu {
 	background-color: gold;
@@ -36,8 +55,32 @@
 	z-index: 15;
 }
 
-.menu-item {
-	margin: 1em 0 1em 1em;
+.profile-container {
+	height: 7vh;
+	padding: 4px;
+	margin: 1em 0 1em 0.2em;
+}
+
+#menu-profilepic {
+	height: 100%;
+	border-radius: 50%;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+#menu-details {
+	margin-left: 1em;
+	height: 100%;
+	display: inline-block;
+	font-size: 0.7em;
+	vertical-align: middle;
+}
+
+#menu-profile-name,
+#menu-view-profile {
+	height: 50%;
+	vertical-align: middle;
 }
 
 #logout,
@@ -62,4 +105,15 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+}
+
+/* NOTIFICATIONS */
+.notifications-container {
+	border-top: 1px solid black;
+}
+
+.notification {
+	padding: 1em;
+	font-size: 0.6em;
+	border-bottom: 1px solid grey;
 }

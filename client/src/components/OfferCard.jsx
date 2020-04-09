@@ -29,14 +29,11 @@ const OfferCard = (props) => {
 			notification: {
 				_id: uuid(),
 				type: "sale",
-				title: "Your Offer Was Bought",
-				text:
-					user.username +
-					" bought your offer " +
-					offer.title +
-					" for " +
-					offer.cost +
-					" schmeckels!",
+				offer: props.offer,
+				buyer: {
+					username: user.username,
+					id: user._id,
+				},
 				isRead: false,
 				date: Date.now(),
 			},
@@ -60,7 +57,7 @@ const OfferCard = (props) => {
 				<div className="offer-info">
 					<div id="type">{offer.type.toUpperCase()}</div>
 					<div id="title">{offer.title.toUpperCase()}</div>
-					<div className="const-container">
+					<div className="cost-container">
 						<img src="/money-bag.png" alt="money" id="cost-icon" />
 						<div id="cost">{offer.cost}</div>
 					</div>

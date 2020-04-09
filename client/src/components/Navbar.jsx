@@ -16,6 +16,7 @@ const Navbar = (props) => {
 	};
 
 	const onLogout = () => {
+		setShowMenu(false);
 		logoutUser()(dispatch);
 	};
 
@@ -24,11 +25,16 @@ const Navbar = (props) => {
 	};
 
 	const Notification = (props) => {
+		const n = props.notification;
 		return (
 			<div>
 				<div className="notification">
-					<div className="n-title">{props.object.title}</div>
-					<div className="n-text">{props.object.text}</div>
+					<div className="n-text">
+						{n.buyer.username.toUpperCase()} bought your offer
+						{" " + n.offer.title.toUpperCase()} for{" "}
+						{n.offer.cost + " "}
+						Schmeckels!
+					</div>
 				</div>
 			</div>
 		);
@@ -46,15 +52,42 @@ const Navbar = (props) => {
 					onClick={() => toggleMenu()}
 				/>
 				<img src="/pig.png" alt="logo" id="logo" />
+				{props.auth ? (
+					<div className="wallet-container">
+						<div id="wallet-details">
+							<img
+								id="wallet-icon"
+								src="/money-bag.png"
+								alt="money"
+							/>
+							<div id="wallet-amount">{props.user.money}</div>
+						</div>
+					</div>
+				) : null}
 			</div>
 			{showMenu ? (
 				<div className="hamburger-menu">
 					{props.auth ? (
 						<div>
+							<div className="profile-container">
+								<img
+									src={props.user.profile_picture}
+									alt="profilepic"
+									id="menu-profilepic"
+								/>
+								<div id="menu-details">
+									<div id="menu-profile-name">
+										{props.user.username.toUpperCase()}
+									</div>
+									<div id="menu-view-profile">
+										View Your Profile
+									</div>
+								</div>
+							</div>
 							<div className="notifications-container">
 								{notifications
 									? notifications.map((n) => (
-											<Notification object={n} />
+											<Notification notification={n} />
 									  ))
 									: null}
 							</div>
