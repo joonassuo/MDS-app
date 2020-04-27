@@ -91,36 +91,39 @@ const AddOffer = (props) => {
 		<Redirect to="/" />
 	) : (
 		<div>
-			<div className="background">
-				<div className="addoffer-container">
-					<div className="header">ADD NEW OFFER</div>
-					<input
-						type="text"
-						placeholder="TITLE"
-						id="title-field"
-						onChange={(e) => onChange(e, "title")}
-					/>
-					<textarea
-						rows="6"
-						cols="30"
-						placeholder="Give a brief description about your offering"
-						id="description-field"
-						onChange={(e) => onChange(e, "description")}
-					/>
-					<select
-						name="type"
-						id="type-dropdown"
-						defaultValue=""
-						onChange={(e) => onChange(e, "type")}
-					>
-						<option value="" disabled>
-							Choose Category..
-						</option>
-						<option value="lesson">Lesson</option>
-						<option value="rent">Rent</option>
-						<option value="sell">Sell</option>
-					</select>
-					{/* <div className="center" id="tradeable-field">
+			<div
+				className="background"
+				onClick={() => props.toggleAdd(false)}
+			></div>
+			<div className="addoffer-container">
+				<div className="header">ADD NEW OFFER</div>
+				<input
+					type="text"
+					placeholder="TITLE"
+					id="title-field"
+					onChange={(e) => onChange(e, "title")}
+				/>
+				<textarea
+					rows="6"
+					cols="30"
+					placeholder="Give a brief description about your offering"
+					id="description-field"
+					onChange={(e) => onChange(e, "description")}
+				/>
+				<select
+					name="type"
+					id="type-dropdown"
+					defaultValue=""
+					onChange={(e) => onChange(e, "type")}
+				>
+					<option value="" disabled>
+						Choose Category..
+					</option>
+					<option value="lesson">Lesson</option>
+					<option value="rent">Rent</option>
+					<option value="sell">Sell</option>
+				</select>
+				{/* <div className="center" id="tradeable-field">
 						<input
 							type="checkbox"
 							name="isTradeable"
@@ -130,38 +133,35 @@ const AddOffer = (props) => {
 						/>
 						<label htmlFor="isTradeable">Allow Trade Offers?</label>
 					</div> */}
-					{type === "lesson" ? (
-						<div id="input-duration">
-							<div id="label-duration">Duration</div>
-							<button
-								id="duration-minus"
-								onClick={() => dur("decrease")}
-							>
-								-
-							</button>
-							<div id="duration-value">
-								{durationValue(duration)}
-							</div>
-							<button
-								id="duration-plus"
-								onClick={() => dur("increase")}
-							>
-								+
-							</button>
-						</div>
-					) : null}
-					<input
-						type="number"
-						name="cost"
-						id="cost-field"
-						className="center"
-						placeholder="PRICE"
-						onChange={(e) => onChange(e, "cost")}
-					/>
-					<button id="submit-button" onClick={() => handleSubmit()}>
-						SUBMIT
-					</button>
-				</div>
+				{type === "lesson" ? (
+					<div id="input-duration">
+						<div id="label-duration">Duration</div>
+						<button
+							id="duration-minus"
+							onClick={() => dur("decrease")}
+						>
+							-
+						</button>
+						<div id="duration-value">{durationValue(duration)}</div>
+						<button
+							id="duration-plus"
+							onClick={() => dur("increase")}
+						>
+							+
+						</button>
+					</div>
+				) : null}
+				<input
+					type="number"
+					name="cost"
+					id="cost-field"
+					className="center"
+					placeholder="PRICE"
+					onChange={(e) => onChange(e, "cost")}
+				/>
+				<button id="submit-button" onClick={() => handleSubmit()}>
+					SUBMIT
+				</button>
 			</div>
 		</div>
 	);

@@ -19,6 +19,7 @@
 	text-align: center;
 	padding: 1.5em;
 	overflow: scroll;
+	z-index: 30;
 }
 
 .header {

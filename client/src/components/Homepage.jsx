@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import OfferCard from "./OfferCard";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import Navbar from "./Navbar";
 import Addoffer from "./AddOffer";
 import "./css/Homepage.css";
-import { Redirect } from "react-router-dom";
 
 const Homepage = () => {
 	const [isAdd, setIsAdd] = useState(false);
@@ -15,7 +14,7 @@ const Homepage = () => {
 	return (
 		<div>
 			<Navbar user={user} auth={isAuth} />
-			{isAdd ? <Addoffer /> : null}
+			{isAdd ? <Addoffer toggleAdd={setIsAdd} /> : null}
 			<div>
 				{offerList ? (
 					<div className="cards-container">
