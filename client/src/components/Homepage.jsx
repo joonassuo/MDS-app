@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import OfferCard from "./OfferCard";
 import { useSelector, useDispatch } from "react-redux";
 import Navbar from "./Navbar";
+import Addoffer from "./AddOffer";
 import "./css/Homepage.css";
-//import { useEffect } from "react";
 import { Redirect } from "react-router-dom";
 
 const Homepage = () => {
@@ -12,11 +12,10 @@ const Homepage = () => {
 	const offerList = useSelector((state) => state.offer.offers);
 	const user = useSelector((state) => state.auth.user);
 
-	return isAdd ? (
-		<Redirect to="/addoffer" />
-	) : (
+	return (
 		<div>
 			<Navbar user={user} auth={isAuth} />
+			{isAdd ? <Addoffer /> : null}
 			<div>
 				{offerList ? (
 					<div className="cards-container">

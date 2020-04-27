@@ -122,6 +122,9 @@
 /* NOTIFICATIONS */
 .notifications-container {
 	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	height: 60%;
+	overflow: scroll;
 }
 
 .notification {

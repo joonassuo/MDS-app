@@ -23,7 +23,6 @@ class App extends Component {
 				<Router>
 					<Route path="/" exact component={Homepage} />
 					<Route path="/login" exact component={Login} />
-					<Route path="/addoffer" exact component={AddOffer} />
 					<Route path="/oauth/42/redirect" exact component={Oauth} />
 				</Router>
 			</Provider>

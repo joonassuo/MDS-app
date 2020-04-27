@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { addOffer, getOffers } from "../actions/offerActions";
 import { useDispatch, useSelector } from "react-redux";
-import Carousel from "react-bootstrap/Carousel";
-import OfferCard from "./OfferCard";
 import "./css/addOffer.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Redirect } from "react-router-dom";
@@ -92,10 +90,10 @@ const AddOffer = (props) => {
 	return ready ? (
 		<Redirect to="/" />
 	) : (
-		<Carousel classname="carousel" interval={null} wrap={false}>
-			<Carousel.Item className="carousel-item">
-				<div className="grid">
-					<h1 className="header center">DESCRIPTION</h1>
+		<div>
+			<div className="background">
+				<div className="addoffer-container">
+					<div className="header">ADD NEW OFFER</div>
 					<input
 						type="text"
 						placeholder="TITLE"
@@ -109,14 +107,8 @@ const AddOffer = (props) => {
 						id="description-field"
 						onChange={(e) => onChange(e, "description")}
 					/>
-				</div>
-			</Carousel.Item>
-			<Carousel.Item>
-				<div className="grid">
-					<h1 className="header center">DETAILS</h1>
 					<select
 						name="type"
-						className="center"
 						id="type-dropdown"
 						defaultValue=""
 						onChange={(e) => onChange(e, "type")}
@@ -128,15 +120,7 @@ const AddOffer = (props) => {
 						<option value="rent">Rent</option>
 						<option value="sell">Sell</option>
 					</select>
-					<input
-						type="number"
-						name="cost"
-						id="cost-field"
-						className="center"
-						placeholder="price"
-						onChange={(e) => onChange(e, "cost")}
-					/>
-					<div className="center" id="tradeable-field">
+					{/* <div className="center" id="tradeable-field">
 						<input
 							type="checkbox"
 							name="isTradeable"
@@ -145,24 +129,20 @@ const AddOffer = (props) => {
 							onClick={(e) => onChange(e, "isTradeable")}
 						/>
 						<label htmlFor="isTradeable">Allow Trade Offers?</label>
-					</div>
+					</div> */}
 					{type === "lesson" ? (
 						<div id="input-duration">
-							<div className="center" id="label-duration">
-								Lesson Duration:
-							</div>
+							<div id="label-duration">Duration</div>
 							<button
-								className="center"
 								id="duration-minus"
 								onClick={() => dur("decrease")}
 							>
 								-
 							</button>
-							<div id="duration-value" className="center">
+							<div id="duration-value">
 								{durationValue(duration)}
 							</div>
 							<button
-								className="center"
 								id="duration-plus"
 								onClick={() => dur("increase")}
 							>
@@ -170,30 +150,20 @@ const AddOffer = (props) => {
 							</button>
 						</div>
 					) : null}
+					<input
+						type="number"
+						name="cost"
+						id="cost-field"
+						className="center"
+						placeholder="PRICE"
+						onChange={(e) => onChange(e, "cost")}
+					/>
+					<button id="submit-button" onClick={() => handleSubmit()}>
+						SUBMIT
+					</button>
 				</div>
-			</Carousel.Item>
-			<Carousel.Item className="carousel-item">
-				<OfferCard
-					offer={{
-						creator: {
-							id: user._id,
-							username: user.username,
-							karma: user.karma,
-							profile_picture: user.profile_picture,
-						},
-						cost,
-						type,
-						description,
-						duration,
-						title,
-						isTradeable,
-					}}
-				/>
-				<button id="submit-button" onClick={() => handleSubmit()}>
-					SUBMIT
-				</button>
-			</Carousel.Item>
-		</Carousel>
+			</div>
+		</div>
 	);
 };
 
