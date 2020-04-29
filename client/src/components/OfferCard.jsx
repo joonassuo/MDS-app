@@ -60,7 +60,7 @@ const OfferCard = (props) => {
 						<img src="/karma.png" alt="karma" id="karma-icon" />
 						<div id="karma">{offer.creator.karma}</div>
 					</div>
-					<div id="date">29.04.2020</div>
+					<div id="date">{offer.createdDate.substring(0, 10)}</div>
 				</div>
 				<div id="type">{offer.type.toUpperCase()}</div>
 				<div id="title">{offer.title.toUpperCase()}</div>

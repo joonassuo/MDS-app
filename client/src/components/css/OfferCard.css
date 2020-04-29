@@ -4,6 +4,7 @@
 	width: 100vw;
 	height: auto;
 	padding: 1.3em 1.3em 1.3em 2em;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #profile-pic {
@@ -29,8 +30,12 @@
 }
 
 #karma-icon {
-	height: 1em;
+	height: 0.8em;
 	width: auto;
+	vertical-align: middle;
+}
+
+#karma {
 	vertical-align: middle;
 }
 
