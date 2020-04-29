@@ -1,0 +1,125 @@
+.offer-card {
+	display: grid;
+	grid-template-columns: repeat(20, 1fr);
+	width: 100%;
+	height: auto;
+	margin: 0;
+	margin-top: 1em;
+	z-index: 2;
+}
+
+/* USER INFO */
+.user-info {
+	grid-column: 1/8;
+	margin: 0;
+	background-color: rgb(255, 219, 205);
+	display: inline-block;
+}
+
+#username,
+.karma-container {
+	width: 100%;
+	text-align: center;
+	margin-top: 1em;
+}
+
+.karma-container {
+	margin-bottom: 1em;
+}
+
+#profile-pic {
+	width: 6em;
+	display: block;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	border: 2px solid grey;
+	border-radius: 50%;
+	margin-top: 1em;
+}
+
+#karma-icon {
+	display: inline-block;
+	height: 1.5em;
+	margin-left: -3px;
+}
+
+#karma {
+	display: inline-block;
+	height: 1.5em;
+	margin-left: 3px;
+}
+
+/* OFFER INFO */
+.offer-info {
+	grid-column: 8/21;
+	margin: 0;
+	background-color: rgba(202, 219, 255, 0.3);
+	display: inline-block;
+	padding: 1em 1em 1em 1.5em;
+	position: relative;
+}
+
+#type {
+	color: rgb(152, 148, 146);
+}
+
+#title {
+	margin-top: 0.5em;
+	font-size: 1.5em;
+	font-family: "Calibri Light";
+}
+
+#cost-icon {
+	display: inline-block;
+	height: 1.2em;
+}
+
+#cost {
+	display: inline;
+	font-size: 1.2em;
+	vertical-align: middle;
+	margin-left: 4px;
+}
+
+#tags {
+	position: absolute;
+	bottom: 1.2em;
+	color: rgb(146, 146, 146);
+}
+
+/* DETAILS */
+.details-container {
+	background-color: rgb(255, 248, 240);
+	width: 95%;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	-webkit-box-shadow: 0px 3px 5px 0px rgba(184, 173, 184, 1);
+	-moz-box-shadow: 0px 3px 5px 0px rgba(184, 173, 184, 1);
+	box-shadow: 0px 3px 5px 0px rgba(184, 173, 184, 1);
+	z-index: 1;
+}
+
+#description {
+	padding: 1em;
+	width: 90%;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	color: rgb(94, 94, 94);
+	font-family: "Calibri Light";
+}
+
+#buy-button {
+	border-radius: 15px;
+	border: none;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	font-family: "Calibri Light";
+	margin-bottom: 1em;
+	width: 6em;
+	height: 2.5em;
+	z-index: 20;
+}

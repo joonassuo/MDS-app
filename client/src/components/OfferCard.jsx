@@ -16,6 +16,13 @@ const OfferCard = (props) => {
 		? offer.creator.profile_picture
 		: "/default.png";
 
+	// Get duration in right format
+	const durationValue = (duration) => {
+		const hours = Math.floor(duration / 60);
+		const minutes = duration % 60;
+		return hours + ":" + minutes + (minutes < 10 ? "0" : "") + " h";
+	};
+
 	// Handle buy of offer
 	const handleBuy = () => {
 		const userData = JSON.stringify({
@@ -46,32 +53,34 @@ const OfferCard = (props) => {
 	return (
 		<div>
 			<div className="offer-card" onClick={() => setActive(!isActive)}>
-				<div className="user-info">
-					<div id="username">{offer.creator.username}</div>
-					<img src={profilePic} alt="profilePic" id="profile-pic" />
+				<img src={profilePic} alt="profilePic" id="profile-pic" />
+				<div className="user-details">
+					<div id="username">{offer.creator.username} | </div>
 					<div className="karma-container">
 						<img src="/karma.png" alt="karma" id="karma-icon" />
 						<div id="karma">{offer.creator.karma}</div>
 					</div>
+					<div id="date">29.04.2020</div>
 				</div>
-				<div className="offer-info">
-					<div id="type">{offer.type.toUpperCase()}</div>
-					<div id="title">{offer.title.toUpperCase()}</div>
-					<div className="cost-container">
-						<img src="/money-bag.png" alt="money" id="cost-icon" />
-						<div id="cost">{offer.cost}</div>
+				<div id="type">{offer.type.toUpperCase()}</div>
+				<div id="title">{offer.title.toUpperCase()}</div>
+				<img src="/money-bag.png" alt="money" id="cost-icon" />
+				<div id="cost">{offer.cost}</div>
+				{offer.type === "lesson" ? (
+					<div className="duration-container">
+						<img src="/clock.png" alt="clock" id="duration-icon" />
+						<div id="duration">{durationValue(offer.duration)}</div>
 					</div>
-					<div id="tags">sports | tennis | skillshare</div>
-				</div>
+				) : null}
+				{isActive ? (
+					<div className="details-container">
+						<div id="description">"{offer.description}"</div>
+						<button id="buy-button" onClick={() => handleBuy()}>
+							BUY
+						</button>
+					</div>
+				) : null}
 			</div>
-			{isActive ? (
-				<div className="details-container">
-					<div id="description">"{offer.description}"</div>
-					<button id="buy-button" onClick={() => handleBuy()}>
-						BUY
-					</button>
-				</div>
-			) : null}
 		</div>
 	);
 };

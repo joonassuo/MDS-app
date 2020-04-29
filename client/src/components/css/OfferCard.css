@@ -1,128 +1,77 @@
 .offer-card {
-	display: grid;
-	grid-template-columns: repeat(20, 1fr);
-	width: 100%;
-	height: auto;
-	margin: 0;
-	margin-top: 1.5em;
-	z-index: 2;
-	-webkit-box-shadow: 0px 3px 5px 0px rgba(184, 173, 184, 1);
-	-moz-box-shadow: 0px 3px 5px 0px rgba(184, 173, 184, 1);
-	box-shadow: 0px 3px 5px 0px rgba(184, 173, 184, 1);
-}
-
-/* USER INFO */
-.user-info {
-	grid-column: 1/8;
-	margin: 0;
-	background-color: rgb(255, 219, 205);
-	display: inline-block;
-}
-
-#username,
-.karma-container {
-	width: 100%;
-	text-align: center;
-	margin-top: 1em;
-}
-
-.karma-container {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 	margin-bottom: 1em;
+	width: 100vw;
+	height: auto;
+	padding: 1.3em 1.3em 1.3em 2em;
 }
 
 #profile-pic {
-	width: 6em;
-	display: block;
-	position: relative;
-	left: 50%;
-	transform: translateX(-50%);
-	border: 2px solid grey;
+	width: auto;
+	height: 2.5em;
+	border: 1px solid rgba(0, 0, 0, 0.8);
 	border-radius: 50%;
-	margin-top: 1em;
+	vertical-align: sub;
+}
+
+.user-details {
+	margin-left: 1em;
+	display: inline-block;
+	position: relative;
+	height: 2.5em;
+}
+
+#username,
+.karma-container,
+#karma-icon,
+#karma {
+	display: inline;
 }
 
 #karma-icon {
-	display: inline-block;
-	height: 1.5em;
-	margin-left: -3px;
+	height: 1em;
+	width: auto;
+	vertical-align: middle;
 }
 
-#karma {
-	display: inline-block;
-	height: 1.5em;
-	margin-left: 3px;
-}
-
-/* OFFER INFO */
-.offer-info {
-	grid-column: 8/21;
-	margin: 0;
-	background-color: rgba(202, 219, 255, 0.3);
-	display: inline-block;
-	padding: 1em 1em 1em 1.5em;
-	position: relative;
+#date {
+	font-size: 0.8em;
 }
 
 #type {
-	color: rgb(152, 148, 146);
+	font-size: 0.8em;
+	margin-top: 1em;
+	color: rgb(173, 32, 32);
+	margin-bottom: -0.3em;
 }
 
 #title {
-	margin-top: 0.5em;
-	font-size: 1.5em;
-	font-family: "Calibri Light";
+	font-size: 1.3em;
+	margin-bottom: 0.8em;
 }
 
-#cost-icon {
+#cost-icon,
+#cost,
+.duration-container,
+#duration-icon,
+#duration {
 	display: inline-block;
-	height: 1.2em;
 }
 
-#cost {
-	display: inline;
-	font-size: 1.2em;
+#cost-icon,
+#duration-icon {
+	height: 1em;
+	width: auto;
 	vertical-align: middle;
-	margin-left: 4px;
 }
 
-#tags {
-	position: absolute;
-	bottom: 1.2em;
-	color: rgb(146, 146, 146);
+#duration-icon {
+	margin-left: 1.5em;
 }
 
-/* DETAILS */
-.details-container {
-	background-color: rgb(255, 248, 240);
-	width: 95%;
-	position: relative;
-	left: 50%;
-	transform: translateX(-50%);
-	-webkit-box-shadow: 0px 3px 5px 0px rgba(184, 173, 184, 1);
-	-moz-box-shadow: 0px 3px 5px 0px rgba(184, 173, 184, 1);
-	box-shadow: 0px 3px 5px 0px rgba(184, 173, 184, 1);
-	z-index: 1;
-}
-
-#description {
-	padding: 1em;
-	width: 90%;
-	position: relative;
-	left: 50%;
-	transform: translateX(-50%);
-	color: rgb(94, 94, 94);
-	font-family: "Calibri Light";
-}
-
-#buy-button {
-	border-radius: 15px;
-	border: none;
-	position: relative;
-	left: 50%;
-	transform: translateX(-50%);
-	font-family: "Calibri Light";
-	margin-bottom: 1em;
-	width: 6em;
-	height: 2.5em;
-	z-index: 20;
+#cost,
+#duration {
+	font-size: 1em;
+	vertical-align: middle;
+	margin-left: 5px;
 }
