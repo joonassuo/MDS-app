@@ -52,17 +52,19 @@ const Navbar = (props) => {
 		if (props.auth) {
 			return (
 				<div>
-					<img
-						src="/hamburger.png"
-						alt="hamburger"
-						id="hamburger"
-						onClick={() => toggleMenu()}
-					/>
 					{props.nCount ? (
 						<div id="count-container">
 							<div id="notifications-count">{props.nCount}</div>
 						</div>
 					) : null}
+					<div className="hamburger-container">
+						<img
+							src="/hamburger.png"
+							alt="hamburger"
+							id="hamburger"
+							onClick={() => toggleMenu()}
+						/>
+					</div>
 				</div>
 			);
 		} else {
@@ -81,26 +83,20 @@ const Navbar = (props) => {
 	) : (
 		<div>
 			<div className="navbar-container">
-				<img src="/pig.png" alt="logo" id="logo" />
-				<div className="hamburger-container">
-					<ProfileMenu
-						auth={props.auth}
-						nCount={countNotifications()}
-					/>
+				<div className="logo-container">
+					<img src="/pig.png" alt="logo" id="logo" />
 				</div>
+				<ProfileMenu auth={props.auth} nCount={countNotifications()} />
 				{props.auth ? (
 					<div>
 						<div className="wallet-container">
-							<div id="wallet-details">
-								<img
-									id="wallet-icon"
-									src="/money-bag.png"
-									alt="money"
-								/>
-								<div id="wallet-amount">{props.user.money}</div>
-							</div>
+							<img
+								id="wallet-icon"
+								src="/money-bag.png"
+								alt="money"
+							/>
+							<div id="wallet-amount">{props.user.money}</div>
 						</div>
-
 						{showMenu ? (
 							<div className="hamburger-menu">
 								<div className="profile-container">

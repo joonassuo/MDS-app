@@ -1,22 +1,42 @@
 /*NAVBAR*/
 .navbar-container {
 	width: 100vw;
-	height: 10vh;
+	height: 6vh;
 	background-color: floralwhite;
 	position: fixed;
 	top: 0;
 	z-index: 15;
 }
 
-#hamburger,
-#logo {
-	height: 100%;
-	width: auto;
-	padding: 1em;
+.hamburger-container,
+.logo-container,
+.wallet-container {
+	width: 6vh;
+	height: 6vh;
+	padding: 0.5em;
 }
 
-#hamburger {
+.wallet-container {
+	width: auto;
+}
+
+#hamburger,
+#logo,
+#wallet-icon {
+	height: 100%;
+	width: auto;
+}
+
+.hamburger-container {
+	position: fixed;
+	top: 0;
+	right: 0;
+}
+
+.logo-container {
 	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
 #count-container {
@@ -26,8 +46,9 @@
 	text-align: center;
 	height: 1em;
 	position: absolute;
-	left: 2.3em;
-	top: 0.6em;
+	top: 4px;
+	right: 4px;
+	z-index: 20;
 }
 
 #notifications-count {
@@ -39,27 +60,12 @@
 	color: white;
 }
 
-#logo {
-	position: absolute;
-	left: 50%;
-	transform: translateX(-50%);
-}
-
-.wallet-container {
-	position: absolute;
-	right: 0;
-	padding: 1em;
-	height: 100%;
-}
-
 #wallet-icon {
-	display: inline-block;
-	height: 1.4em;
+	display: inline;
 }
 
 #wallet-amount {
 	display: inline;
-	font-size: 1.4em;
 	vertical-align: middle;
 	margin-left: 4px;
 }
@@ -67,12 +73,12 @@
 /*HAMBURGER MENU*/
 .hamburger-menu {
 	background-color: gold;
-	height: 90vh;
+	height: 94vh;
 	width: 50vw;
 	position: fixed;
-	left: 0;
-	top: 10vh;
-	z-index: 15;
+	right: 0;
+	top: 6vh;
+	z-index: 30;
 }
 
 .profile-container {
