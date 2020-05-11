@@ -1,139 +1,173 @@
 /*NAVBAR*/
 .navbar-container {
-	width: 100vw;
-	height: 6vh;
-	background-color: floralwhite;
-	position: fixed;
-	top: 0;
-	z-index: 15;
+  width: 100vw;
+  height: 6vh;
+  background-color: floralwhite;
+  position: fixed;
+  top: 0;
+  z-index: 15;
 }
 
 .hamburger-container,
 .logo-container,
 .wallet-container {
-	width: 6vh;
-	height: 6vh;
-	padding: 0.5em;
+  width: 6vh;
+  height: 6vh;
+  padding: 0.5em;
 }
 
 .wallet-container {
-	width: auto;
+  width: auto;
 }
 
 #hamburger,
 #logo,
 #wallet-icon {
-	height: 100%;
-	width: auto;
+  height: 100%;
+  width: auto;
 }
 
 .hamburger-container {
-	position: fixed;
-	top: 0;
-	right: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
 }
 
 .logo-container {
-	position: absolute;
-	left: 50%;
-	transform: translateX(-50%);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 #count-container {
-	background-color: red;
-	border-radius: 50%;
-	width: 1em;
-	text-align: center;
-	height: 1em;
-	position: absolute;
-	top: 4px;
-	right: 4px;
-	z-index: 20;
+  background-color: red;
+  border-radius: 50%;
+  width: 1em;
+  text-align: center;
+  height: 1em;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  z-index: 20;
 }
 
 #notifications-count {
-	width: 100%;
-	position: relative;
-	font-size: 0.5em;
-	top: 50%;
-	transform: translateY(-50%);
-	color: white;
+  width: 100%;
+  position: relative;
+  font-size: 0.5em;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
 }
 
 #wallet-icon {
-	display: inline;
+  display: inline;
 }
 
 #wallet-amount {
-	display: inline;
-	vertical-align: middle;
-	margin-left: 4px;
+  display: inline;
+  vertical-align: middle;
+  margin-left: 4px;
 }
 
 /*HAMBURGER MENU*/
-.hamburger-menu {
-	background-color: gold;
-	height: 94vh;
-	width: 50vw;
-	position: fixed;
-	right: 0;
-	top: 6vh;
-	z-index: 30;
+#hamburger-menu {
+  background-color: gold;
+  height: 94vh;
+  position: relative;
+  z-index: 30;
+  transform: translateX(100%);
+  -webkit-transform: translateX(100%);
 }
 
+/* slide animations */
+.slide-in {
+  animation: slide-in 0.5s forwards;
+  -webkit-animation: slide-in 0.5s forwards;
+}
+
+.slide-out {
+  animation: slide-out 0.5s forwards;
+  -webkit-animation: slide-out 0.5s forwards;
+}
+
+@keyframes slide-in {
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@-webkit-keyframes slide-in {
+  100% {
+    -webkit-transform: translateX(0%);
+  }
+}
+
+@keyframes slide-out {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@-webkit-keyframes slide-out {
+  0% {
+    -webkit-transform: translateX(0%);
+  }
+  100% {
+    -webkit-transform: translateX(100%);
+  }
+}
+/*--------------------*/
+
 .profile-container {
-	height: 7vh;
-	padding: 4px;
-	margin: 1em 0 1em 0.2em;
+  padding: 1rem;
 }
 
 #menu-profilepic {
-	height: 100%;
-	border-radius: 50%;
-	position: relative;
-	top: 50%;
-	transform: translateY(-50%);
+  height: 8vh;
+  border-radius: 50%;
+  position: relative;
 }
 
 #menu-details {
-	margin-left: 1em;
-	height: 100%;
-	display: inline-block;
-	font-size: 0.7em;
-	vertical-align: middle;
+  margin-left: 1em;
+  display: inline-block;
+  font-size: 0.7em;
+  vertical-align: middle;
 }
 
-#menu-profile-name,
-#menu-view-profile {
-	height: 50%;
-	vertical-align: middle;
+#menu-profile-name {
+  font-size: 1.2rem;
 }
 
 #logout,
 #settings {
-	position: fixed;
-	bottom: 1em;
-	width: 2em;
-	height: 2em;
+  position: fixed;
+  bottom: 2rem;
+  width: 2rem;
+  height: 2rem;
 }
 
 #logout {
-	left: 1em;
+  left: 2rem;
 }
 
 #settings {
-	left: 4em;
+  left: 5rem;
 }
 
 /* NOTIFICATIONS */
 .notifications-container {
-	border-top: 1px solid grey;
-	height: 60%;
-	overflow: scroll;
+  border-top: 1px solid grey;
+  height: 60%;
+  overflow: scroll;
 }
 
 .notification {
-	padding: 1em;
-	font-size: 0.6em;
-	border-bottom: 1px solid grey;
+  padding: 1rem 2rem 1rem 2rem;
+  font-size: 0.8rem;
+  border-bottom: 1px solid grey;
 }
