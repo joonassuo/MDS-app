@@ -1,88 +1,87 @@
 .offer-card {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  margin-bottom: 1em;
-  width: 100vw;
-  height: auto;
-  padding: 1.3em 1.3em 1.3em 2em;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	margin-bottom: 1em;
+	width: 100vw;
+	height: auto;
+	padding: 1.3em 1.3em 1.3em 2em;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #profile-pic {
-  width: auto;
-  height: 2.5em;
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  border-radius: 50%;
-  vertical-align: sub;
+	width: auto;
+	height: 2.5em;
+	border: 1px solid rgba(0, 0, 0, 0.8);
+	border-radius: 50%;
+	vertical-align: sub;
 }
 
 .user-details {
-  margin-left: 1em;
-  display: inline-block;
-  position: relative;
-  height: 2.5em;
+	margin-left: 1em;
+	display: inline-block;
+	position: relative;
+	height: 2.5em;
 }
 
 #username,
 .karma-container,
 #karma-icon,
 #karma {
-  display: inline;
+	display: inline;
 }
 
 #karma-icon {
-  height: 0.8em;
-  width: auto;
-  vertical-align: middle;
+	height: 0.8em;
+	width: auto;
+	vertical-align: middle;
 }
 
 #karma {
-  vertical-align: middle;
-  margin-left: 2px;
+	vertical-align: middle;
+	margin-left: 2px;
 }
 
 #date {
-  font-size: 0.8em;
+	font-size: 0.8em;
 }
 
-#type {
-  font-size: 0.8em;
-  margin-top: 1em;
-  color: rgb(173, 32, 32);
-  margin-bottom: -0.3em;
+#level {
+	font-size: 0.8em;
+	margin-top: 1em;
+	color: rgb(173, 32, 32);
+	margin-bottom: -0.3em;
 }
 
 #title {
-  font-size: 1.3em;
-  margin-bottom: 0.8em;
+	font-size: 1.3em;
+	margin-bottom: 0.8em;
 }
 
 #cost-icon,
 #cost,
-.duration-container,
 #duration-icon,
 #duration {
-  display: inline-block;
+	display: inline-block;
 }
 
 #cost-icon,
 #duration-icon {
-  height: 1em;
-  width: auto;
-  vertical-align: middle;
+	height: 1em;
+	width: auto;
+	vertical-align: middle;
 }
 
 #duration-icon {
-  margin-left: 1.5em;
+	margin-left: 1.5em;
 }
 
 #cost,
 #duration {
-  font-size: 1em;
-  vertical-align: middle;
-  margin-left: 5px;
+	font-size: 1em;
+	vertical-align: middle;
+	margin-left: 5px;
 }
 
 #description {
-  margin: 2rem;
-  margin-left: 1rem;
+	margin: 2rem;
+	margin-left: 1rem;
 }

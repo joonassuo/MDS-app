@@ -27,7 +27,7 @@ router.post("/", (req, res) => {
 	const {
 		creator,
 		cost,
-		type,
+		level,
 		expiresDate,
 		description,
 		duration,
@@ -35,14 +35,14 @@ router.post("/", (req, res) => {
 		isTradeable,
 	} = req.body;
 
-	if (!creator || !cost || !type || !expiresDate || !description || !title) {
+	if (!creator || !cost || !level || !expiresDate || !description || !title) {
 		return res.status(400).json({ msg: "Required information missing" });
 	}
 
 	const newOffer = new Offer({
 		creator,
 		cost,
-		type,
+		level,
 		expiresDate,
 		description,
 		duration,

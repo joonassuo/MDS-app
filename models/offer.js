@@ -4,52 +4,52 @@ const Schema = mongoose.Schema;
 const offerSchema = new Schema({
 	creator: {
 		type: Object,
-		required: true
+		required: true,
 	},
 	buyer: {
 		type: Object,
-		required: false
+		required: false,
 	},
 	cost: {
 		type: Number,
-		required: true
+		required: true,
 	},
-	type: {
-		type: String,
-		required: true
+	level: {
+		type: Number,
+		required: true,
 	},
 	duration: {
 		type: Number,
-		required: false
+		required: false,
 	},
 	createdDate: {
 		type: Date,
-		default: Date.now
+		default: Date.now,
 	},
 	expiresDate: {
 		type: Date,
-		required: true
+		required: true,
 	},
 	description: {
 		type: String,
-		required: false
+		required: false,
 	},
 	title: {
 		type: String,
-		required: true
+		required: true,
 	},
 	isActive: {
 		type: Boolean,
-		default: false
+		default: false,
 	},
 	isCompleted: {
 		type: Boolean,
-		default: false
+		default: false,
 	},
 	isTradeable: {
 		type: Boolean,
-		required: false
-	}
+		required: false,
+	},
 });
 
 module.exports = Offer = mongoose.model("offer", offerSchema);

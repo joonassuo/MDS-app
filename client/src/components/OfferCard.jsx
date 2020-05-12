@@ -10,6 +10,7 @@ const OfferCard = (props) => {
 	const user = useSelector((state) => state.auth.user);
 	const offer = props.offer;
 	const dispatch = useDispatch();
+	const levels = ["BEGINNER", "INTERMEDIATE", "ADVANCED", "EXPERT"];
 
 	// Set profile pic, or default if none
 	const profilePic = offer.creator.profile_picture
@@ -62,16 +63,12 @@ const OfferCard = (props) => {
 					</div>
 					<div id="date">{offer.createdDate.substring(0, 10)}</div>
 				</div>
-				<div id="type">{offer.type.toUpperCase()}</div>
+				<div id="level">{levels[offer.level]}</div>
 				<div id="title">{offer.title.toUpperCase()}</div>
 				<img src="/money-bag.png" alt="money" id="cost-icon" />
 				<div id="cost">{offer.cost}</div>
-				{offer.type === "lesson" ? (
-					<div className="duration-container">
-						<img src="/clock.png" alt="clock" id="duration-icon" />
-						<div id="duration">{durationValue(offer.duration)}</div>
-					</div>
-				) : null}
+				<img src="/clock.png" alt="clock" id="duration-icon" />
+				<div id="duration">{durationValue(offer.duration)}</div>
 				{isActive ? (
 					<div className="details-container">
 						<div id="description">"{offer.description}"</div>
