@@ -27,6 +27,7 @@
 #karma-icon,
 #karma {
 	display: inline;
+	color: grey;
 }
 
 #karma-icon {
@@ -42,6 +43,13 @@
 
 #date {
 	font-size: 0.8em;
+	color: grey;
+}
+
+#title,
+#level {
+	width: 100%;
+	text-align: center;
 }
 
 #level {
@@ -82,6 +90,19 @@
 }
 
 #description {
+	text-align: center;
 	margin: 2rem;
-	margin-left: 1rem;
+}
+
+#buy-button,
+#delete-button {
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
+	width: 40%;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	text-align: center;
+	padding: 0.3rem;
+	margin-bottom: 2rem;
 }

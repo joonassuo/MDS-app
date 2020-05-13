@@ -73,24 +73,39 @@ const OfferCard = (props) => {
 					{levels[offer.level].label}
 				</div>
 				<div id="title">{offer.title.toUpperCase()}</div>
-				<img src="/money-bag.png" alt="money" id="cost-icon" />
-				<div id="cost">{offer.cost}</div>
-				<img src="/clock.png" alt="clock" id="duration-icon" />
-				<div id="duration">{durationValue(offer.duration)}</div>
 				{isActive ? (
 					<div className="details-container">
 						<div id="description">"{offer.description}"</div>
 						{user && props.offer.creator.id === user._id ? (
 							<div>
-								<button>DELETE</button>
+								<div id="delete-button">DELETE</div>
 							</div>
 						) : (
-							<button id="buy-button" onClick={() => handleBuy()}>
+							<div
+								id="buy-button"
+								onClick={() => {
+									if (
+										window.confirm(
+											"Buy " +
+												offer.title.toUpperCase() +
+												" for " +
+												offer.cost +
+												"?"
+										)
+									) {
+										handleBuy();
+									}
+								}}
+							>
 								BUY
-							</button>
+							</div>
 						)}
 					</div>
 				) : null}
+				<img src="/money-bag.png" alt="money" id="cost-icon" />
+				<div id="cost">{offer.cost}</div>
+				<img src="/clock.png" alt="clock" id="duration-icon" />
+				<div id="duration">{durationValue(offer.duration)}</div>
 			</div>
 		</div>
 	);
