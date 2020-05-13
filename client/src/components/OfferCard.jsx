@@ -10,7 +10,12 @@ const OfferCard = (props) => {
 	const user = useSelector((state) => state.auth.user);
 	const offer = props.offer;
 	const dispatch = useDispatch();
-	const levels = ["BEGINNER", "INTERMEDIATE", "ADVANCED", "EXPERT"];
+	const levels = [
+		{ label: "BEGINNER", color: "green" },
+		{ label: "INTERMEDIATE", color: "yellow" },
+		{ label: "ADVANCED", color: "blue" },
+		{ label: "EXPERT", color: "red" },
+	];
 
 	// Set profile pic, or default if none
 	const profilePic = offer.creator.profile_picture
@@ -41,6 +46,7 @@ const OfferCard = (props) => {
 				buyer: {
 					username: user.username,
 					id: user._id,
+					profile_picture: user.profile_picture,
 				},
 				isRead: false,
 				date: Date.now(),
@@ -63,7 +69,9 @@ const OfferCard = (props) => {
 					</div>
 					<div id="date">{offer.createdDate.substring(0, 10)}</div>
 				</div>
-				<div id="level">{levels[offer.level]}</div>
+				<div id="level" style={{ color: levels[offer.level].color }}>
+					{levels[offer.level].label}
+				</div>
 				<div id="title">{offer.title.toUpperCase()}</div>
 				<img src="/money-bag.png" alt="money" id="cost-icon" />
 				<div id="cost">{offer.cost}</div>
@@ -72,9 +80,15 @@ const OfferCard = (props) => {
 				{isActive ? (
 					<div className="details-container">
 						<div id="description">"{offer.description}"</div>
-						<button id="buy-button" onClick={() => handleBuy()}>
-							BUY
-						</button>
+						{user && props.offer.creator.id === user._id ? (
+							<div>
+								<button>DELETE</button>
+							</div>
+						) : (
+							<button id="buy-button" onClick={() => handleBuy()}>
+								BUY
+							</button>
+						)}
 					</div>
 				) : null}
 			</div>

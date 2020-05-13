@@ -13,6 +13,12 @@ const AddOffer = (props) => {
 	const [level, setLevel] = useState(0);
 	const [ready, setReady] = useState(false);
 	const user = useSelector((state) => state.auth.user);
+	const levels = [
+		{ label: "BEGINNER", color: "green" },
+		{ label: "INTERMEDIATE", color: "yellow" },
+		{ label: "ADVANCED", color: "blue" },
+		{ label: "EXPERT", color: "red" },
+	];
 	const dispatch = useDispatch();
 
 	const durationValue = (duration) => {
@@ -76,12 +82,6 @@ const AddOffer = (props) => {
 		setReady(true);
 	};
 
-	// Get level label based on slider value
-	const getLevel = (level) => {
-		const levels = ["Beginner", "Intermediate", "Advanced", "Expert"];
-		return levels[level];
-	};
-
 	return ready ? (
 		<Redirect to="/" />
 	) : (
@@ -107,7 +107,9 @@ const AddOffer = (props) => {
 				/>
 				<div className="level-container">
 					<div id="level-label">LEVEL</div>
-					<div id="level">{getLevel(level)}</div>
+					<div id="level" style={{ color: levels[level].color }}>
+						{levels[level].label}
+					</div>
 					<input
 						type="range"
 						min="0"

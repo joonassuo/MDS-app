@@ -1,0 +1,54 @@
+.active-offercard {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	margin-bottom: 1em;
+	padding: 1.3em 1.3em 1.3em 2em;
+}
+
+.active-details {
+	text-align: center;
+}
+
+.creator-buyer-container {
+	width: 60%;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	margin-top: 1rem;
+}
+
+.creator-container,
+.buyer-container {
+	display: inline-block;
+	width: 50%;
+	text-align: center;
+}
+
+#active-title {
+	font-size: 1.3rem;
+}
+
+#seller,
+#buyer {
+	margin-bottom: 0.5rem;
+}
+
+.active-buttons-container {
+	margin-top: 2rem;
+	text-align: center;
+}
+
+.active-button {
+	width: 40%;
+	text-align: center;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
+	margin-bottom: 1rem;
+	padding: 0.5rem;
+}
+
+#active-report {
+	color: rgb(32, 143, 235);
+}

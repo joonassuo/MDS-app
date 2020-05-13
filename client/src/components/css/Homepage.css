@@ -22,6 +22,11 @@
 	opacity: 0.1;
 }
 
+.carousel-control-next,
+.carousel-control-prev {
+	display: none;
+}
+
 /* MAIN CONTENT */
 .navigation-bar {
 	background-color: white;

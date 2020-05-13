@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import OfferCard from "./OfferCard";
+import ActiveOffer from "./ActiveOffer";
 import { useSelector } from "react-redux";
 import Carousel from "react-bootstrap/Carousel";
 import Navbar from "./Navbar";
@@ -46,12 +47,40 @@ const Homepage = () => {
 				</Carousel.Item>
 				<Carousel.Item>
 					<div>
-						<h1>slide2</h1>
+						{offerList && user ? (
+							<div className="cards-container">
+								{offerList
+									.filter(
+										(offer) =>
+											offer.creator.id === user._id &&
+											offer.isActive
+									)
+									.map((offer) => (
+										<ActiveOffer
+											offer={offer}
+											key={offer._id}
+										/>
+									))}
+							</div>
+						) : null}
 					</div>
 				</Carousel.Item>
 				<Carousel.Item>
 					<div>
-						<h1>slide2</h1>
+						{offerList && user ? (
+							<div className="cards-container">
+								{offerList
+									.filter(
+										(offer) => offer.creator.id === user._id
+									)
+									.map((offer) => (
+										<OfferCard
+											offer={offer}
+											key={offer._id}
+										/>
+									))}
+							</div>
+						) : null}
 					</div>
 				</Carousel.Item>
 			</Carousel>
