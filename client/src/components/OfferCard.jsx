@@ -52,8 +52,13 @@ const OfferCard = (props) => {
 				date: Date.now(),
 			},
 		});
+		console.log(body);
+
 		modifyOffer(offer._id, userData);
 		modifyUser(offer.creator.id, body);
+		modifyUser(user._id, {
+			money: user.money - offer.cost,
+		});
 		getOffers()(dispatch);
 	};
 

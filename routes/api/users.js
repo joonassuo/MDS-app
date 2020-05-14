@@ -117,18 +117,21 @@ router.put("/", (req, res) => {
 	r.karma ? (body.karma = r.karma) : null;
 	r.money ? (body.money = r.money) : null;
 
-	// Find user
+	// Check for notifications in req
 
+	// Find user and update
 	User.updateOne(
 		{ _id: id },
 		{
 			$set: body,
-			$push: {
-				notifications: {
-					$each: [r.notification],
-					$position: 0,
-				},
-			},
+			$push: r.notification
+				? {
+						notifications: {
+							$each: [r.notification],
+							$position: 0,
+						},
+				  }
+				: null,
 		}
 	)
 		.then((response) => res.send(response))
