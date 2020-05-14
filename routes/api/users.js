@@ -15,6 +15,14 @@ router.get("/", (req, res) => {
 	});
 });
 
+// @route	GET api/users/:id
+// @desc	Get user with id
+router.get("/:id", (req, res) => {
+	User.findById(req.params.id).then((user) => {
+		res.json(user);
+	});
+});
+
 // @route	POST api/users/hive
 // @desc	Register Hive user
 router.post("/hive", (req, res) => {
@@ -103,7 +111,6 @@ router.post("/", (req, res) => {
 
 // @route	PUT api/users
 // @desc	Modify user data
-
 router.put("/", (req, res) => {
 	const id = req.headers.id;
 	const r = req.body;
@@ -117,25 +124,27 @@ router.put("/", (req, res) => {
 	r.karma ? (body.karma = r.karma) : null;
 	r.money ? (body.money = r.money) : null;
 
-	// Check for notifications in req
-
 	// Find user and update
 	User.updateOne(
 		{ _id: id },
 		{
-			$set: body,
-			$push: r.notification
-				? {
-						notifications: {
-							$each: [r.notification],
-							$position: 0,
-						},
-				  }
-				: null,
+			$set: r,
 		}
-	)
-		.then((response) => res.send(response))
-		.catch((err) => res.send(err));
+	).catch((err) => res.send(err));
+
+	if (r.notification) {
+		User.updateOne(
+			{ _id: id },
+			{
+				$push: {
+					notifications: {
+						$each: [r.notification],
+						$position: 0,
+					},
+				},
+			}
+		).catch((err) => res.send(err));
+	}
 });
 
 module.exports = router;

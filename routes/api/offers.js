@@ -32,7 +32,7 @@ router.post("/", (req, res) => {
 		description,
 		duration,
 		title,
-		isTradeable,
+		buyer,
 	} = req.body;
 
 	if (!creator || !cost || !level || !expiresDate || !description || !title) {
@@ -47,7 +47,7 @@ router.post("/", (req, res) => {
 		description,
 		duration,
 		title,
-		isTradeable,
+		buyer,
 	});
 
 	newOffer.save().then((offer) => {

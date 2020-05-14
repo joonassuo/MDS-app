@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import OfferCard from "./OfferCard";
 import ActiveOffer from "./ActiveOffer";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Carousel from "react-bootstrap/Carousel";
 import Navbar from "./Navbar";
 import Addoffer from "./AddOffer";
@@ -23,6 +23,9 @@ const Homepage = () => {
 				<div>My offers</div>
 			</div>
 			<Carousel classname="carousel" interval={null}>
+				{/*
+				--------------BROWSE ALL OFFERS---------------
+				*/}
 				<Carousel.Item>
 					<div>
 						{offerList ? (
@@ -45,6 +48,9 @@ const Homepage = () => {
 						/>
 					</div>
 				</Carousel.Item>
+				{/*
+				-------------BROWSE ACTIVE OFFERS--------------
+				*/}
 				<Carousel.Item>
 					<div>
 						{offerList && user ? (
@@ -52,19 +58,26 @@ const Homepage = () => {
 								{offerList
 									.filter(
 										(offer) =>
-											offer.creator.id === user._id &&
+											(offer.creator.id === user._id ||
+												offer.buyer._id === user._id) &&
 											offer.isActive
 									)
 									.map((offer) => (
 										<ActiveOffer
 											offer={offer}
 											key={offer._id}
+											isBuyer={
+												offer.buyer._id === user._id
+											}
 										/>
 									))}
 							</div>
 						) : null}
 					</div>
 				</Carousel.Item>
+				{/*
+				--------------BROWSE YOUR OFFERS--------------
+				*/}
 				<Carousel.Item>
 					<div>
 						{offerList && user ? (

@@ -8,9 +8,9 @@ import { Redirect } from "react-router-dom";
 const AddOffer = (props) => {
 	const [title, setTitle] = useState("");
 	const [cost, setCost] = useState(0);
-	const [duration, setDuration] = useState(30);
+	const [duration, setDuration] = useState(15);
 	const [description, setDescription] = useState("");
-	const [level, setLevel] = useState(0);
+	const [level, setLevel] = useState("0");
 	const [ready, setReady] = useState(false);
 	const user = useSelector((state) => state.auth.user);
 	const levels = [
@@ -75,9 +75,13 @@ const AddOffer = (props) => {
 			description,
 			duration,
 			title,
+			buyer: {
+				id: "",
+			},
 		};
 
 		addOffer(offer)(dispatch);
+		props.toggleAdd(false);
 		getOffers()(dispatch);
 		setReady(true);
 	};
@@ -124,9 +128,10 @@ const AddOffer = (props) => {
 					<div id="duration">{durationValue(duration)}</div>
 					<input
 						type="range"
-						min="0"
+						min="15"
 						max="240"
 						step="15"
+						value={duration}
 						className="slider"
 						onChange={(e) => onChange(e, "duration")}
 					/>

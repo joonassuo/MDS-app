@@ -1,10 +1,18 @@
-import { GET_USERS } from "./types";
 import axios from "axios";
+import { USER_LOADED } from "./types";
 
-export const getUsers = () => {
-	return {
-		type: GET_USERS,
-	};
+export const getUser = (id) => (dispatch) => {
+	axios
+		.get("/api/users/" + id)
+		.then((res) =>
+			dispatch({
+				type: USER_LOADED,
+				payload: res.data,
+			})
+		)
+		.catch((err) => {
+			console.log(err);
+		});
 };
 
 export const modifyUser = (id, data) => {

@@ -48,16 +48,20 @@ const ActiveOffer = (props) => {
 								id="profile-pic"
 								alt="profile-pic"
 							/>
-							<div>{offer.creator.username}</div>
+							<div>
+								{props.isBuyer ? offer.creator.username : "YOU"}
+							</div>
 						</div>
 						<div className="buyer-container">
 							<div id="buyer">BUYER</div>
 							<img
-								src={offer.creator.profile_picture}
+								src={offer.buyer.profile_picture}
 								id="profile-pic"
 								alt="profile-pic"
 							/>
-							<div>{offer.buyer.username}</div>
+							<div>
+								{props.isBuyer ? "YOU" : offer.buyer.username}
+							</div>
 						</div>
 					</div>
 					<div className="active-buttons-container">

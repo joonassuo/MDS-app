@@ -1,12 +1,7 @@
 import axios from "axios";
 import { returnErrors } from "./errorActions";
 
-import {
-	GET_OFFERS,
-	OFFERS_LOADING,
-	GET_OFFERS_ERROR,
-	ADD_OFFER_SUCCESS,
-} from "./types";
+import { GET_OFFERS, OFFERS_LOADING, GET_OFFERS_ERROR } from "./types";
 
 // Get all offers and dispatch to state
 export const getOffers = () => (dispatch) => {

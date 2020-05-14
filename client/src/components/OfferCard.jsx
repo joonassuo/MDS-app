@@ -4,6 +4,7 @@ import uuid from "react-uuid";
 import { useSelector, useDispatch } from "react-redux";
 import { modifyOffer, getOffers } from "../actions/offerActions";
 import { modifyUser } from "../actions/userActions";
+import axios from "axios";
 
 const OfferCard = (props) => {
 	const [isActive, setActive] = useState(false);
@@ -36,6 +37,7 @@ const OfferCard = (props) => {
 			firstname: user.firstname,
 			lastname: user.lastname,
 			username: user.username,
+			profile_picture: user.profile_picture,
 		});
 
 		const body = JSON.stringify({
@@ -52,14 +54,24 @@ const OfferCard = (props) => {
 				date: Date.now(),
 			},
 		});
-		console.log(body);
 
-		modifyOffer(offer._id, userData);
-		modifyUser(offer.creator.id, body);
-		modifyUser(user._id, {
-			money: user.money - offer.cost,
-		});
-		getOffers()(dispatch);
+		// Get seller money and add
+		axios
+			.get("/api/users/" + offer.creator.id)
+			.then(
+				modifyUser(user._id, {
+					money: user.money - offer.cost,
+				})
+			)
+			.then((res) => {
+				modifyUser(offer.creator.id, {
+					money: res.data.money + offer.cost,
+				});
+			})
+			.then(modifyOffer(offer._id, userData))
+			.then(modifyUser(offer.creator.id, body))
+			.then(getOffers()(dispatch))
+			.catch((err) => console.log(err));
 	};
 
 	return (

@@ -9,7 +9,6 @@ import { Provider } from "react-redux";
 import store from "./store";
 import { loadUser } from "./actions/authActions";
 import { getOffers } from "./actions/offerActions";
-import AddOffer from "./components/AddOffer";
 
 class App extends Component {
 	componentDidMount() {
