@@ -16,7 +16,6 @@ export const getUser = (id) => (dispatch) => {
 };
 
 export const modifyUser = (id, data) => {
-	console.log(id + " " + data);
 	const config = {
 		headers: {
 			"Content-type": "application/json",

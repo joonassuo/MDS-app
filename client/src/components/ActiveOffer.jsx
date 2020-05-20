@@ -18,6 +18,9 @@ const ActiveOffer = (props) => {
 		return hours + ":" + minutes + (minutes < 10 ? "0" : "") + " h";
 	};
 
+	// On complete offer handler
+	const completeOffer = () => {};
+
 	return (
 		<div className="active-offercard">
 			<div
@@ -65,7 +68,11 @@ const ActiveOffer = (props) => {
 						</div>
 					</div>
 					<div className="active-buttons-container">
-						<div className="active-button" id="active-complete">
+						<div
+							className="active-button"
+							id="active-complete"
+							onClick={() => completeOffer()}
+						>
 							COMPLETE
 						</div>
 						<div id="active-report">Report</div>

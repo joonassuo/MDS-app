@@ -58,11 +58,7 @@ router.post("/", (req, res) => {
 // @route	PUT api/offers
 // @desc	Modify an offer
 router.put("/", (req, res) => {
-	const buyer = req.body;
-	Offer.updateOne(
-		{ _id: req.headers.id },
-		{ $set: { buyer, isActive: true } }
-	)
+	Offer.updateOne({ _id: req.headers.id }, { $set: req.body })
 		.then((response) => res.send(response))
 		.catch((err) => res.send(err));
 });

@@ -41,7 +41,7 @@ export const addOffer = (offer) => (dispatch) => {
 };
 
 // Modify offer
-export const modifyOffer = (id, user) => {
+export const modifyOffer = (id, data) => {
 	const config = {
 		headers: {
 			"Content-type": "application/json",
@@ -50,7 +50,7 @@ export const modifyOffer = (id, user) => {
 	};
 
 	axios
-		.put("/api/offers", user, config)
+		.put("/api/offers", data, config)
 		.then((res) => console.log(res))
 		.catch((err) => console.log(err));
 };

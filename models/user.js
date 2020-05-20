@@ -21,7 +21,7 @@ const UserSchema = new Schema({
 	},
 	hive_id: {
 		type: Number,
-		required: false,
+		default: 0,
 	},
 	notifications: {
 		type: Array,

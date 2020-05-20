@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./css/offerCard.css";
 import uuid from "react-uuid";
+import { Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { modifyOffer, getOffers } from "../actions/offerActions";
 import { modifyUser } from "../actions/userActions";
@@ -8,6 +9,7 @@ import axios from "axios";
 
 const OfferCard = (props) => {
 	const [isActive, setActive] = useState(false);
+	const [redirect, setRedirect] = useState(false);
 	const user = useSelector((state) => state.auth.user);
 	const offer = props.offer;
 	const dispatch = useDispatch();
@@ -32,12 +34,15 @@ const OfferCard = (props) => {
 
 	// Handle buy of offer
 	const handleBuy = () => {
-		const userData = JSON.stringify({
-			_id: user._id,
-			firstname: user.firstname,
-			lastname: user.lastname,
-			username: user.username,
-			profile_picture: user.profile_picture,
+		const buyer = JSON.stringify({
+			buyer: {
+				_id: user._id,
+				firstname: user.firstname,
+				lastname: user.lastname,
+				username: user.username,
+				profile_picture: user.profile_picture,
+			},
+			isActive: true,
 		});
 
 		const body = JSON.stringify({
@@ -68,13 +73,16 @@ const OfferCard = (props) => {
 					money: res.data.money + offer.cost,
 				});
 			})
-			.then(modifyOffer(offer._id, userData))
+			.then(modifyOffer(offer._id, buyer))
 			.then(modifyUser(offer.creator.id, body))
 			.then(getOffers()(dispatch))
+			.then(setRedirect(true))
 			.catch((err) => console.log(err));
 	};
 
-	return (
+	return redirect ? (
+		<Redirect to="/" />
+	) : (
 		<div>
 			<div className="offer-card" onClick={() => setActive(!isActive)}>
 				<img src={profilePic} alt="profilePic" id="profile-pic" />
