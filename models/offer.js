@@ -46,9 +46,13 @@ const offerSchema = new Schema({
 		type: Boolean,
 		default: false,
 	},
-	isTradeable: {
+	creatorRating: {
 		type: Boolean,
-		required: false,
+		default: false,
+	},
+	buyerRating: {
+		type: Boolean,
+		default: false,
 	},
 });
 

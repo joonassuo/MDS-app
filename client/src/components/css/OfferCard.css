@@ -46,59 +46,54 @@
 	color: grey;
 }
 
-#title,
-#level {
+#title {
 	width: 100%;
 	text-align: center;
-}
-
-#level {
-	font-size: 0.8em;
-	margin-top: 1em;
-	color: rgb(173, 32, 32);
-	margin-bottom: -0.3em;
-}
-
-#title {
-	font-size: 1.3em;
-	margin-bottom: 0.8em;
+	font-size: 1.5em;
+	margin: 2rem 0 2rem 0;
 }
 
 #cost-icon,
 #cost,
 #duration-icon,
-#duration {
+#duration,
+#level,
+#level-icon {
 	display: inline-block;
 }
 
 #cost-icon,
-#duration-icon {
+#duration-icon,
+#level-icon {
 	height: 1em;
 	width: auto;
 	vertical-align: middle;
 }
 
-#duration-icon {
+#duration-icon,
+#level-icon {
 	margin-left: 1.5em;
 }
 
 #cost,
-#duration {
+#duration,
+#level {
 	font-size: 1em;
+	font-weight: 100;
 	vertical-align: middle;
 	margin-left: 5px;
 }
 
 #description {
-	text-align: center;
 	margin: 2rem;
+	font-size: 0.9rem;
 }
 
 #buy-button,
 #delete-button {
 	border: 1px solid rgba(0, 0, 0, 0.2);
-	border-radius: 10px;
-	width: 40%;
+	border-radius: 9px;
+	width: 30%;
 	position: relative;
 	left: 50%;
 	transform: translateX(-50%);

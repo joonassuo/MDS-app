@@ -14,10 +14,10 @@ const AddOffer = (props) => {
 	const [ready, setReady] = useState(false);
 	const user = useSelector((state) => state.auth.user);
 	const levels = [
-		{ label: "BEGINNER", color: "green" },
-		{ label: "INTERMEDIATE", color: "yellow" },
-		{ label: "ADVANCED", color: "blue" },
-		{ label: "EXPERT", color: "red" },
+		{ label: "BEGINNER", color: "rgb(89, 205, 144)" },
+		{ label: "INTERMEDIATE", color: "rgb(0, 166, 251)" },
+		{ label: "ADVANCED", color: "rgb(246, 81, 29)" },
+		{ label: "EXPERT", color: "rgb(241, 91, 181)" },
 	];
 	const dispatch = useDispatch();
 

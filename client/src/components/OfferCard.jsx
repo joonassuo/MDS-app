@@ -14,10 +14,10 @@ const OfferCard = (props) => {
 	const offer = props.offer;
 	const dispatch = useDispatch();
 	const levels = [
-		{ label: "BEGINNER", color: "green" },
-		{ label: "INTERMEDIATE", color: "yellow" },
-		{ label: "ADVANCED", color: "blue" },
-		{ label: "EXPERT", color: "red" },
+		{ label: "BEGINNER", color: "rgb(89, 205, 144)" },
+		{ label: "INTERMEDIATE", color: "rgb(0, 166, 251)" },
+		{ label: "ADVANCED", color: "rgb(246, 81, 29)" },
+		{ label: "EXPERT", color: "rgb(241, 91, 181)" },
 	];
 
 	// Set profile pic, or default if none
@@ -94,9 +94,6 @@ const OfferCard = (props) => {
 					</div>
 					<div id="date">{offer.createdDate.substring(0, 10)}</div>
 				</div>
-				<div id="level" style={{ color: levels[offer.level].color }}>
-					{levels[offer.level].label}
-				</div>
 				<div id="title">{offer.title.toUpperCase()}</div>
 				{isActive ? (
 					<div className="details-container">
@@ -131,6 +128,10 @@ const OfferCard = (props) => {
 				<div id="cost">{offer.cost}</div>
 				<img src="/clock.png" alt="clock" id="duration-icon" />
 				<div id="duration">{durationValue(offer.duration)}</div>
+				<img src="/level.png" alt="level" id="level-icon" />
+				<div id="level" style={{ color: levels[offer.level].color }}>
+					{levels[offer.level].label}
+				</div>
 			</div>
 		</div>
 	);

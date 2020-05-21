@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import OfferCard from "./OfferCard";
 import ActiveOffer from "./ActiveOffer";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Carousel from "react-bootstrap/Carousel";
 import Navbar from "./Navbar";
 import Addoffer from "./AddOffer";
 import "./css/Homepage.css";
-import { modifyOffer } from "../actions/offerActions";
+import { modifyOffer, getOffers } from "../actions/offerActions";
 import { modifyUser } from "../actions/userActions";
 
 const Homepage = () => {
 	const [isAdd, setIsAdd] = useState(false);
 	const [showCompletePopup, setShowCompletePopup] = useState(false);
 	const [toComplete, setToComplete] = useState({});
+	const dispatch = useDispatch();
 	const isAuth = useSelector((state) => state.auth.isAuthenticated);
 	const offerList = useSelector((state) => state.offer.offers);
 	const user = useSelector((state) => state.auth.user);
@@ -35,6 +36,8 @@ const Homepage = () => {
 			const offerBody = JSON.stringify({
 				isActive: false,
 				isCompleted: true,
+				buyerRating: isCreator ? true : false,
+				creatorRating: isCreator ? false : true,
 			});
 			const userBody = JSON.stringify({
 				karma: user.karma + rating * 2,
@@ -43,7 +46,13 @@ const Homepage = () => {
 
 			modifyOffer(toComplete._id, offerBody);
 			modifyUser(id, userBody);
+			getOffers()(dispatch);
+			setShowCompletePopup(false);
 		};
+
+		const pic = isCreator
+			? toComplete.buyer.profile_picture
+			: toComplete.creator.profile_picture;
 
 		return (
 			<div>
@@ -61,11 +70,7 @@ const Homepage = () => {
 					<div id="complete-pic-container">
 						<img
 							id="complete-pic"
-							src={
-								isCreator
-									? toComplete.buyer.profile_picture
-									: toComplete.creator.profile_picture
-							}
+							src={pic ? pic : "/default.png"}
 							alt="profile-pic"
 						/>
 					</div>
@@ -131,7 +136,11 @@ const Homepage = () => {
 						{offerList ? (
 							<div className="cards-container">
 								{offerList
-									.filter((offer) => !offer.isActive)
+									.filter(
+										(offer) =>
+											!offer.isActive &&
+											!offer.isCompleted
+									)
 									.map((offer) => (
 										<OfferCard
 											offer={offer}
