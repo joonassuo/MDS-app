@@ -19,7 +19,10 @@ const ActiveOffer = (props) => {
 	};
 
 	// On complete offer handler
-	const completeOffer = () => {};
+	const completeOffer = () => {
+		props.toggleShow(true);
+		props.toComplete(offer);
+	};
 
 	return (
 		<div className="active-offercard">
@@ -45,26 +48,30 @@ const ActiveOffer = (props) => {
 				<div>
 					<div className="creator-buyer-container">
 						<div className="creator-container">
-							<div id="seller">SELLER</div>
 							<img
-								src={offer.creator.profile_picture}
+								src={
+									offer.creator.profile_picture
+										? offer.creator.profile_picture
+										: "/default.png"
+								}
 								id="profile-pic"
 								alt="profile-pic"
 							/>
-							<div>
-								{props.isBuyer ? offer.creator.username : "YOU"}
-							</div>
+							<div id="seller">SELLER</div>
+							<div>{offer.creator.username}</div>
 						</div>
 						<div className="buyer-container">
-							<div id="buyer">BUYER</div>
 							<img
-								src={offer.buyer.profile_picture}
+								src={
+									offer.buyer.profile_picture
+										? offer.buyer.profile_picture
+										: "/default.png"
+								}
 								id="profile-pic"
 								alt="profile-pic"
 							/>
-							<div>
-								{props.isBuyer ? "YOU" : offer.buyer.username}
-							</div>
+							<div id="buyer">BUYER</div>
+							<div>{offer.buyer.username}</div>
 						</div>
 					</div>
 					<div className="active-buttons-container">

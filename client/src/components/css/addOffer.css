@@ -20,6 +20,7 @@
 	padding: 1.5em;
 	overflow: scroll;
 	z-index: 30;
+	border-radius: 5px;
 }
 
 .header {
