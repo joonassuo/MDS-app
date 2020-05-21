@@ -7,6 +7,7 @@ import Navbar from "./Navbar";
 import Addoffer from "./AddOffer";
 import "./css/Homepage.css";
 import { modifyOffer } from "../actions/offerActions";
+import { modifyUser } from "../actions/userActions";
 
 const Homepage = () => {
 	const [isAdd, setIsAdd] = useState(false);
@@ -17,20 +18,31 @@ const Homepage = () => {
 	const user = useSelector((state) => state.auth.user);
 
 	// OFFER COMPLETION SCREEN POPUP
-	const CompletePopup = (props) => {
+	const CompletePopup = () => {
 		const [rating, setRating] = useState(0);
 
 		// Get buyer or seller
-		const completeUser =
-			user._id === toComplete.creator.id ? user : toComplete.buyer;
+		const isCreator = user._id === toComplete.creator.id ? true : false;
 
 		// HANDLE OFFER COMPLETION EVENT
 		const handleCompletion = () => {
-			const body = JSON.stringify({
+			if (rating === 0) {
+				alert("Please enter rating");
+				return;
+			}
+
+			// PUT req bodies
+			const offerBody = JSON.stringify({
 				isActive: false,
 				isCompleted: true,
 			});
-			modifyOffer(toComplete._id, body);
+			const userBody = JSON.stringify({
+				karma: user.karma + rating * 2,
+			});
+			const id = isCreator ? toComplete.buyer.id : toComplete.creator.id;
+
+			modifyOffer(toComplete._id, offerBody);
+			modifyUser(id, userBody);
 		};
 
 		return (
@@ -49,11 +61,20 @@ const Homepage = () => {
 					<div id="complete-pic-container">
 						<img
 							id="complete-pic"
-							src={completeUser.profile_picture}
+							src={
+								isCreator
+									? toComplete.buyer.profile_picture
+									: toComplete.creator.profile_picture
+							}
 							alt="profile-pic"
 						/>
 					</div>
-					<div>Please Rate {completeUser.username.toUpperCase()}</div>
+					<div>
+						Please Rate{" "}
+						{isCreator
+							? toComplete.buyer.username.toUpperCase()
+							: toComplete.creator.username.toUpperCase()}
+					</div>
 					<div id="complete-star-container">
 						<img
 							className="complete-star"
@@ -138,7 +159,7 @@ const Homepage = () => {
 									.filter(
 										(offer) =>
 											(offer.creator.id === user._id ||
-												offer.buyer._id === user._id) &&
+												offer.buyer.id === user._id) &&
 											offer.isActive
 									)
 									.map((offer) => (

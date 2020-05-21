@@ -36,7 +36,7 @@ const OfferCard = (props) => {
 	const handleBuy = () => {
 		const buyer = JSON.stringify({
 			buyer: {
-				_id: user._id,
+				id: user._id,
 				firstname: user.firstname,
 				lastname: user.lastname,
 				username: user.username,
@@ -47,7 +47,7 @@ const OfferCard = (props) => {
 
 		const body = JSON.stringify({
 			notification: {
-				_id: uuid(),
+				id: uuid(),
 				type: "sale",
 				offer: props.offer,
 				buyer: {
