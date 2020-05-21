@@ -1,10 +1,20 @@
 .offer-card {
-	border-top: 1px solid rgba(0, 0, 0, 0.1);
-	margin-bottom: 1em;
-	width: 100vw;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	margin: 1em 0 1rem 0;
 	height: auto;
-	padding: 1.3em 1.3em 1.3em 2em;
 	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	-webkit-box-shadow: 0px 2px 2px 0px rgba(50, 50, 50, 0.3);
+	-moz-box-shadow: 0px 2px 2px 0px rgba(50, 50, 50, 0.3);
+	box-shadow: 0px 2px 2px 0px rgba(50, 50, 50, 0.3);
+}
+
+.offer-card-top,
+.offer-card-bottom {
+	padding: 0.5rem;
+	width: 100%;
 }
 
 #profile-pic {
@@ -84,9 +94,14 @@
 	margin-left: 5px;
 }
 
+.details-container {
+	text-align: center;
+}
+
 #description {
-	margin: 2rem;
 	font-size: 0.9rem;
+	font-weight: 100;
+	margin: -1rem 3rem 2rem 3rem;
 }
 
 #buy-button,

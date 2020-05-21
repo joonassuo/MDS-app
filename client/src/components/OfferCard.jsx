@@ -85,14 +85,18 @@ const OfferCard = (props) => {
 	) : (
 		<div>
 			<div className="offer-card" onClick={() => setActive(!isActive)}>
-				<img src={profilePic} alt="profilePic" id="profile-pic" />
-				<div className="user-details">
-					<div id="username">{offer.creator.username} | </div>
-					<div className="karma-container">
-						<img src="/karma.png" alt="karma" id="karma-icon" />
-						<div id="karma">{offer.creator.karma}</div>
+				<div className="offer-card-top">
+					<img src={profilePic} alt="profilePic" id="profile-pic" />
+					<div className="user-details">
+						<div id="username">{offer.creator.username} | </div>
+						<div className="karma-container">
+							<img src="/karma.png" alt="karma" id="karma-icon" />
+							<div id="karma">{offer.creator.karma}</div>
+						</div>
+						<div id="date">
+							{offer.createdDate.substring(0, 10)}
+						</div>
 					</div>
-					<div id="date">{offer.createdDate.substring(0, 10)}</div>
 				</div>
 				<div id="title">{offer.title.toUpperCase()}</div>
 				{isActive ? (
@@ -124,13 +128,18 @@ const OfferCard = (props) => {
 						)}
 					</div>
 				) : null}
-				<img src="/money-bag.png" alt="money" id="cost-icon" />
-				<div id="cost">{offer.cost}</div>
-				<img src="/clock.png" alt="clock" id="duration-icon" />
-				<div id="duration">{durationValue(offer.duration)}</div>
-				<img src="/level.png" alt="level" id="level-icon" />
-				<div id="level" style={{ color: levels[offer.level].color }}>
-					{levels[offer.level].label}
+				<div className="offer-card-bottom">
+					<img src="/money-bag.png" alt="money" id="cost-icon" />
+					<div id="cost">{offer.cost}</div>
+					<img src="/clock.png" alt="clock" id="duration-icon" />
+					<div id="duration">{durationValue(offer.duration)}</div>
+					<img src="/level.png" alt="level" id="level-icon" />
+					<div
+						id="level"
+						style={{ color: levels[offer.level].color }}
+					>
+						{levels[offer.level].label}
+					</div>
 				</div>
 			</div>
 		</div>
