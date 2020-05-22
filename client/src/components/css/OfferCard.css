@@ -11,6 +11,11 @@
 	box-shadow: 0px 2px 2px 0px rgba(50, 50, 50, 0.3);
 }
 
+#is-completed-indicator {
+	text-align: center;
+	padding: 0.3rem;
+}
+
 .offer-card-top,
 .offer-card-bottom {
 	padding: 0.5rem;

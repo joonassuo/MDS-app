@@ -66,9 +66,11 @@ router.put("/", (req, res) => {
 // @route	GET api/offers/delete/:id
 // @desc	Delete and offer
 router.get("/delete/:id", (req, res) => {
-	Offer.findOneAndRemove({ _id: req.params.id }).then((offer) => {
-		res.json(offer);
-	});
+	Offer.findOneAndRemove({ _id: req.params.id })
+		.then((offer) => {
+			res.json(offer);
+		})
+		.catch((err) => res.json(err));
 });
 
 module.exports = router;

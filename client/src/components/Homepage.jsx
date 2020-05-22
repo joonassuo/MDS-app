@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import OfferCard from "./OfferCard";
-import ActiveOffer from "./ActiveOffer";
 import { useSelector, useDispatch } from "react-redux";
 import Carousel from "react-bootstrap/Carousel";
 import Navbar from "./Navbar";
@@ -172,11 +171,12 @@ const Homepage = () => {
 											offer.isActive
 									)
 									.map((offer) => (
-										<ActiveOffer
+										<OfferCard
 											offer={offer}
 											key={offer._id}
 											toggleShow={setShowCompletePopup}
 											toComplete={setToComplete}
+											activeOffer={true}
 										/>
 									))}
 							</div>
@@ -198,6 +198,7 @@ const Homepage = () => {
 										<OfferCard
 											offer={offer}
 											key={offer._id}
+											myOffers={true}
 										/>
 									))}
 							</div>

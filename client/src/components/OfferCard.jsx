@@ -14,10 +14,22 @@ const OfferCard = (props) => {
 	const offer = props.offer;
 	const dispatch = useDispatch();
 	const levels = [
-		{ label: "BEGINNER", color: "rgb(89, 205, 144)" },
-		{ label: "INTERMEDIATE", color: "rgb(0, 166, 251)" },
-		{ label: "ADVANCED", color: "rgb(246, 81, 29)" },
-		{ label: "EXPERT", color: "rgb(241, 91, 181)" },
+		{
+			label: "BEGINNER",
+			color: "rgb(89, 205, 144)",
+		},
+		{
+			label: "INTERMEDIATE",
+			color: "rgb(0, 166, 251)",
+		},
+		{
+			label: "ADVANCED",
+			color: "rgb(246, 81, 29)",
+		},
+		{
+			label: "EXPERT",
+			color: "rgb(241, 91, 181)",
+		},
 	];
 
 	// Set profile pic, or default if none
@@ -73,6 +85,7 @@ const OfferCard = (props) => {
 					money: res.data.money + offer.cost,
 				});
 			})
+			// Modify offer and user & refresh offerlist
 			.then(modifyOffer(offer._id, buyer))
 			.then(modifyUser(offer.creator.id, body))
 			.then(getOffers()(dispatch))
@@ -80,11 +93,47 @@ const OfferCard = (props) => {
 			.catch((err) => console.log(err));
 	};
 
+	// Handle offer delete
+	const handleDelete = () => {
+		deleteOffer(offer._id);
+		getOffers()(dispatch);
+	};
+
+	// On complete offer handler
+	const completeOffer = () => {
+		props.toggleShow(true);
+		props.toComplete(offer);
+	};
+
 	return redirect ? (
 		<Redirect to="/" />
 	) : (
 		<div>
 			<div className="offer-card" onClick={() => setActive(!isActive)}>
+				{props.myOffers ? (
+					offer.isCompleted ? (
+						<div
+							id="is-completed-indicator"
+							style={{ backgroundColor: "green" }}
+						>
+							COMPLETED
+						</div>
+					) : offer.isActive ? (
+						<div
+							id="is-completed-indicator"
+							style={{ backgroundColor: "yellow" }}
+						>
+							ACTIVE
+						</div>
+					) : (
+						<div
+							id="is-completed-indicator"
+							style={{ backgroundColor: "blue" }}
+						>
+							ON SALE
+						</div>
+					)
+				) : null}
 				<div className="offer-card-top">
 					<img src={profilePic} alt="profilePic" id="profile-pic" />
 					<div className="user-details">
@@ -99,47 +148,61 @@ const OfferCard = (props) => {
 					</div>
 				</div>
 				<div id="title">{offer.title.toUpperCase()}</div>
+
 				{isActive ? (
-					<div className="details-container">
-						<div id="description">"{offer.description}"</div>
-						{user && props.offer.creator.id === user._id ? (
-							<div>
+					!props.activeOffer ? (
+						<div className="details-container">
+							<div id="description">"{offer.description}"</div>
+							{user && props.offer.creator.id === user._id ? (
+								<div>
+									<div
+										id="delete-button"
+										onClick={() => {
+											if (
+												window.confirm(
+													"Are You Sure? This operation can not be undone."
+												)
+											) {
+												handleDelete();
+											}
+										}}
+									>
+										DELETE
+									</div>
+								</div>
+							) : (
 								<div
-									id="delete-button"
+									id="buy-button"
 									onClick={() => {
 										if (
 											window.confirm(
-												"Are You Sure? This operation can not be undone."
+												"Buy " +
+													offer.title.toUpperCase() +
+													" for " +
+													offer.cost +
+													"?"
 											)
 										) {
-											deleteOffer(offer._id);
+											handleBuy();
 										}
 									}}
 								>
-									DELETE
+									BUY
 								</div>
-							</div>
-						) : (
+							)}
+						</div>
+					) : (
+						<div className="active-buttons-container">
 							<div
-								id="buy-button"
-								onClick={() => {
-									if (
-										window.confirm(
-											"Buy " +
-												offer.title.toUpperCase() +
-												" for " +
-												offer.cost +
-												"?"
-										)
-									) {
-										handleBuy();
-									}
-								}}
+								className="active-button"
+								id="active-complete"
+								onClick={() => completeOffer()}
 							>
-								BUY
+								COMPLETE
 							</div>
-						)}
-					</div>
+							<div id="active-report">Report</div>
+						</div>
+					)
 				) : null}
 				<div className="offer-card-bottom">
 					<img src="/money-bag.png" alt="money" id="cost-icon" />
@@ -149,7 +212,9 @@ const OfferCard = (props) => {
 					<img src="/level.png" alt="level" id="level-icon" />
 					<div
 						id="level"
-						style={{ color: levels[offer.level].color }}
+						style={{
+							color: levels[offer.level].color,
+						}}
 					>
 						{levels[offer.level].label}
 					</div>
