@@ -54,3 +54,13 @@ export const modifyOffer = (id, data) => {
 		.then((res) => console.log(res))
 		.catch((err) => console.log(err));
 };
+
+// Delete offer
+export const deleteOffer = (id) => {
+	axios
+		.get("/api/offers/delete/" + id)
+		.then((res) => console.log(res.data))
+		.catch((err) => {
+			console.log(err);
+		});
+};

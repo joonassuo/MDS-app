@@ -3,7 +3,7 @@ import "./css/offerCard.css";
 import uuid from "react-uuid";
 import { Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { modifyOffer, getOffers } from "../actions/offerActions";
+import { modifyOffer, getOffers, deleteOffer } from "../actions/offerActions";
 import { modifyUser } from "../actions/userActions";
 import axios from "axios";
 
@@ -104,7 +104,20 @@ const OfferCard = (props) => {
 						<div id="description">"{offer.description}"</div>
 						{user && props.offer.creator.id === user._id ? (
 							<div>
-								<div id="delete-button">DELETE</div>
+								<div
+									id="delete-button"
+									onClick={() => {
+										if (
+											window.confirm(
+												"Are You Sure? This operation can not be undone."
+											)
+										) {
+											deleteOffer(offer._id);
+										}
+									}}
+								>
+									DELETE
+								</div>
 							</div>
 						) : (
 							<div
