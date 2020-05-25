@@ -48,7 +48,7 @@ const Navbar = (props) => {
 			<div>
 				<div className="notification">
 					<div className="n-text">
-						{n.buyer.username.toUpperCase()} bought your offer{" "}
+						{n.buyer.username.toUpperCase()} bought your offer
 						{n.offer.title.toUpperCase()} for {n.offer.cost + " "}
 						Schmeckels!
 					</div>

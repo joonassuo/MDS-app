@@ -4,7 +4,7 @@ import uuid from "react-uuid";
 import { Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { modifyOffer, getOffers, deleteOffer } from "../actions/offerActions";
-import { modifyUser } from "../actions/userActions";
+import { modifyUser, modifyUserNotifications } from "../actions/userActions";
 import axios from "axios";
 
 const OfferCard = (props) => {
@@ -58,18 +58,16 @@ const OfferCard = (props) => {
 		});
 
 		const body = JSON.stringify({
-			notification: {
-				id: uuid(),
-				type: "sale",
-				offer: props.offer,
-				buyer: {
-					username: user.username,
-					id: user._id,
-					profile_picture: user.profile_picture,
-				},
-				isRead: false,
-				date: Date.now(),
+			id: uuid(),
+			type: "sale",
+			offer: props.offer,
+			buyer: {
+				username: user.username,
+				id: user._id,
+				profile_picture: user.profile_picture,
 			},
+			isRead: false,
+			date: Date.now(),
 		});
 
 		// Get seller money and add
@@ -87,7 +85,7 @@ const OfferCard = (props) => {
 			})
 			// Modify offer and user & refresh offerlist
 			.then(modifyOffer(offer._id, buyer))
-			.then(modifyUser(offer.creator.id, body))
+			.then(modifyUserNotifications(offer.creator.id, body))
 			.then(getOffers()(dispatch))
 			.then(setRedirect(true))
 			.catch((err) => console.log(err));

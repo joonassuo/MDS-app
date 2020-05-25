@@ -28,3 +28,17 @@ export const modifyUser = (id, data) => {
 		.then((res) => console.log(res.data))
 		.catch((err) => console.log(err));
 };
+
+export const modifyUserNotifications = (id, data) => {
+	const config = {
+		headers: {
+			"Content-type": "application/json",
+			id,
+		},
+	};
+
+	axios
+		.put("/api/users/notification", data, config)
+		.then((res) => console.log(res.data))
+		.catch((err) => console.log(err));
+};

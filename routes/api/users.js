@@ -111,7 +111,7 @@ router.post("/", (req, res) => {
 
 // @route	PUT api/users
 // @desc	Modify user data
-router.put("/", (req, res) => {
+/* router.put("/", (req, res) => {
 	const id = req.headers.id;
 	const r = req.body;
 	const body = {};
@@ -145,6 +145,29 @@ router.put("/", (req, res) => {
 			}
 		).catch((err) => res.send(err));
 	}
+}); */
+
+router.put("/", (req, res) => {
+	User.updateOne({ _id: req.headers.id }, { $set: req.body })
+		.then((response) => res.send(response))
+		.catch((err) => res.send(err));
+});
+
+router.put("/notification", (req, res) => {
+	const body = req.body;
+	User.updateOne(
+		{ _id: req.headers.id },
+		{
+			$push: {
+				notifications: {
+					$each: [body],
+					$position: 0,
+				},
+			},
+		}
+	)
+		.then((response) => res.send(response))
+		.catch((err) => res.send(err));
 });
 
 module.exports = router;
