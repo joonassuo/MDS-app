@@ -6,7 +6,7 @@ import Navbar from "./Navbar";
 import Addoffer from "./AddOffer";
 import "./css/Homepage.css";
 import { modifyOffer, getOffers } from "../actions/offerActions";
-import { modifyUser } from "../actions/userActions";
+import { getUser, modifyUser } from "../actions/userActions";
 
 const Homepage = () => {
 	const [isAdd, setIsAdd] = useState(false);
@@ -46,6 +46,7 @@ const Homepage = () => {
 			modifyOffer(toComplete._id, offerBody);
 			modifyUser(id, userBody);
 			getOffers()(dispatch);
+			getUser(user._id)(dispatch);
 			setShowCompletePopup(false);
 		};
 
@@ -130,7 +131,7 @@ const Homepage = () => {
 				{/*
 				--------------BROWSE ALL OFFERS---------------
 				*/}
-				<Carousel.Item>
+				<Carousel.Item id="carousel-browse">
 					<div>
 						{offerList ? (
 							<div className="cards-container">
@@ -159,7 +160,7 @@ const Homepage = () => {
 				{/*
 				-------------BROWSE ACTIVE OFFERS--------------
 				*/}
-				<Carousel.Item>
+				<Carousel.Item id="carousel-active">
 					<div>
 						{offerList && user ? (
 							<div className="cards-container">
@@ -186,7 +187,7 @@ const Homepage = () => {
 				{/*
 				--------------BROWSE YOUR OFFERS--------------
 				*/}
-				<Carousel.Item>
+				<Carousel.Item id="carousel-my-offers">
 					<div>
 						{offerList && user ? (
 							<div className="cards-container">

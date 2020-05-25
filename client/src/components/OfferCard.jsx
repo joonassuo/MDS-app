@@ -4,7 +4,11 @@ import uuid from "react-uuid";
 import { Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { modifyOffer, getOffers, deleteOffer } from "../actions/offerActions";
-import { modifyUser, modifyUserNotifications } from "../actions/userActions";
+import {
+	getUser,
+	modifyUser,
+	addUserNotification,
+} from "../actions/userActions";
 import axios from "axios";
 
 const OfferCard = (props) => {
@@ -85,8 +89,9 @@ const OfferCard = (props) => {
 			})
 			// Modify offer and user & refresh offerlist
 			.then(modifyOffer(offer._id, buyer))
-			.then(modifyUserNotifications(offer.creator.id, body))
+			.then(addUserNotification(offer.creator.id, body))
 			.then(getOffers()(dispatch))
+			.then(getUser(user._id)(dispatch))
 			.then(setRedirect(true))
 			.catch((err) => console.log(err));
 	};

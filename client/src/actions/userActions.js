@@ -29,7 +29,7 @@ export const modifyUser = (id, data) => {
 		.catch((err) => console.log(err));
 };
 
-export const modifyUserNotifications = (id, data) => {
+export const addUserNotification = (id, data) => {
 	const config = {
 		headers: {
 			"Content-type": "application/json",
@@ -39,6 +39,21 @@ export const modifyUserNotifications = (id, data) => {
 
 	axios
 		.put("/api/users/notification", data, config)
+		.then((res) => console.log(res.data))
+		.catch((err) => console.log(err));
+};
+
+export const deleteUserNotification = (id, n) => {
+	const config = {
+		headers: {
+			"Content-type": "application/json",
+			id,
+			n,
+		},
+	};
+
+	axios
+		.put("/api/users/notification/delete", {}, config)
 		.then((res) => console.log(res.data))
 		.catch((err) => console.log(err));
 };

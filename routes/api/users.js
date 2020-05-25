@@ -111,48 +111,14 @@ router.post("/", (req, res) => {
 
 // @route	PUT api/users
 // @desc	Modify user data
-/* router.put("/", (req, res) => {
-	const id = req.headers.id;
-	const r = req.body;
-	const body = {};
-
-	r.firstname ? (body.firstname = r.firstname) : null;
-	r.lastname ? (body.lastname = r.lastname) : null;
-	r.username ? (body.username = r.username) : null;
-	r.email ? (body.email = r.email) : null;
-	r.profile_picture ? (body.profile_picture = r.profile_picture) : null;
-	r.karma ? (body.karma = r.karma) : null;
-	r.money ? (body.money = r.money) : null;
-
-	// Find user and update
-	User.updateOne(
-		{ _id: id },
-		{
-			$set: r,
-		}
-	).catch((err) => res.send(err));
-
-	if (r.notification) {
-		User.updateOne(
-			{ _id: id },
-			{
-				$push: {
-					notifications: {
-						$each: [r.notification],
-						$position: 0,
-					},
-				},
-			}
-		).catch((err) => res.send(err));
-	}
-}); */
-
 router.put("/", (req, res) => {
 	User.updateOne({ _id: req.headers.id }, { $set: req.body })
 		.then((response) => res.send(response))
 		.catch((err) => res.send(err));
 });
 
+// @route	PUT api/users/notification
+// @desc	Add new notification
 router.put("/notification", (req, res) => {
 	const body = req.body;
 	User.updateOne(
@@ -162,6 +128,24 @@ router.put("/notification", (req, res) => {
 				notifications: {
 					$each: [body],
 					$position: 0,
+				},
+			},
+		}
+	)
+		.then((response) => res.send(response))
+		.catch((err) => res.send(err));
+});
+
+// @route	PUT api/users/notification/delete
+// @desc	Delete notification
+router.put("/notification/delete", (req, res) => {
+	const n = req.headers.n;
+	User.updateOne(
+		{ _id: req.headers.id },
+		{
+			$pull: {
+				notifications: {
+					id: n,
 				},
 			},
 		}

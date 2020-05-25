@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import "./css/navbar.css";
 import { logoutUser } from "../actions/authActions";
 import { Redirect } from "react-router-dom";
+import { getUser, deleteUserNotification } from "../actions/userActions";
 
 const Navbar = (props) => {
 	const [showMenu, setShowMenu] = useState(false);
@@ -52,6 +53,15 @@ const Navbar = (props) => {
 						{n.offer.title.toUpperCase()} for {n.offer.cost + " "}
 						Schmeckels!
 					</div>
+					<div
+						id="n-delete"
+						onClick={() => {
+							deleteUserNotification(props.user._id, n.id);
+							getUser(props.user._id)(dispatch);
+						}}
+					>
+						<img src="/add.png" alt="cross" />
+					</div>
 				</div>
 			</div>
 		);
@@ -86,6 +96,25 @@ const Navbar = (props) => {
 			);
 		}
 	};
+
+	/* 	const testClick = () => {
+		const activeTab = document.getElementById("carousel-active");
+		const browseTab = document.getElementById("carousel-browse");
+		const myOfferTab = document.getElementById("carousel-my-offers");
+		const indicators = document.getElementsByClassName(
+			"carousel-indicators"
+		);
+
+		browseTab.classList.remove("active");
+		myOfferTab.classList.remove("active");
+		activeTab.classList.add("active");
+
+		indicators[0].children[0].classList.remove("active");
+		indicators[0].children[1].classList.add("active");
+		indicators[0].children[2].classList.remove("active");
+
+		toggleMenu();
+	}; */
 
 	return login ? (
 		<Redirect to="/login" />
@@ -132,6 +161,7 @@ const Navbar = (props) => {
 										? notifications.map((n) => (
 												<Notification
 													notification={n}
+													user={props.user}
 												/>
 										  ))
 										: null}
