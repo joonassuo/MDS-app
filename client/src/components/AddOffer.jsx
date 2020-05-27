@@ -81,7 +81,9 @@ const AddOffer = (props) => {
 		};
 
 		addOffer(offer)(dispatch);
-		getOffers()(dispatch);
+		setTimeout(() => {
+			getOffers()(dispatch);
+		}, 1000)
 		setReady(true);
 		props.toggleAdd(false);
 	};

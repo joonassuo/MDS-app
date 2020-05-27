@@ -7,6 +7,7 @@ import Addoffer from "./AddOffer";
 import "./css/Homepage.css";
 import { modifyOffer, getOffers } from "../actions/offerActions";
 import { getUser, modifyUser } from "../actions/userActions";
+import { loadUser } from "../actions/authActions";
 
 const Homepage = () => {
 	const [isAdd, setIsAdd] = useState(false);
@@ -193,7 +194,7 @@ const Homepage = () => {
 							<div className="cards-container">
 								{offerList
 									.filter(
-										(offer) => offer.creator.id === user._id
+										(offer) => (offer.creator.id === user._id) && !offer.isActive
 									)
 									.map((offer) => (
 										<OfferCard

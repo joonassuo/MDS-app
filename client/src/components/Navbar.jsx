@@ -57,7 +57,9 @@ const Navbar = (props) => {
 						id="n-delete"
 						onClick={() => {
 							deleteUserNotification(props.user._id, n.id);
-							getUser(props.user._id)(dispatch);
+							setTimeout(() => {
+								getUser(props.user._id)(dispatch);
+							}, 1000)
 						}}
 					>
 						<img src="/add.png" alt="cross" />
@@ -96,25 +98,6 @@ const Navbar = (props) => {
 			);
 		}
 	};
-
-	/* 	const testClick = () => {
-		const activeTab = document.getElementById("carousel-active");
-		const browseTab = document.getElementById("carousel-browse");
-		const myOfferTab = document.getElementById("carousel-my-offers");
-		const indicators = document.getElementsByClassName(
-			"carousel-indicators"
-		);
-
-		browseTab.classList.remove("active");
-		myOfferTab.classList.remove("active");
-		activeTab.classList.add("active");
-
-		indicators[0].children[0].classList.remove("active");
-		indicators[0].children[1].classList.add("active");
-		indicators[0].children[2].classList.remove("active");
-
-		toggleMenu();
-	}; */
 
 	return login ? (
 		<Redirect to="/login" />
@@ -162,6 +145,7 @@ const Navbar = (props) => {
 												<Notification
 													notification={n}
 													user={props.user}
+													key={n.id}
 												/>
 										  ))
 										: null}

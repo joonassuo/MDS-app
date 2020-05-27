@@ -121,13 +121,6 @@ const OfferCard = (props) => {
 						>
 							COMPLETED
 						</div>
-					) : offer.isActive ? (
-						<div
-							id="is-completed-indicator"
-							style={{ backgroundColor: "yellow" }}
-						>
-							ACTIVE
-						</div>
 					) : (
 						<div
 							id="is-completed-indicator"
