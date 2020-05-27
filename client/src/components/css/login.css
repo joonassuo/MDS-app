@@ -1,29 +1,86 @@
 .h-align {
-	left: 50%;
-	transform: translateX(-50%);
+  left: 50%;
+  transform: translateX(-50%);
 }
 
+.login-screen {
+  width: 100vw;
+  height: 100vh;
+}
+
+.login-container {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* HIVE LOGIN */
+.hive-login-container {
+  height: 3rem;
+  border-radius: 5px;
+  position: relative;
+  width: 70%;
+  background-color: burlywood;
+}
+
+#hive-login-logo {
+  height: 70%;
+  width: auto;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 0.5rem;
+}
+
+#hive-login-text {
+  display: inline;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 2rem;
+  font-size: 1.2rem;
+  color: white;
+}
+
+/* INPUT FIELDS */
 .login-container input {
-	display: block;
-	width: 60%;
-	height: 2em;
-	position: relative;
-	margin-top: 2em !important;
-	border: none;
-	border-bottom: 1px solid black;
+  height: 3rem;
+  width: 70%;
+  margin-top: 1rem;
+  display: block;
+  position: relative;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 1rem;
 }
 
-.submit-button {
-	display: block;
-	width: 20%;
-	position: relative;
-	border-radius: 15%;
-	background-color: white;
-	margin-top: 2em;
+/* SUBMIT BUTTON */
+.register-button,
+.login-button {
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  margin: 2rem 0 2rem 0;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  width: 30%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
 }
 
+/* MISC */
 .register-link {
-	width: 100%;
-	margin-top: 2em;
-	text-align: center;
+  width: 100vw;
+  text-align: center;
+  color: blue;
+}
+
+.back-button {
+  position: fixed;
+  top: 5%;
+  right: 5%;
+  width: 2rem;
+  height: 2rem;
 }

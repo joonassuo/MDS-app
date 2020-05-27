@@ -8,6 +8,23 @@
   z-index: 15;
 }
 
+.login-button-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 6vh;
+  width: auto;
+}
+
+#login-button {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 0.5rem;
+  height: 60%;
+  width: auto;
+}
+
 .hamburger-container,
 .logo-container,
 .wallet-container {

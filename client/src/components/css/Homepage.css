@@ -1,125 +1,149 @@
 /* CAROUSEL */
 .carousel,
 .carousel-item {
-	width: 100vw;
-	height: 100vh;
-	overflow: scroll;
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll;
 }
 
 .carousel-indicators {
-	bottom: 88vh;
-	z-index: 10;
-	width: 100vw;
-	margin: 0 !important;
+  bottom: 88vh;
+  z-index: 10;
+  width: 100vw;
+  margin: 0 !important;
 }
 
 .carousel-indicators li {
-	background-color: black;
-	width: 33%;
-	margin: 0 !important;
-	border: none;
-	border-top: 5vh solid transparent;
-	opacity: 0.1;
+  background-color: black;
+  width: 33%;
+  margin: 0 !important;
+  border: none;
+  border-top: 5vh solid transparent;
+  opacity: 0.1;
 }
 
 .carousel-control-next,
 .carousel-control-prev {
-	display: none;
+  display: none;
+}
+
+.carousel-login-container {
+  width: 100%;
+  text-align: center;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.carousel-login-text {
+  font-size: 1.5rem;
+  font-weight: 100;
+}
+
+.carousel-login-button {
+  padding: 1rem;
+  margin-top: 1rem;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  width: 30%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* COMPLETE OFFER POPUP */
 .complete-offer-background {
-	position: fixed;
-	z-index: 25;
-	background-color: rgba(0, 0, 0, 0.3);
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
+  position: fixed;
+  z-index: 25;
+  background-color: rgba(0, 0, 0, 0.3);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
 }
 
 .complete-offer-container {
-	background-color: white;
-	position: fixed;
-	width: 85vw;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-	text-align: center;
-	padding: 1.5em;
-	overflow: scroll;
-	z-index: 30;
-	border-radius: 5px;
+  background-color: white;
+  position: fixed;
+  width: 85vw;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 1.5em;
+  overflow: scroll;
+  z-index: 30;
+  border-radius: 5px;
 }
 
 #complete-title {
-	font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 #complete-pic {
-	width: 7rem;
-	height: 7rem;
-	border: 1px solid black;
-	border-radius: 50%;
-	margin: 1rem;
+  width: 7rem;
+  height: 7rem;
+  border: 1px solid black;
+  border-radius: 50%;
+  margin: 1rem;
 }
 
 #complete-star-container {
-	margin: 1rem;
+  margin: 1rem;
 }
 
 .complete-star {
-	width: 2.5rem;
-	height: 2.5rem;
-	margin: 0.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 0.5rem;
 }
 
 #complete-submit,
 #complete-cancel {
-	display: inline-block;
-	width: 6rem;
-	border: 1px solid lightblue;
-	border-radius: 10px;
-	padding: 0.5rem 1rem 0.5rem 1rem;
-	margin: 1rem;
+  display: inline-block;
+  width: 6rem;
+  border: 1px solid lightblue;
+  border-radius: 10px;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  margin: 1rem;
 }
 
 /* MAIN CONTENT */
 .navigation-bar {
-	background-color: white;
-	z-index: 2;
-	position: fixed;
-	top: 6vh;
-	height: 6vh;
-	width: 100vw;
-	text-align: center;
+  background-color: white;
+  z-index: 2;
+  position: fixed;
+  top: 6vh;
+  height: 6vh;
+  width: 100vw;
+  text-align: center;
 }
 
 .navigation-bar div {
-	width: 33%;
-	display: inline-block;
-	position: relative;
-	top: 50%;
-	transform: translateY(-50%);
+  width: 33%;
+  display: inline-block;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .cards-container,
 .add-offer-container {
-	position: relative;
-	top: 12vh;
-	height: 88vh;
-	width: 100vw;
-	left: 50%;
-	transform: translateX(-50%);
+  position: relative;
+  top: 12vh;
+  height: 88vh;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 #add-button {
-	position: fixed;
-	bottom: 3em;
-	right: 2em;
-	width: auto;
-	height: 4em;
-	border-radius: 50%;
-	z-index: 10;
-	background-color: white;
+  position: fixed;
+  bottom: 3em;
+  right: 2em;
+  width: auto;
+  height: 4em;
+  border-radius: 50%;
+  z-index: 10;
+  background-color: white;
 }
