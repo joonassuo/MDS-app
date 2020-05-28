@@ -187,4 +187,18 @@
   padding: 1rem 2rem 1rem 2rem;
   font-size: 0.8rem;
   border-bottom: 1px solid grey;
+  position: relative;
+}
+
+#n-text {
+  width: 70%;
+  display: inline-block;
+}
+
+#n-delete {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  height: 1rem;
+  width: 1rem;
 }

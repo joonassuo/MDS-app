@@ -48,22 +48,22 @@ const Navbar = (props) => {
     return (
       <div>
         <div className="notification">
-          <div className="n-text">
-            {n.buyer.username.toUpperCase()} bought your offer
+          <div id="n-text">
+            {n.buyer.username.toUpperCase()} bought your offer{" "}
             {n.offer.title.toUpperCase()} for {n.offer.cost + " "}
             Schmeckels!
           </div>
-          <div
+          <img
             id="n-delete"
+            src="/cancel.png"
+            alt="cross"
             onClick={() => {
               deleteUserNotification(props.user._id, n.id);
               setTimeout(() => {
                 getUser(props.user._id)(dispatch);
               }, 1000);
             }}
-          >
-            <img src="/add.png" alt="cross" />
-          </div>
+          />
         </div>
       </div>
     );
