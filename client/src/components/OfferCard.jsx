@@ -61,6 +61,11 @@ const OfferCard = (props) => {
 
   // Handle buy of offer
   const handleBuy = () => {
+    if (offer.cost > user.money) {
+      alert("Insufficient funds");
+      return;
+    }
+
     const buyer = JSON.stringify({
       buyer: {
         id: user._id,
@@ -75,12 +80,13 @@ const OfferCard = (props) => {
     const body = JSON.stringify({
       id: uuid(),
       type: "sale",
-      offer: props.offer,
-      buyer: {
-        username: user.username,
-        id: user._id,
-        profile_picture: user.profile_picture,
-      },
+      text:
+        user.username.toUpperCase() +
+        " bought your offer " +
+        props.offer.title.toUpperCase() +
+        " for " +
+        props.offer.cost +
+        " !",
       isRead: false,
       date: Date.now(),
     });
@@ -110,7 +116,9 @@ const OfferCard = (props) => {
   // Handle offer delete
   const handleDelete = () => {
     deleteOffer(offer._id);
-    getOffers()(dispatch);
+    setTimeout(() => {
+      getOffers()(dispatch);
+    }, 1000);
   };
 
   // On complete offer handler

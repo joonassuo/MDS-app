@@ -48,11 +48,7 @@ const Navbar = (props) => {
     return (
       <div>
         <div className="notification">
-          <div id="n-text">
-            {n.buyer.username.toUpperCase()} bought your offer{" "}
-            {n.offer.title.toUpperCase()} for {n.offer.cost + " "}
-            Schmeckels!
-          </div>
+          <div id="n-text">{n.text}</div>
           <img
             id="n-delete"
             src="/cancel.png"
@@ -69,7 +65,7 @@ const Navbar = (props) => {
     );
   };
 
-  const ProfileMenu = () => {
+  const ProfileMenu = (props) => {
     return (
       <div>
         {props.nCount ? (
