@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import uuid from "react-uuid";
 import OfferCard from "./OfferCard";
 import { useSelector, useDispatch } from "react-redux";
 import Carousel from "react-bootstrap/Carousel";
@@ -7,8 +8,13 @@ import Navbar from "./Navbar";
 import Addoffer from "./AddOffer";
 import "./css/Homepage.css";
 import { modifyOffer, getOffers } from "../actions/offerActions";
-import { getUser, modifyUser } from "../actions/userActions";
+import {
+  getUser,
+  modifyUser,
+  addUserNotification,
+} from "../actions/userActions";
 import { Redirect } from "react-router-dom";
+import { set } from "mongoose";
 
 const Homepage = () => {
   const [isAdd, setIsAdd] = useState(false);
@@ -60,9 +66,24 @@ const Homepage = () => {
         karma: initialKarma + rating * 2,
       });
 
+      // PUT notification body
+      const notificationBody = JSON.stringify({
+        id: uuid(),
+        type: "rating",
+        text:
+          user.username.toUpperCase() +
+          " rated you " +
+          rating +
+          " stars for " +
+          toComplete.title.toUpperCase() +
+          "!",
+        date: Date.now(),
+      });
+
       // Make modifications and refresh user & offerlist
       modifyOffer(toComplete._id, offerBody);
       modifyUser(id, userBody);
+      addUserNotification(id, notificationBody);
       getOffers()(dispatch);
       getUser(user._id)(dispatch);
       setShowCompletePopup(false);
@@ -142,7 +163,15 @@ const Homepage = () => {
         src="/add.png"
         alt="plus"
         id="add-button"
-        onClick={() => setIsAdd(true)}
+        onClick={() => {
+          if (isAuth) {
+            setIsAdd(true);
+          } else {
+            if (window.confirm("Please login to add an offer")) {
+              setIsLogin(true);
+            }
+          }
+        }}
       />
       <Carousel classname="carousel" interval={null}>
         {/*
