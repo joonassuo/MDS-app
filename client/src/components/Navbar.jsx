@@ -120,7 +120,10 @@ const Navbar = (props) => {
                     <div id="menu-profile-name">
                       {props.user.username.toUpperCase()}
                     </div>
-                    <div id="menu-view-profile">View Your Profile</div>
+                    <div className="menu-karma-container">
+                      <img src="/karma.png" alt="karma" id="menu-karma-icon" />
+                      <div id="menu-karma">{props.user.karma}</div>
+                    </div>
                   </div>
                 </div>
                 <div className="notifications-container">

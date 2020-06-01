@@ -128,14 +128,14 @@ const OfferCard = (props) => {
           offer.isCompleted ? (
             <div
               id="is-completed-indicator"
-              style={{ backgroundColor: "green" }}
+              style={{ backgroundColor: "rgba(128, 255, 162, 0.4)" }}
             >
               COMPLETED
             </div>
           ) : (
             <div
               id="is-completed-indicator"
-              style={{ backgroundColor: "blue" }}
+              style={{ backgroundColor: "rgba(191, 239, 255, 0.4" }}
             >
               ON SALE
             </div>

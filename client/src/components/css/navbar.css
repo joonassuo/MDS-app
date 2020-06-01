@@ -86,7 +86,7 @@
 
 /*HAMBURGER MENU*/
 #hamburger-menu {
-  background-color: gold;
+  background-color: rgb(255, 255, 255);
   height: 94vh;
   position: relative;
   z-index: 30;
@@ -141,9 +141,34 @@
 }
 
 #menu-profilepic {
-  height: 8vh;
+  height: 9vh;
+  border: 1px solid lightgray;
   border-radius: 50%;
   position: relative;
+  padding: 2px;
+}
+
+.menu-karma-container {
+  margin-top: 1rem;
+}
+
+#menu-karma-icon,
+#menu-karma {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-block;
+}
+
+#menu-karma-icon {
+  height: 1.3rem;
+  width: auto;
+}
+
+#menu-karma {
+  margin-left: 3px;
+  font-size: 1rem !important;
+  height: 1rem;
 }
 
 #menu-details {

@@ -1,71 +1,71 @@
 .offer-card {
-	border: 1px solid rgba(0, 0, 0, 0.1);
-	margin: 1em 0 1rem 0;
-	height: auto;
-	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-	position: relative;
-	left: 50%;
-	transform: translateX(-50%);
-	-webkit-box-shadow: 0px 2px 2px 0px rgba(50, 50, 50, 0.3);
-	-moz-box-shadow: 0px 2px 2px 0px rgba(50, 50, 50, 0.3);
-	box-shadow: 0px 2px 2px 0px rgba(50, 50, 50, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin: 1em 0 1rem 0;
+  height: auto;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-box-shadow: 0px 2px 2px 0px rgba(50, 50, 50, 0.3);
+  -moz-box-shadow: 0px 2px 2px 0px rgba(50, 50, 50, 0.3);
+  box-shadow: 0px 2px 2px 0px rgba(50, 50, 50, 0.3);
 }
 
 #is-completed-indicator {
-	text-align: center;
-	padding: 0.3rem;
+  text-align: center;
+  padding: 0.3rem;
 }
 
 .offer-card-top,
 .offer-card-bottom {
-	padding: 0.5rem;
-	width: 100%;
+  padding: 0.5rem;
+  width: 100%;
 }
 
 #profile-pic {
-	width: auto;
-	height: 2.5em;
-	border: 1px solid rgba(0, 0, 0, 0.8);
-	border-radius: 50%;
-	vertical-align: sub;
+  width: auto;
+  height: 2.5em;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  border-radius: 50%;
+  vertical-align: sub;
 }
 
 .user-details {
-	margin-left: 1em;
-	display: inline-block;
-	position: relative;
-	height: 2.5em;
+  margin-left: 1em;
+  display: inline-block;
+  position: relative;
+  height: 2.5em;
 }
 
 #username,
 .karma-container,
 #karma-icon,
 #karma {
-	display: inline;
-	color: grey;
+  display: inline;
+  color: grey;
 }
 
 #karma-icon {
-	height: 0.8em;
-	width: auto;
-	vertical-align: middle;
+  height: 0.8em;
+  width: auto;
+  vertical-align: middle;
 }
 
 #karma {
-	vertical-align: middle;
-	margin-left: 2px;
+  vertical-align: middle;
+  margin-left: 2px;
 }
 
 #date {
-	font-size: 0.8em;
-	color: grey;
+  font-size: 0.8em;
+  color: grey;
 }
 
 #title {
-	width: 100%;
-	text-align: center;
-	font-size: 1.5em;
-	margin: 2rem 0 2rem 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1.5em;
+  margin: 2rem 0 2rem 0;
 }
 
 #cost-icon,
@@ -74,50 +74,58 @@
 #duration,
 #level,
 #level-icon {
-	display: inline-block;
+  display: inline-block;
 }
 
 #cost-icon,
 #duration-icon,
 #level-icon {
-	height: 1em;
-	width: auto;
-	vertical-align: middle;
+  height: 1em;
+  width: auto;
+  vertical-align: middle;
 }
 
 #duration-icon,
 #level-icon {
-	margin-left: 1.5em;
+  margin-left: 1.5em;
 }
 
 #cost,
 #duration,
 #level {
-	font-size: 1em;
-	font-weight: 100;
-	vertical-align: middle;
-	margin-left: 5px;
+  font-size: 1em;
+  font-weight: 100;
+  vertical-align: middle;
+  margin-left: 5px;
 }
 
 .details-container {
-	text-align: center;
+  text-align: center;
 }
 
 #description {
-	font-size: 0.9rem;
-	font-weight: 100;
-	margin: -1rem 3rem 2rem 3rem;
+  font-size: 0.9rem;
+  font-weight: 100;
+  margin: -1rem 3rem 2rem 3rem;
 }
 
 #buy-button,
-#delete-button {
-	border: 1px solid rgba(0, 0, 0, 0.2);
-	border-radius: 9px;
-	width: 30%;
-	position: relative;
-	left: 50%;
-	transform: translateX(-50%);
-	text-align: center;
-	padding: 0.3rem;
-	margin-bottom: 2rem;
+#delete-button,
+#active-complete {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 9px;
+  width: 30%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  padding: 0.3rem;
+  margin-bottom: 2rem;
+}
+
+#active-report {
+  width: 100%;
+  text-align: center;
+  margin: -1rem 0 1rem 0;
+  color: rgb(0, 0, 225);
 }

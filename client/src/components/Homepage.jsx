@@ -138,6 +138,12 @@ const Homepage = () => {
         <div>Active</div>
         <div>My offers</div>
       </div>
+      <img
+        src="/add.png"
+        alt="plus"
+        id="add-button"
+        onClick={() => setIsAdd(true)}
+      />
       <Carousel classname="carousel" interval={null}>
         {/*
 				--------------BROWSE ALL OFFERS---------------
@@ -153,12 +159,6 @@ const Homepage = () => {
                   ))}
               </div>
             ) : null}
-            <img
-              src="/add.png"
-              alt="plus"
-              id="add-button"
-              onClick={() => setIsAdd(true)}
-            />
           </div>
         </Carousel.Item>
         {/*
