@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import OfferCard from "./OfferCard";
 import { useSelector, useDispatch } from "react-redux";
 import Carousel from "react-bootstrap/Carousel";
@@ -7,7 +8,6 @@ import Addoffer from "./AddOffer";
 import "./css/Homepage.css";
 import { modifyOffer, getOffers } from "../actions/offerActions";
 import { getUser, modifyUser } from "../actions/userActions";
-import { loadUser } from "../actions/authActions";
 import { Redirect } from "react-router-dom";
 
 const Homepage = () => {
@@ -26,6 +26,14 @@ const Homepage = () => {
 
     // Get buyer or seller
     const isCreator = user._id === toComplete.creator.id ? true : false;
+    const id = isCreator ? toComplete.buyer.id : toComplete.creator.id;
+    let initialKarma;
+    axios
+      .get("/api/users/" + id)
+      .then((res) => {
+        initialKarma = res.data.karma;
+      })
+      .catch((err) => console.log(err));
 
     // HANDLE OFFER COMPLETION EVENT
     const handleCompletion = () => {
@@ -34,18 +42,25 @@ const Homepage = () => {
         return;
       }
 
-      // PUT req bodies
-      const offerBody = JSON.stringify({
-        isActive: false,
-        isCompleted: true,
-        buyerRating: isCreator ? true : false,
-        creatorRating: isCreator ? false : true,
-      });
-      const userBody = JSON.stringify({
-        karma: user.karma + rating * 2,
-      });
-      const id = isCreator ? toComplete.buyer.id : toComplete.creator.id;
+      // PUT offer body
+      const offerBody = isCreator
+        ? JSON.stringify({
+            isActive: toComplete.creatorRating ? false : true,
+            isCompleted: toComplete.creatorRating ? false : true,
+            buyerRating: true,
+          })
+        : JSON.stringify({
+            isActive: toComplete.buyerRating ? false : true,
+            isCompleted: toComplete.buyerRating ? false : true,
+            creatorRating: true,
+          });
 
+      // PUT user body
+      const userBody = JSON.stringify({
+        karma: initialKarma + rating * 2,
+      });
+
+      // Make modifications and refresh user & offerlist
       modifyOffer(toComplete._id, offerBody);
       modifyUser(id, userBody);
       getOffers()(dispatch);
