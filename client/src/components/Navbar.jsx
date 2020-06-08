@@ -3,7 +3,11 @@ import { useDispatch } from "react-redux";
 import "./css/navbar.css";
 import { logoutUser } from "../actions/authActions";
 import { Redirect } from "react-router-dom";
-import { getUser, deleteUserNotification } from "../actions/userActions";
+import {
+  getUser,
+  deleteUserNotification,
+  modifyUser,
+} from "../actions/userActions";
 
 const Navbar = (props) => {
   const [showMenu, setShowMenu] = useState(false);
@@ -57,7 +61,7 @@ const Navbar = (props) => {
               deleteUserNotification(props.user._id, n.id);
               setTimeout(() => {
                 getUser(props.user._id)(dispatch);
-              }, 1000);
+              }, 500);
             }}
           />
         </div>
@@ -133,9 +137,24 @@ const Navbar = (props) => {
                         />
                       ))
                     : null}
-                  {notifications ? (
+                  {notifications[0] ? (
                     <div className="clear-all-container">
-                      <div id="clear-all">mark all as read</div>
+                      <div
+                        id="clear-all"
+                        onClick={() => {
+                          modifyUser(
+                            props.user._id,
+                            JSON.stringify({
+                              notifications: [],
+                            })
+                          );
+                          setTimeout(() => {
+                            getUser(props.user._id)(dispatch);
+                          }, 500);
+                        }}
+                      >
+                        mark all as read
+                      </div>
                     </div>
                   ) : null}
                 </div>

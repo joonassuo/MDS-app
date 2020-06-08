@@ -136,7 +136,7 @@ const OfferCard = (props) => {
     deleteOffer(offer._id);
     setTimeout(() => {
       getOffers()(dispatch);
-    }, 1000);
+    }, 500);
   };
 
   // On complete offer handler
