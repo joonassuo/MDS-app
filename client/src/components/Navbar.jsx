@@ -122,6 +122,7 @@ const Navbar = (props) => {
                     </div>
                   </div>
                 </div>
+
                 <div className="notifications-container">
                   {notifications
                     ? notifications.map((n) => (
@@ -132,6 +133,11 @@ const Navbar = (props) => {
                         />
                       ))
                     : null}
+                  {notifications ? (
+                    <div className="clear-all-container">
+                      <div id="clear-all">mark all as read</div>
+                    </div>
+                  ) : null}
                 </div>
                 <img
                   src="/logout.png"

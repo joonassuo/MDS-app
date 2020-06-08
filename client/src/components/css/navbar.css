@@ -182,6 +182,13 @@
   font-size: 1.2rem;
 }
 
+.clear-all-container {
+  color: rgb(0, 0, 255);
+  width: 100%;
+  text-align: right;
+  padding: 1rem;
+}
+
 #logout,
 #settings {
   position: fixed;

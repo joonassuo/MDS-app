@@ -24,17 +24,16 @@
 
 #profile-pic {
   width: auto;
-  height: 2.5em;
+  height: 2rem;
   border: 1px solid rgba(0, 0, 0, 0.8);
   border-radius: 50%;
-  vertical-align: sub;
+  vertical-align: unset;
 }
 
 .user-details {
   margin-left: 1em;
   display: inline-block;
   position: relative;
-  height: 2.5em;
 }
 
 #username,
@@ -43,6 +42,7 @@
 #karma {
   display: inline;
   color: grey;
+  font-size: 0.8rem;
 }
 
 #karma-icon {
@@ -52,7 +52,7 @@
 }
 
 #karma {
-  vertical-align: middle;
+  vertical-align: text-top;
   margin-left: 2px;
 }
 
@@ -65,7 +65,8 @@
   width: 100%;
   text-align: center;
   font-size: 1.5em;
-  margin: 2rem 0 2rem 0;
+  margin: 1.5rem 0 1.5rem 0;
+  font-weight: 100;
 }
 
 #cost-icon,

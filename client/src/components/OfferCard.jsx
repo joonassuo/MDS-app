@@ -59,8 +59,26 @@ const OfferCard = (props) => {
     return hours + ":" + minutes + (minutes < 10 ? "0" : "") + " h";
   };
 
+  // Confirm buy
+  const confirmBuy = () => {
+    if (user) {
+      if (
+        window.confirm(
+          "Buy " + offer.title.toUpperCase() + " for " + offer.cost + "?"
+        )
+      ) {
+        handleBuy();
+      }
+    } else {
+      if (window.confirm("Please Login to Buy Offer")) {
+        props.setIsLogin(true);
+      }
+    }
+  };
+
   // Handle buy of offer
   const handleBuy = () => {
+    // Not enough money
     if (offer.cost > user.money) {
       alert("Insufficient funds");
       return;
@@ -160,7 +178,9 @@ const OfferCard = (props) => {
             <div id="date">{offer.createdDate.substring(0, 10)}</div>
           </div>
         </div>
-        <div id="title">{offer.title.toUpperCase()}</div>
+        <div id="title">
+          {offer.title.toLowerCase().replace(/\b\w/g, (l) => l.toUpperCase())}
+        </div>
 
         {isActive ? (
           !props.activeOffer ? (
@@ -187,17 +207,7 @@ const OfferCard = (props) => {
                 <div
                   id="buy-button"
                   onClick={() => {
-                    if (
-                      window.confirm(
-                        "Buy " +
-                          offer.title.toUpperCase() +
-                          " for " +
-                          offer.cost +
-                          "?"
-                      )
-                    ) {
-                      handleBuy();
-                    }
+                    confirmBuy();
                   }}
                 >
                   BUY

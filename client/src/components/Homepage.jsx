@@ -14,7 +14,6 @@ import {
   addUserNotification,
 } from "../actions/userActions";
 import { Redirect } from "react-router-dom";
-import { set } from "mongoose";
 
 const Homepage = () => {
   const [isAdd, setIsAdd] = useState(false);
@@ -52,12 +51,12 @@ const Homepage = () => {
       const offerBody = isCreator
         ? JSON.stringify({
             isActive: toComplete.creatorRating ? false : true,
-            isCompleted: toComplete.creatorRating ? false : true,
+            isCompleted: toComplete.creatorRating ? true : false,
             buyerRating: true,
           })
         : JSON.stringify({
             isActive: toComplete.buyerRating ? false : true,
-            isCompleted: toComplete.buyerRating ? false : true,
+            isCompleted: toComplete.buyerRating ? true : false,
             creatorRating: true,
           });
 
@@ -184,7 +183,11 @@ const Homepage = () => {
                 {offerList
                   .filter((offer) => !offer.isActive && !offer.isCompleted)
                   .map((offer) => (
-                    <OfferCard offer={offer} key={offer._id} />
+                    <OfferCard
+                      offer={offer}
+                      key={offer._id}
+                      setIsLogin={setIsLogin}
+                    />
                   ))}
               </div>
             ) : null}
@@ -201,8 +204,10 @@ const Homepage = () => {
                   {offerList
                     .filter(
                       (offer) =>
-                        (offer.creator.id === user._id ||
-                          offer.buyer.id === user._id) &&
+                        ((offer.creator.id === user._id &&
+                          !offer.buyerRating) ||
+                          (offer.buyer.id === user._id &&
+                            !offer.creatorRating)) &&
                         offer.isActive
                     )
                     .map((offer) => (
