@@ -27,7 +27,7 @@
 .wallet-container {
   width: 6vh;
   height: 6vh;
-  padding: 0.5em;
+  position: absolute;
 }
 
 .wallet-container {
@@ -37,8 +37,16 @@
 #hamburger,
 #logo,
 #wallet-icon {
-  height: 100%;
+  height: 50%;
   width: auto;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#hamburger {
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .hamburger-container {
@@ -76,11 +84,14 @@
 
 #wallet-icon {
   display: inline;
+  margin-left: 6px;
 }
 
 #wallet-amount {
-  display: inline;
-  vertical-align: middle;
+  display: inline-block;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
   margin-left: 4px;
 }
 
@@ -89,6 +100,7 @@
   background-color: rgb(255, 255, 255);
   height: 94vh;
   position: relative;
+  top: 6vh;
   z-index: 30;
   transform: translateX(100%);
   -webkit-transform: translateX(100%);
