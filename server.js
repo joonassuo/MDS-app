@@ -13,13 +13,13 @@ app.use(express.static(path.join(__dirname, "client", "build")));
 const uri = config.get("MONGODB_URI");
 mongoose.set("useFindAndModify", false);
 mongoose.connect(uri, {
-	useNewUrlParser: true,
-	useCreateIndex: true,
-	useUnifiedTopology: true,
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
 });
 const connection = mongoose.connection;
 connection.once("open", () => {
-	console.log("MongoDB connection established successfully!");
+  console.log("MongoDB connection established successfully!");
 });
 
 // ROUTES
@@ -29,11 +29,12 @@ app.use("/api/offers", require("./routes/api/offers"));
 app.use("/oauth", require("./routes/oauth/oauth"));
 
 app.get("*", (req, res) => {
-	res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  res.set("Access-Control-Allow-Origin", "*");
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 });
 
 // listen on port
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
-	console.log(`Server is running on port: ${PORT}`);
+  console.log(`Server is running on port: ${PORT}`);
 });
