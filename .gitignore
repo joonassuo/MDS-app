@@ -8,7 +8,6 @@
 
 # production
 /client/build
-/config
 
 # misc
 .DS_Store

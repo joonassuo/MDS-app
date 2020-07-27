@@ -95,7 +95,7 @@ const Navbar = (props) => {
     <div>
       <div className="navbar-container">
         <div className="logo-container">
-          <img src="/pig.png" alt="logo" id="logo" />
+          <img src="/favicon.ico" alt="logo" id="logo" />
         </div>
         {props.auth ? (
           <div>
