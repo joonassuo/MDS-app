@@ -7,12 +7,11 @@ const cors = require("cors");
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "client", "build")));
 
 // connect to mongodb
 const uri = config.get("MONGODB_URI");
 mongoose.set("useFindAndModify", false);
-mongoose.connect(uri, {
+mongoose.connect(process.env.MONGODB_URI || uri, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
@@ -28,10 +27,12 @@ app.use("/api/auth", require("./routes/api/auth"));
 app.use("/api/offers", require("./routes/api/offers"));
 app.use("/oauth", require("./routes/oauth/oauth"));
 
-app.get("*", (req, res) => {
-  res.set("Access-Control-Allow-Origin", "*");
-  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-});
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "client", "build")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 // listen on port
 const PORT = process.env.PORT || 8000;
