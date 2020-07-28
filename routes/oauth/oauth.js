@@ -10,7 +10,7 @@ router.get("/42/redirect", (req, res) => {
     client_id: c.get("CLIENT_ID"),
     client_secret: c.get("CLIENT_SECRET"),
     code,
-    redirect_uri: "https://beeswax.herokuapp.com/oauth/42/redirect",
+    redirect_uri: "http://localhost:3000/oauth/42/redirect",
     scope: "public",
   });
   const config = {
