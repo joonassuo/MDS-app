@@ -5,8 +5,6 @@ const c = require("config");
 
 router.get("/42/redirect", (req, res) => {
   const code = req.query.code;
-  !code ? res.send("no code") : res.send(code);
-  return;
   const body = JSON.stringify({
     grant_type: "authorization_code",
     client_id: c.get("CLIENT_ID"),
