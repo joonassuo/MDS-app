@@ -21,11 +21,14 @@ const Oauth = () => {
       .get("/oauth/42", { headers: { code } })
       .then((res) => {
         // Post to 42 for token
-        return axios.get("https://api.intra.42.fr/v2/me", {
-          headers: {
-            Authorization: "BEARER " + res.data.access_token,
-          },
-        });
+        return axios.get(
+          "https://cors-anywhere.herokuapp.com/https://api.intra.42.fr/v2/me",
+          {
+            headers: {
+              Authorization: "BEARER " + res.data.access_token,
+            },
+          }
+        );
       })
       .then((res) => {
         // Check if user with hiveID already exists in DB
