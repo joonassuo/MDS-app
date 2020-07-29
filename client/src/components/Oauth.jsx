@@ -18,7 +18,7 @@ const Oauth = () => {
 
     // Get token from 42 with granted code
     axios
-      .get("/oauth/42/redirect", { headers: { code } })
+      .get("/oauth/42", { headers: { code } })
       .then((res) => {
         // Post to 42 for token
         return axios.get("https://api.intra.42.fr/v2/me", {
